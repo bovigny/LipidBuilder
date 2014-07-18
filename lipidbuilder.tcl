@@ -21,6 +21,7 @@ package require smile2topology
 package require psfgen
 
 package require http
+package require zipper
  
 namespace eval ::lipidBuilder:: {
   namespace export lipidbuilder
@@ -39,16 +40,20 @@ namespace eval ::lipidBuilder:: {
   variable gui 0
   variable LipidBuilder [file dirname [file normalize [info script]]]
   variable resname
-  
-  variable LipidBuilderLibraryURL "http://lipidbuilder.epfl.ch/lipidlibrary/index.txt"
+  variable LipidBuilderURL "http://lipidbuilder.epfl.ch/"
+  variable LipidBuilderLibraryURL "$LipidBuilderURL/lipidlibrary/index.txt"
+  variable LipidBuilderUpdateURL "$LipidBuilderURL/LipidBuilderUpdate.zip"
   variable tmpsubmenu 0
-  variable categories [list "phospholipid" "sphingolipid" "glycolipid" "triglyceride"]
+  variable categories
   variable defaultCategory 0
   variable category
-  variable heads [list "phospholipid" "PA PC PG PE PS" "sphingolipid" "PC PE" "glycolipid" "PI PD PG" "triglyceride" "TG"]
+  variable heads
+  variable headnames
   variable defaultHeads
-  variable defaultHead 0 
   variable head
+  variable headname
+  variable nbrTails
+
   set debug 0
 #  set currentMol $nullMolString
   variable molMenuText
@@ -64,11 +69,11 @@ proc ::lipidBuilder::lipidbuilder_usage {} {
   puts "lipidBuilder) 	    tails"
   puts "lipidBuilder) 	    outDir"
   puts "Example:"
-  puts "lipidbuilder PC POPC {{CCCCCCC/C=C\\CCCCCCCC} {CCCCCCCCCCCCCCC}} .
+  puts "lipidbuilder Glycerophospholipid PC POPC {{CCCCCCC/C=C\\CCCCCCCC} {CCCCCCCCCCCCCCC}} .
   error ""
 }
 
-proc ::lipidBuilder::lipidbuilder { head resname tails outdir } {
+proc ::lipidBuilder::lipidbuilder { category head resname tails outdir } {
   #This is the frontend text proc for lipidbuilder; it will produce all the
   #
   variable LipidBuilder
@@ -100,11 +105,11 @@ proc ::lipidBuilder::lipidbuilder { head resname tails outdir } {
         incr count
       }
         if {$error == 0} {
-                if {[createTopology $head $tails $resname $outdir] == -1} {
+                if {[createTopology $category $head $tails $resname $outdir] == -1} {
                 	puts "Unable to create lipid due to unknown atom type"
                 	return 0
                 }
-                createTemplate $outdir/${resname}.top $head $outdir
+                createTemplate $category $outdir/${resname}.top $head $outdir
                 return 1
         } else {
 		puts "Unable to create lipid due to errors"
@@ -113,6 +118,7 @@ proc ::lipidBuilder::lipidbuilder { head resname tails outdir } {
 }
 
 proc ::lipidBuilder::gui_init_defaults {} {
+  
   variable w
   variable tail1
   variable tail2
@@ -120,15 +126,14 @@ proc ::lipidBuilder::gui_init_defaults {} {
   variable tail4
   variable LipidBuilder 
   variable resname
+  parseHeads
   variable categories
   variable defaultCategory [lindex $categories 0]
   variable category $defaultCategory
-  variable heads
-  array set aheads $heads
+  variable headnames
+  array set aheads $headnames
   variable defaultHeads $aheads($defaultCategory)
-  variable defaultHead [lindex $defaultHeads  0]
-  variable head $defaultHead
-
+  variable headname [lindex $defaultHeads 0]
 }
 
 proc ::lipidBuilder::loadLibrary { token } {
@@ -216,35 +221,65 @@ proc ::lipidBuilder::setTemplateFromHttp { token } {
 }
 
 proc ::lipidBuilder::updateLipidBuilder {} {
-
+	variable LipidBuilderUpdateURL
+	variable LipidBuilder
+	set filename [file tail $LipidBuilderUpdateURL]
+	set filename ${LipidBuilder}/${filename}
+	set r [http::geturl $LipidBuilderUpdateURL -binary 1]
+	set fo [open $filename w]
+	fconfigure $fo -translation binary
+	puts -nonewline $fo [http::data $r]
+	close $fo
+	::http::cleanup $r
+	::zipper::unzip $filename $LipidBuilder
+	file delete -force $filename
 }
 
 proc ::lipidBuilder::parseHeads {} {
   variable categories
   variable heads
+  variable headnames
   variable nbrTails
-  set f [open "${LipidBuilder}/heads.dat" r]
-  set data [read $f]
-  close $f
-  foreach d $data {
-    
+  variable LipidBuilder
+  set infile [open "${LipidBuilder}/heads.dat" r]
+  set categories []
+  while {[gets $infile line] >= 0} {
+  	if {[llength $line] > 0 && [lindex $line 0] !="#"} {
+		set t [join $line "_"]
+		set t [split $t ","]
+			if {[llength $t]==4} {
+			lassign $t  head tails name cat
+			lappend categories $cat
+			set A_nbrTails(${cat}-${head}) $tails
+			set A_heads(${cat}-${name}) $head
+			if {[info exists A_headnames($cat)]} {
+				set hn $A_headnames($cat)
+				set name [concat $hn $name] 
+			}
+			set A_headnames($cat) $name
+			}
+	}		
   }
+  close $infile
+  set heads [array get A_heads]
+  set headnames [array get A_headnames]
+  set nbrTails [array get A_nbrTails]
+  set categories [lsort -unique $categories]
   return 1
 }
 
 proc ::lipidBuilder::changeHeads args {
   variable w
   variable category
-  variable heads
-  array set aheads $heads
+  variable headnames
+  array set aheads $headnames
   variable defaultHeads $aheads($category)
-  variable defaultHead [lindex $defaultHeads  0]
-  variable head $defaultHead
+  variable headname [lindex $defaultHeads  0]
+
   $w.headname.menu delete 0 end
   foreach h $defaultHeads {
-	  $w.headname.menu add radiobutton -variable [namespace current]::head -label $h  
+	  $w.headname.menu add radiobutton -variable [namespace current]::headname -label $h  
   }
-  #TODO update number of tails
 }
 
 proc ::lipidBuilder::lipidbuilder_mainwin {{defaults 1}} {
@@ -257,8 +292,7 @@ proc ::lipidBuilder::lipidbuilder_mainwin {{defaults 1}} {
   variable keepforce
   variable molMenuText
   variable guiOutdir [pwd]
-  variable defaultHead 
-  variable head $defaultHead
+  variable headname
   variable defaultHeads
   variable LipidBuilderLibraryURL
   variable categories
@@ -269,7 +303,7 @@ proc ::lipidBuilder::lipidbuilder_mainwin {{defaults 1}} {
    } 
 
 if {[llength [trace info variable [namespace current]::head]] == 0} {
-    trace add variable [namespace current]::head write ::lipidBuilder::enable_tails
+    trace add variable [namespace current]::headname write ::lipidBuilder::enable_tails
   }
 
 
@@ -334,7 +368,7 @@ Laurent Fasnacht"}
 
   grid [label $w.headlabel -text  "Lipid headgroup: " ] \
     -row $row -column 0 -columnspan 1 -sticky w 
-  eval "tk_optionMenu \$w.headname [namespace current]::head $defaultHeads"
+  eval "tk_optionMenu \$w.headname [namespace current]::headname $defaultHeads"
   grid $w.headname -row $row -column 1 -columnspan 1 -sticky ew
   incr row
 
@@ -346,7 +380,7 @@ Laurent Fasnacht"}
   incr row
 
 
-  grid [label $w.textlabel -text "SMILE of hydrocarbon tails: "] \
+  grid [label $w.textlabel -text "SMILE for hydrocarbon tails: "] \
     -row $row -column 0 -columnspan 6 -sticky w
 
   incr row
@@ -368,14 +402,14 @@ Laurent Fasnacht"}
   incr row
 
   #Input for selection #3
-  grid [label $w.sel3label -text "Tail 3 (opt): " ] \
+  grid [label $w.sel3label -text "Tail 3: " ] \
     -row $row -column 0 -sticky w
   grid [entry $w.sel3 -width 60 \
     -textvariable [namespace current]::tail3 ] \
     -row $row -column 1 -columnspan 6 -sticky ew  
   incr row
   #Input for selection #4
-  grid [label $w.sel4label -text "Tail 4 (opt): " ] \
+  grid [label $w.sel4label -text "Tail 4: " ] \
     -row $row -column 0 -sticky w
   grid [entry $w.sel4 -width 60 \
     -textvariable [namespace current]::tail4 ] \
@@ -412,26 +446,26 @@ proc lipidbuilder_tk {} {
 
 proc ::lipidBuilder::enable_tails {args} {
   variable w
-  variable head
- 
+  variable headname
+  variable head 
+  variable heads
+  variable category
+  variable nbrTails 
+  array set A_nbrTails $nbrTails
+  array set A_heads $heads
+  set head $A_heads(${category}-${headname})
+  for {set i 1} {$i < 5} {incr i} { 
+		if { $i <= $A_nbrTails(${category}-${head}) } {
+			eval "\$w.sel${i}label configure -state normal"
+			eval "\$w.sel${i} configure -state normal" 
+		} else {
+			eval "\$w.sel${i}label configure -state disable"
+			eval "\$w.sel${i} configure -state disable" 
+		}
+	}
+}
 
-  # Disable the prefix file field
- if {$head == "CD" || $head == "CP"} {
-      if {[winfo exists $w.sel3label]} {
-      $w.sel3label configure -state normal
-      $w.sel3 configure -state normal
-      $w.sel4label configure -state normal
-      $w.sel4 configure -state normal
-}
-  } else {
-  if {[winfo exists $w.sel3label]} {
-  $w.sel3label configure -state disabled
-  $w.sel3 configure -state disabled
-  $w.sel4label configure -state disabled
-  $w.sel4 configure -state disabled 
-}
-}
-}
+
 proc ::lipidBuilder::getoutdir {} {
   variable guiOutdir
 
@@ -463,7 +497,11 @@ proc ::lipidBuilder::checkAndBuild {} {
   variable tail2
   variable tail3
   variable tail4
-
+  variable category
+  variable head
+  variable nbrTails
+  array set A_nbrTails $nbrTails
+  
   set error 0
   set errorMsg [list]
       if { $resname == "" || [string length $resname] > 4 } {
@@ -471,33 +509,33 @@ proc ::lipidBuilder::checkAndBuild {} {
 	set error 1
       }
       #Tails
-      if {$head == "CD" || $head == "CP"} {
-      	set tails [concat $tail1 $tail2 $tail3 $tail4]
-	if {[llength $tails]!= 4} {
-		lappend errorMsg "- All four tails have to be defined for cardiolipin\n"
-                set error 1;
+	set n $A_nbrTails(${category}-${head})
+	set tails []
+	for {set i 1} {$i<=$n} {incr i} {
+		lappend tails "\$tail${i}"
 	}
-      } else {
-      	set tails [concat $tail1 $tail2]
-	if {[llength $tails]!= 2} {
-		lappend errorMsg "- Both tails have to be defined.\n"
-                set error 1;
-	}
-      }
+	set tails [join $tails " "]
+	puts $tails
+	eval "set tails \[concat $tails\]"
+	puts $tails
+	if {[llength $tails] != $n } {
+		lappend errorMsg "- $n tails have to be defined for $head\n"
+        set error 1;
+    }
       set count 1
       foreach t $tails {
 	      if {![checkTail $t]} {
-         	lappend errorMsg "- Invalid SMILE for tail $count. The SMILE should be at least 2 atom long and may only contain C|=|#|/|\\ or a cyclopropane.  \n"
+         	lappend errorMsg "- Invalid SMILE for tail $count. The SMILE should be at least 2 atom long and may only contain C|=|#|/|\\|(|) or a cyclopropane.  \n"
 		set error 1;
 	       }
 	incr count
       }
 	if {$error == 0} {
-		if {[createTopology $head $tails $resname $guiOutdir] == -1} {
+		if {[createTopology $category $head $tails $resname $guiOutdir] == -1} {
                 	onError "Unable to create lipid due to unknown atom type. \n Please check smile sequence."
                 	return 0
        }
-	 	createTemplate $guiOutdir/${resname}.top $head $guiOutdir
+	 	createTemplate $category $guiOutdir/${resname}.top $head $guiOutdir
 		return 1 
 	} else {
 		onError [join $errorMsg ""]
@@ -539,17 +577,16 @@ proc ::lipidBuilder::checkTail {SMILE} {
 ###########################################################################
 
  
-proc ::lipidBuilder::createTopology {head tails resname pathOut} {
+proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
 	variable LipidBuilder
     ::topology_writer::init
     ::topology_reader::init
     ::smile2topology::read_ICparameters "$LipidBuilder/hydrocarbon_topology.dat"
 	::topology_reader::read_topology  $LipidBuilder/topology/lipid_masses.top
-	if {[file exists  $LipidBuilder/topology/${head}.top]} {
+	if {[file exists  $LipidBuilder/topology/${category}/${head}.top]} {
 		::topology_reader::read_topology  $LipidBuilder/topology/${head}.top
 	} else {
 		puts "Unknown lipid head group ${head}"
-		puts "Head groups should be PA PC PE PG PS CD or CP"
 	}
 	set tails [string map {\\ \\\\} $tails]
 	#load head group topology in writer
@@ -577,17 +614,16 @@ proc ::lipidBuilder::createTopology {head tails resname pathOut} {
        	}
        	
 	::topology_writer::set_masses $::topology_reader::masses
-	#HERE LAST EDIT
 	::topology_writer::write_topology "$pathOut/${resname}.top" $resname
 }
 
 
-proc ::lipidBuilder::createTemplate {topology head pathOut} {
+proc ::lipidBuilder::createTemplate {category topology head pathOut} {
 	variable LipidBuilder
 	::topology_reader::init
 	::topology_reader::read_topology $topology
 	set resname [lindex $::topology_reader::atomtopology 0]
-	get_template $LipidBuilder/heads/${head}.pdb $resname L1 $pathOut
+	get_template $LipidBuilder/heads/${category}/${head}.pdb $resname L1 $pathOut
 	build_template $resname  $topology L1 $pathOut
 }
 

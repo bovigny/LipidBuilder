@@ -5,5 +5,6 @@ package ifneeded topology_writer 1.2 [list source [file join $dir topology_write
 package ifneeded smiles_parser 1.0 [list source [file join $dir smiles_parser.tcl]]
 package ifneeded smile2topology 1.0 [list source [file join $dir smile2topology.tcl]]
 
+package ifneeded zipper 0.2 [list source [file join $dir zipper.tcl]]
 
 
