@@ -1,0 +1,43 @@
+*  \\\\\\\ CHARMM36 All-Hydrogen Lipid Topology File ///////
+*  All comments and questions should be submitted to the 
+*  parameter forum at the CHARMM website: www.charmm.org
+*
+36  1
+
+MASS 136  HL    1.008000 H ! polar H (equivalent to protein H)
+MASS 137  HCL   1.008000 H ! charged H for PE (equivalent to protein HC)
+MASS 138  HOL   1.008000 H ! Nucleic acid phosphate hydroxyl proton
+MASS 139  HAL1  1.008000 H ! alphatic proton
+MASS 140  HAL2  1.008000 H ! alphatic proton
+MASS 141  HAL3  1.008000 H ! alphatic proton
+MASS 142  HEL1  1.008000 H ! for alkene; RHC=CR
+MASS 143  HEL2  1.008000 H ! for alkene; H2C=CR. Currently unused.
+MASS 144  HBL   1.008000 H ! POPS SER backbone H
+MASS 145  HCP1  1.008000 H ! for cyclopropane
+MASS 146  HCP2  1.008000 H ! for cyclopropane
+MASS 147  CL   12.011000 C ! carbonyl C (acetic acid/methyl acetate)
+MASS 148  CTL0 12.011000 C ! sp3 carbon with 1 H  (-CH1-)
+MASS 148  CTL1 12.011000 C ! sp3 carbon with 1 H  (-CH1-)
+MASS 149  CTL2 12.011000 C ! carbon of methylene group (-CH2-)
+MASS 150  CTL3 12.011000 C ! carbon of methyl group (-CH3)
+MASS 151  CTL5 12.011000 C ! carbon of methyl group (-CH3) for tetramethylammonium
+MASS 152  CEL1 12.011000 C ! for alkene; RHC=CR
+MASS 153  CEL2 12.011000 C ! for alkene; H2C=CR. Currently unused.
+MASS 154  CCL  12.011000 C ! for POPS
+MASS 155  CCP1 12.011000 C ! for cyclopropane
+MASS 156  CCP2 12.011000 C ! for cyclopropane
+MASS 157  NTL  14.007000 N ! ammonium nitrogen
+MASS 158  NH3L 14.007000 N ! nitrogen phosphatidylethanolamine
+MASS 159  OBL  15.999400 O ! acetic acid carboxyl oxygen (e. to protein OB)
+MASS 160  OCL  15.999400 O ! acetate oxygen
+MASS 161  OSL  15.999400 O ! ester oxygen
+MASS 162  O2L  15.999400 O ! Nucleic acid =O in phosphate or sulfate
+MASS 163  OHL  15.999400 O ! Nucleic acid phosphate hydroxyl oxygen
+MASS 164  OSLP 15.999400 O ! Phosphate oxygen, to avoid conflict with methylacetate type O
+MASS 165  PL   30.974000 P ! phosphorus
+MASS 166  SL   32.060000 S ! Sulfate sulfur
+MASS 167  CRL1 12.011000 C ! sp3 carbon with 1 H on a ring  (-CH1-) for sterols
+MASS 168  CRL2 12.011000 C ! carbon of methylene group on a ring (-CH2-) for sterols
+MASS 170  CGT2 12.011000 C ! terminal ethene
+MASS 171  HGT2  1.008000 H ! terminal ethene
+

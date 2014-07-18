@@ -1,0 +1,123 @@
+BONDS
+!
+!V(bond) = Kb(b - b0)**2
+!
+!Kb: kcal/mole/A**2
+!b0: A
+!
+!atom type Kb          b0
+! Cyclopropane Moeity Addition
+CTL2 CCP1 222.500     1.530   ! alkanes, 3/92
+CTL3  CCP1  222.50     1.5380 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, from genFF
+CTL3  CCP2  240.00     1.5010 ! PROTMOD cyclopropane, taken from CG321 CCP2, genFF
+CTL2  CCP2  240.00     1.5010 ! PROTMOD cyclopropane, from genFF
+CCP1  CCP2  222.50     1.5280 ! PROTMOD cyclopropane, from genFF
+CCP1  CCP1  240.00     1.5010 ! PROTMOD cyclopropane, from genFF
+CCP1  HCP1  309.00     1.1110!
+CCP2  HCP2  340.00     1.0830 ! PROTMOD cyclopropane
+CEL1  CGT2  510.00     1.3300 ! LIPID ethene yin,adm jr., 12/95
+CGT2  HGT2  365.00     1.1000 ! LIPID propene; from ethene, yin,adm jr., 12/95 
+ 
+
+
+!
+
+ANGLES
+!
+!V(angle) = Ktheta(Theta - Theta0)**2
+!
+!V(Urey-Bradley) = Kub(S - S0)**2
+!
+!Ktheta: kcal/mole/rad**2
+!Theta0: degrees
+!Kub: kcal/mole/A**2 (Urey-Bradley)
+!S0: A
+!
+!atom types     Ktheta    Theta0   Kub     S0
+! For Propane Ring
+CTL2 CCP1 HCP1 34.50     110.10   22.53 2.179  ! propane ring, MacKerell
+CTL2 CTL2 CCP1 53.35    111.00    8.0   2.561 ! propane ring, MacKerell
+HAL2 CTL2 CCP1 34.50    110.10   22.53 2.179 ! propane ring, MacKerell
+CTL2 CCP1 CCP2 53.35    111.00    8.0   2.561 ! propane ring, MacKerell
+CTL2 CCP1 CCP1 53.35    111.00    8.0   2.561 ! propane ring, MacKerell
+! For Dihedral Mapping with Propane Ring
+CCP1 CTL3  HAL3     33.43    110.10   22.53   2.179 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, from GenFF
+CTL3  CCP1 CCP1   58.35    113.50   11.16   2.561 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, from GenFF
+CTL3  CCP1 HCP1     34.50    110.10   22.53 2.179  ! CARBOCY carbocyclic sugars, taken from CG321-CCP1-HCP1, from GenFF 
+CTL3  CCP1 CCP2   53.35    111.00    8.0   2.561 ! CARBOCY carbocyclic sugars, taken from CG321-CCP1-HCP1, from GenFF
+CCP2 CTL2   HAL2     26.50    110.10   22.53   2.17900 ! PROT alkane update, adm jr., 3/2/92, from genFF
+CTL1 CTL2 CL      52.0     108.00   ! best guess made by jbl for PhPC
+CCP1 CCP1 CCP2 53.35     62.50 ! CARBOCY carbocyclic sugars
+CCP1 CCP2 CCP1 53.35     58.50 ! CARBOCY carbocyclic sugars
+CCP1 CCP2 HCP2 34.50    110.10   22.53 2.179 ! CARBOCY carbocyclic sugars
+CCP1 CCP1 HCP1  34.50    110.10   22.53 2.179  ! CARBOCY carbocyclic sugars
+CCP2 CCP1 HCP1   34.50    110.10   22.53  2.179 !CARBOCY carbocyclic sugars
+HCP2 CCP2 HCP2 23.00    117.00    5.40  1.80200 ! PROTMOD cyclopropane
+
+!
+DIHEDRALS
+!
+!V(dihedral) = Kchi(1 + cos(n(chi) - delta))
+!
+!Kchi: kcal/mole
+!n: multiplicity
+!delta: degrees
+!
+!atom types             Kchi    n   delta
+! Taken from C36 GenFF for Propane Ring in Lipid
+CTL2   CTL2   CCP1 HCP1   0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CTL2   CCP1 CCP2 0.0000  2   180.00 ! propane ring, MacKerell
+HCP2   CCP2 CCP1 CTL2   0.1950  3     0.00 ! propane ring, MacKerell
+CCP1 CCP2 CCP1 CTL2   0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CCP1 CCP1 CCP2 0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CCP1 CCP1 HCP1   0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CCP1 CCP1 CTL2   0.1500  3     0.00 ! propane ring, MacKerell
+HAL2   CTL2   CCP1 CCP2 0.1950  3     0.00 ! propane ring, MacKerell
+HAL2   CTL2   CCP1 CCP1 0.1500  3     0.00 ! propane ring, MacKerell
+HAL2   CTL2   CCP1 HCP1   0.1500  3     0.00 ! propane ring, MacKerell
+! Take from C36 Gen FF for Ring on small molecule studies
+CCP1 CCP2 CCP1 CTL3   0.1500  3     0.00 ! CARBOCY carbocyclic sugars, taken from CCP1 CCP2 CCP1 CG321, genFF
+HCP2   CCP2 CCP1 CTL3   0.1950  3     0.00 ! CARBOCY carbocyclic sugars, taken from HCP2 CCP2 CCP1 CG321, genFF
+HAL3   CTL3   CCP1 CCP1 0.1500  3   180.00 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08
+HAL3   CTL3   CCP1 HCP1   0.1600  3     0.00 ! alkane, 4/98, yin and mackerell, tf2m viv, taken from HGA3 CG331 CG3C51 HCP1, genFF
+HAL3   CTL3   CCP1 CCP2 0.1500  3   180.00 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, taken from HGA3 CG331 CCP1 CG3C51, genFF
+! For Propane Ring added by K.R.P. 07/10
+X    CCP1 CCP1 X        0.4500  1   180.00 ! 2-butene, adm jr., 4/04 from C36 GenFF
+X    CCP1 CCP1 X        8.5000  2   180.00 !from C36 GenFF
+CCP1 CCP1 CTL2 CTL2     1.71  1    159.6 !ring, KRP
+CCP1 CCP1 CTL2 CTL2     0.37  2    165.1 !ring, KRP
+CCP1 CCP1 CTL2 CTL2     0.58  3     47.6 !ring, KRP
+CCP1 CTL2 CTL2 CTL2     0.16  1    180.0 ! ring, KRP
+CCP1 CTL2 CTL2 CTL2     0.01  2    180.0 ! ring, KRP
+CCP1 CTL2 CTL2 CTL2     0.17  3    180.0 ! ring, KRP
+CCP1 CCP1 CCP2 HCP2     0.1500  3     0.00 ! CARBOCY carbocyclic sugars
+HCP1 CCP1 CCP1 HCP2     0.1500  3     0.00 ! CARBOCY carbocyclic sugars 
+CCP1 CCP2 CCP1 HCP1     0.1500  3     0.00 ! CARBOCY carbocyclic sugars
+HCP1 CCP1 CCP2 HCP2     0.1500  3     0.00 ! CARBOCY carbocyclic sugars
+
+
+
+
+NONBONDED
+!cutnb 14.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5
+!adm jr., 5/08/91, suggested cutoff scheme
+!
+!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
+!
+!epsilon: kcal/mole, Eps,i,j = sqrt(eps,i * eps,j)
+!Rmin/2: A, Rmin,i,j = Rmin/2,i + Rmin/2,j
+!
+!atom  ignored    epsilon      Rmin/2   ignored   eps,1-4       Rmin/2,1-4
+!
+!Cylcopropane moeity addition
+CCP2   0.0       -0.0560     2.0100   0.0 -0.01 1.9 ! cyclopropane JMW (CT2), viv
+CCP1   0.0       -0.0320     2.0000   0.0 -0.01 1.9 ! alkane (CT1), viv
+HCP1     0.0       -0.0450     1.3400 ! alkane, igor, 6/05
+HCP2     0.0       -0.0350     1.3400 ! alkane, igor, 6/05
+
+
+
+end
+
+return
+
