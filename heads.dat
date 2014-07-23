@@ -1,9 +1,10 @@
 ##########This database was created by Dr. Thomas Lemmin called Dr. Leminator and by Christophe Bovigny called SysAdminator######
 
-pa,2,Phosphatidic Acid,Glycerophospholipid 
-pc,2,Phosphatidylcholine,Glycerophospholipid 
-pe,2,Phosphatidylethanolamine,Glycerophospholipid 
-pg,2,Phosphatidylglycerol,Glycerophospholipid 
-ps,2,Phosphatidylserine,Glycerophospholipid 
-cd,4,Cardiolipin Deprotonated,Glycerophospholipid 
-cp,4,Cardiolipin protonated,Glycerophospholipid
+PA,2,Phosphatidic Acid,Glycerophospholipid 
+PC,2,Phosphatidylcholine,Glycerophospholipid 
+PE,2,Phosphatidylethanolamine,Glycerophospholipid 
+PG,2,Phosphatidylglycerol,Glycerophospholipid 
+PS,2,Phosphatidylserine,Glycerophospholipid 
+CD,4,Cardiolipin Deprotonated,Glycerophospholipid 
+CP,4,Cardiolipin protonated,Glycerophospholipid
+CD,4,Cardiolipin protonated,Booboo

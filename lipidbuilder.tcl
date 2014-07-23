@@ -29,7 +29,7 @@ namespace eval ::lipidBuilder:: {
 
   #define package variables
 
-  #FIXME: AUTO ID WHAT MOLECULE YOU"RE USING
+  variable version 2.1
   #Default force field parameters:
   variable debug
   variable nsel
@@ -42,7 +42,7 @@ namespace eval ::lipidBuilder:: {
   variable resname
   variable LipidBuilderURL "http://lipidbuilder.epfl.ch/"
   variable LipidBuilderLibraryURL "$LipidBuilderURL/lipidlibrary/index.txt"
-  variable LipidBuilderUpdateURL "$LipidBuilderURL/LipidBuilderUpdate.zip"
+  variable LipidBuilderUpdateURL "$LipidBuilderURL/LipidBuilderUpdate_${version}.zip"
   variable tmpsubmenu 0
   variable categories
   variable defaultCategory 0
@@ -211,8 +211,9 @@ proc ::lipidBuilder::fetchSetTemplate { url } {
 
 proc ::lipidBuilder::setTemplateFromHttp { token } {
   set lines [split [::http::data $token] "\n"]
-  
+  set ::lipidBuilder::category "Glycerophospholipid"
   set ::lipidBuilder::head [lindex $lines 0]
+  set ::lipidBuilder::headname [lindex [split [lindex $::lipidBuilder::heads [expr [lsearch $::lipidBuilder::heads $::lipidBuilder::head] -1]] -] 1]
   set ::lipidBuilder::resname [lindex $lines 1]
   set ::lipidBuilder::tail1 [lindex $lines 2]
   set ::lipidBuilder::tail2 [lindex $lines 3]
@@ -233,6 +234,7 @@ proc ::lipidBuilder::updateLipidBuilder {} {
 	::http::cleanup $r
 	::zipper::unzip $filename $LipidBuilder
 	file delete -force $filename
+	onInfo "LipidBuilder has been updated"
 }
 
 proc ::lipidBuilder::parseHeads {} {
