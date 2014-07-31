@@ -586,7 +586,7 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
     ::smile2topology::read_ICparameters "$LipidBuilder/hydrocarbon_topology.dat"
 	::topology_reader::read_topology  $LipidBuilder/topology/lipid_masses.top
 	if {[file exists  $LipidBuilder/topology/${category}/${head}.top]} {
-		::topology_reader::read_topology  $LipidBuilder/topology/${head}.top
+		::topology_reader::read_topology  $LipidBuilder/topology/${category}/${head}.top
 	} else {
 		puts "Unknown lipid head group ${head}"
 	}
