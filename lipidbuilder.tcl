@@ -21,11 +21,13 @@ package require smile2topology
 package require psfgen
 
 package require http
-package require zipper
+variable vfszipError [catch {package require vfs::zip}]
+if { $vfszipError == 0 } { 
+	package require zipper
+}
  
 namespace eval ::lipidBuilder:: {
   namespace export lipidbuilder
-  namespace export lipidbuilder-parse
 
   #define package variables
 
@@ -69,52 +71,50 @@ proc ::lipidBuilder::lipidbuilder_usage {} {
   puts "lipidBuilder) 	    tails"
   puts "lipidBuilder) 	    outDir"
   puts "Example:"
-  puts "lipidbuilder Glycerophospholipid PC POPC {{CCCCCCC/C=C\\CCCCCCCC} {CCCCCCCCCCCCCCC}} .
+  puts "lipidbuilder Glycerophospholipid PC POPC \"{CCCCCCC/C=C\\CCCCCCCC} {CCCCCCCCCCCCCCC}\" ."
   error ""
 }
 
 proc ::lipidBuilder::lipidbuilder { category head resname tails outdir } {
   #This is the frontend text proc for lipidbuilder; it will produce all the
   #
-  variable LipidBuilder
-
-  set error 0
-  set errorMsg [list]
-      if { $resname == "" || [string length $resname] > 4 } {
-        puts "The resname should be defined and is limited to 4 characters\n"
-        set error 1
-      }
-      #Tails
-      if {$head == "CD" || $head == "CP"} {
-        if {[llength $tails]!= 4} {
-                puts "All four tails have to be defined for cardiolipin\n"
-                set error 1;
-        }
-      } else {
-        if {[llength $tails]!= 2} {
-                puts "Two tails have to be defined.\n"
-                set error 1;
-        }
-      }
-      set count 1
-      foreach t $tails {
-              if {![checkTail $t]} {
-                puts "Invalid SMILE for tail $count. The SMILE may only contain C|=|#|/|\\ or a cyclopropane. \n"
-                set error 1;
-               }
-        incr count
-      }
-        if {$error == 0} {
-                if {[createTopology $category $head $tails $resname $outdir] == -1} {
-                	puts "Unable to create lipid due to unknown atom type"
-                	return 0
-                }
-                createTemplate $category $outdir/${resname}.top $head $outdir
-                return 1
-        } else {
+	variable LipidBuilder
+	parseHeads
+	variable nbrTails
+	array set A_nbrTails $nbrTails
+	
+	set error 0
+	set errorMsg [list]
+	if { $resname == "" || [string length $resname] > 4 } {
+		puts "- The resname should be defined and is limited to 4 characters\n"
+		set error 1
+	}
+	#Tails
+	set n $A_nbrTails(${category}-${head})
+	puts $tails
+	if {[llength $tails] != $n } {
+		puts "- $n tails have to be defined for $head\n"
+		set error 1;
+	}
+	set count 1
+	foreach t $tails {
+		if {![checkTail $t]} {
+			puts "- Invalid SMILE for tail $count. The SMILE should be at least 2 atom long and may only contain C|=|#|/|\\|(|) or a cyclopropane.  \n"
+			set error 1;
+		}
+		incr count
+	}
+	if {$error == 0} {
+		if {[createTopology $category $head $tails $resname $outdir] == -1} {
+				puts "Unable to create lipid due to unknown atom type. \n Please check smile sequence."
+				return 0
+		}
+		createTemplate $category $outdir/${resname}.top $head $outdir
+		return 1 
+	} else {
 		puts "Unable to create lipid due to errors"
-                return 0
-        }
+		return 0
+	}	
 }
 
 proc ::lipidBuilder::gui_init_defaults {} {
@@ -222,19 +222,23 @@ proc ::lipidBuilder::setTemplateFromHttp { token } {
 }
 
 proc ::lipidBuilder::updateLipidBuilder {} {
-	variable LipidBuilderUpdateURL
-	variable LipidBuilder
-	set filename [file tail $LipidBuilderUpdateURL]
-	set filename ${LipidBuilder}/${filename}
-	set r [http::geturl $LipidBuilderUpdateURL -binary 1]
-	set fo [open $filename w]
-	fconfigure $fo -translation binary
-	puts -nonewline $fo [http::data $r]
-	close $fo
-	::http::cleanup $r
-	::zipper::unzip $filename $LipidBuilder
-	file delete -force $filename
-	onInfo "LipidBuilder has been updated"
+	#if {$vfszipError == 0 } {
+		variable LipidBuilderUpdateURL
+		variable LipidBuilder
+		set filename [file tail $LipidBuilderUpdateURL]
+		set filename ${LipidBuilder}/${filename}
+		set r [http::geturl $LipidBuilderUpdateURL -binary 1]
+		set fo [open $filename w]
+		fconfigure $fo -translation binary
+		puts -nonewline $fo [http::data $r]
+		close $fo
+		::http::cleanup $r
+		::zipper::unzip $filename $LipidBuilder
+		file delete -force $filename
+		onInfo "LipidBuilder has been updated"
+	#} else {
+	#	puts "LipidBuilder updating requires vfs::zip. Please install it"
+	#}	
 }
 
 proc ::lipidBuilder::parseHeads {} {
@@ -435,6 +439,9 @@ Laurent Fasnacht"}
 
  incr row
  ::lipidBuilder::enable_tails
+ #if {$vfszipError == 1} {
+ #	onWarn "Missing package vfs::zip. Update option disabled."
+ #}
 }
 
 
@@ -625,11 +632,11 @@ proc ::lipidBuilder::createTemplate {category topology head pathOut} {
 	::topology_reader::init
 	::topology_reader::read_topology $topology
 	set resname [lindex $::topology_reader::atomtopology 0]
-	get_template $LipidBuilder/heads/${category}/${head}.pdb $resname L1 $pathOut
-	build_template $resname  $topology L1 $pathOut
+	getTemplate $LipidBuilder/heads/${category}/${head}.pdb $resname L1 $pathOut
+	buildTemplate $resname  $topology L1 $pathOut
 }
 
-proc ::lipidBuilder::build_template {resname topology segname pathOut} {
+proc ::lipidBuilder::buildTemplate {resname topology segname pathOut} {
 	topology $topology
         segment $segname  {pdb $pathOut/${resname}.pdb}
         coordpdb $pathOut/${resname}.pdb
@@ -639,8 +646,15 @@ proc ::lipidBuilder::build_template {resname topology segname pathOut} {
 	psfcontext reset
 }
 
+proc ::lipidBuilder::minimizeTemplate {resname topology pathOut} {
+	variable LipidBuilder
+	cd $pathOut
+	if {tcl_platform(os) == "Linux"} {
+		cexec "${LipidBuilder}/minimize --pdb ${resname}.pdb --top ${topology} --par ${LipidBuilder}/${}"
+	}
+}
 
-proc ::lipidBuilder::get_template {head resname segname pathOut} {
+proc ::lipidBuilder::getTemplate {head resname segname pathOut} {
 	mol new $head
         set h [atomselect top all]
         $h set resname $resname

@@ -9,7 +9,6 @@ package provide zipper 0.2
 package require vfs::zip
 
 namespace eval zipper {
-
     namespace ensemble create
     namespace export list2zip unzip zcopy zstat
     
