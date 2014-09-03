@@ -9,6 +9,7 @@ namespace eval ::topology_reader:: {
     variable impropertopology [list]
     variable atomtopology [list]
     variable chargetopology [list]
+    variable chargeResitopology [list]
     variable bonds [list]
     variable ICs [list]
     variable masses [list]
@@ -21,6 +22,7 @@ proc ::topology_reader::init {} {
     variable impropertopology 
     variable atomtopology 
     variable chargetopology
+    variable chargeResitopology
     variable bonds
     variable ICs
     variable masses 
@@ -45,6 +47,7 @@ proc ::topology_reader::read_topology {file} {
         variable impropertopology
         variable atomtopology
         variable chargetopology
+        variable chargeResitopology
         variable masses
 	array set masses_array $masses
         variable bonds 
@@ -61,6 +64,7 @@ proc ::topology_reader::read_topology {file} {
         while {[gets $infile line] >= 0} {
                 if {[regexp {^RESI} $line]} {
                         set resname [lindex [noblanks [split $line ]] 1]
+                        set chargeResi_array($resname) [lindex [noblanks [split $line ]] 2]
                 }
 
                 if {[regexp {^IMPR} $line]} {
@@ -156,6 +160,7 @@ proc ::topology_reader::read_topology {file} {
         close $infile
         set impropertopology [array get improper_array]
         set atomtopology [concat $atomtopology [array get atom_array]]
+        set chargeResitopology [concat $chargeResitopology [array get chargeResi_array]]
         set chargetopology [concat $chargetopology [array get charge_array]]
         set ICs [concat $ICs [array get ic_array]]
         set bonds [concat $bonds [array get bond_array]]
@@ -173,6 +178,7 @@ proc ::topology_reader::read_linker {file} {
 	while {[gets $infile line] >= 0} {
 		if {[regexp {^RESI} $line]} {
 			set resname [lindex [noblanks [split $line ]] 1]
+			
 		}
 		if {[regexp {^IC} $line]} {
 			set ic [lreplace [noblanks [split $line ]] 0 0]

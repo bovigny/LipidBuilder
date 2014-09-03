@@ -1,0 +1,14 @@
+BONDS
+CEL1  CGT2  510.00     1.3300 ! LIPID ethene yin,adm jr., 12/95
+CGT2  HGT2  365.00     1.1000 ! LIPID propene; from ethene, yin,adm jr., 12/95 
+
+ANGLES
+CEL1 CGT2 HGT2 55.50    120.50 ! LIPID ethene, yin,adm jr., 12/95
+CTL2 CEL1 CGT2 47.00    125.20 ! LIPID propene, yin,adm jr., 12/95
+
+DIHEDRALS
+X  CEL1 CGT2 HGT2	5.2000  2   180.00 ! LIPID propene, yin,adm jr., 12/95
+
+NONBONDED
+CGT2   0.0       -0.0640     2.0800 ! alkene, yin,adm jr., 12/95
+HGT2   0.0       -0.0260     1.2600 ! alkene, yin,adm jr., 12/95

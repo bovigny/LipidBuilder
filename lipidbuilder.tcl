@@ -45,6 +45,7 @@ namespace eval ::lipidBuilder:: {
   variable LipidBuilderURL "http://lipidbuilder.epfl.ch/"
   variable LipidBuilderLibraryURL "$LipidBuilderURL/lipidlibrary/index.txt"
   variable LipidBuilderUpdateURL "$LipidBuilderURL/LipidBuilderUpdate_${version}.zip"
+  variable LipidBuilderParameters "par_all36_lipid.prm"
   variable tmpsubmenu 0
   variable categories
   variable defaultCategory 0
@@ -623,7 +624,7 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
        	}
        	
 	::topology_writer::set_masses $::topology_reader::masses
-	::topology_writer::write_topology "$pathOut/${resname}.top" $resname
+	::topology_writer::write_topology "$pathOut/${resname}.top" $resname [lindex $::topology_reader::chargeResitopology 1]
 }
 
 
@@ -634,6 +635,7 @@ proc ::lipidBuilder::createTemplate {category topology head pathOut} {
 	set resname [lindex $::topology_reader::atomtopology 0]
 	getTemplate $LipidBuilder/heads/${category}/${head}.pdb $resname L1 $pathOut
 	buildTemplate $resname  $topology L1 $pathOut
+	minimizeTemplate $resname  $topology $pathOut
 }
 
 proc ::lipidBuilder::buildTemplate {resname topology segname pathOut} {
@@ -648,10 +650,16 @@ proc ::lipidBuilder::buildTemplate {resname topology segname pathOut} {
 
 proc ::lipidBuilder::minimizeTemplate {resname topology pathOut} {
 	variable LipidBuilder
+	variable LipidBuilderParameters
 	cd $pathOut
-	if {tcl_platform(os) == "Linux"} {
-		cexec "${LipidBuilder}/minimize --pdb ${resname}.pdb --top ${topology} --par ${LipidBuilder}/${}"
+	if {$::tcl_platform(os) == "Linux"  || $::tcl_platform(os) == "Darwin" } {
+		if {[catch "exec ${LipidBuilder}/minimize_${::tcl_platform(os)} --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters}"] } {
+			file rename -force ${resname}_mini.pdb ${resname}.pdb
+		} 
+	} else {
+		puts "Invalid OS. The structure has not been minimized,"
 	}
+
 }
 
 proc ::lipidBuilder::getTemplate {head resname segname pathOut} {

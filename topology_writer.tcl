@@ -26,7 +26,7 @@ proc ::topology_writer::init {} {
 	set impropers [list]
 }
 
-proc ::topology_writer::write_topology {file resname} {
+proc ::topology_writer::write_topology {file resname charge} {
 	variable atoms
 	variable bonds
 	variable impropers 
@@ -53,7 +53,7 @@ proc ::topology_writer::write_topology {file resname} {
 	puts $outfile ""
 	puts $outfile ""
 	puts $outfile ""
-	puts $outfile "RESI $resname"
+	puts $outfile "RESI $resname  $charge"
 	#ATOM
 	foreach a $atoms {
 		puts $outfile "ATOM $a"
