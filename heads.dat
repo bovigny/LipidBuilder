@@ -1,10 +1,23 @@
 ##########This database was created by Dr. Thomas Lemmin called Dr. Leminator and by Christophe Bovigny called SysAdminator######
 
-PA,2,Phosphatidic Acid,Glycerophospholipid 
-PC,2,Phosphatidylcholine,Glycerophospholipid 
-PE,2,Phosphatidylethanolamine,Glycerophospholipid 
-PG,2,Phosphatidylglycerol,Glycerophospholipid 
-PS,2,Phosphatidylserine,Glycerophospholipid 
-CD,4,Cardiolipin Deprotonated,Glycerophospholipid 
-CP,4,Cardiolipin protonated,Glycerophospholipid
-CD,4,Cardiolipin protonated,Booboo
+PA:2:Phosphatidic Acid:Glycerophospholipid 
+PC:2:Phosphatidylcholine:Glycerophospholipid 
+PE:2:Phosphatidylethanolamine:Glycerophospholipid 
+PG:2:Phosphatidylglycerol:Glycerophospholipid 
+PS:2:Phosphatidylserine:Glycerophospholipid 
+CD:4:Cardiolipin Deprotonated:Glycerophospholipid 
+CP:4:Cardiolipin protonated:Glycerophospholipid
+CD:4:Cardiolipin protonated:Booboo
+SM:2:Sphingomyelin:Sphingolipid
+CE:2:Ceramide:Sphingolipid
+I0:2:Phosphatidylinositol:Phosphatidylinositol
+I3:2:Phosphatidylinositol-3-P:Phosphatidylinositol
+I4:2:Phosphatidylinositol-4-P:Phosphatidylinositol
+I5:2:Phosphatidylinositol-5-P:Phosphatidylinositol
+I1:2:PI-4-5'H'-biP:Phosphatidylinositol
+I2:2:PI-4'H'-5-biP:Phosphatidylinositol
+I7:2:PI-3'H'-4-5-triP:Phosphatidylinositol
+I8:2:PI-3-4'H'-5-triP:Phosphatidylinositol
+I9:2:PI-3-4-5'H'-triP:Phosphatidylinositol
+CH:1:5-ene sterol:Sterol
+EG:1:5,7-diene sterol:Sterol

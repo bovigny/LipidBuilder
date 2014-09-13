@@ -252,7 +252,7 @@ proc ::lipidBuilder::parseHeads {} {
   while {[gets $infile line] >= 0} {
   	if {[llength $line] > 0 && [lindex $line 0] !="#"} {
 		set t [join $line "_"]
-		set t [split $t ","]
+		set t [split $t ":"]
 			if {[llength $t]==4} {
 			lassign $t  head tails name cat
 			lappend categories $cat
