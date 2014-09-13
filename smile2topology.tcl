@@ -6,13 +6,13 @@
 #	2013
 #
 
-package provide smile2topology 1.0
+package provide smile2topology 2.0
 package require smiles_parser 1.0
 
 namespace eval ::smile2topology:: {
 	
 	set numElkey 6
-
+	variable connectivity
 		
 	#key in ICkey
 	set ielement 0
@@ -23,9 +23,10 @@ namespace eval ::smile2topology:: {
 	set ibond 5
 	
 	#value in atoms
-	set iname 0
-	set itype 1
-	set icharge 2
+	set iid 0
+	set iname 1
+	set itype 2
+	set icharge 3
 	set ihydrogen 4
 	#resi list
 	set rname 0
@@ -56,15 +57,18 @@ proc ::smile2topology::init {} {
     variable bonds
     variable ICs
     #private variable
+   	variable connectivity
     variable heavy_atom_key
     variable heavy_atom_name
     variable hydrogens
     variable ICparameters
     variable ICresi
+   	variable ICpres
     variable ICbond
     variable ICangle
     variable ICdihedral
-
+    
+	set connectivity [list]
 	set atoms [list]
     set bonds [list]
     set ICs [list]
@@ -74,12 +78,14 @@ proc ::smile2topology::init {} {
     set ICparameters [list]
     set ICkey [list]
     set ICresi [list]
+    set ICpres [list]
     set ICbond [list]
     set ICangle [list]
     set ICdihedral [list]
 }
 
 proc ::smile2topology::initsmile {} {
+   	variable connectivity
 	variable atoms
     variable bonds
     variable ICs
@@ -87,6 +93,8 @@ proc ::smile2topology::initsmile {} {
     variable heavy_atom_key
     variable heavy_atom_name
     variable hydrogens
+    
+    set connectivity [list]
     set atoms [list]
     set bonds [list]
     set ICs [list]
@@ -140,6 +148,7 @@ proc ::smile2topology::read_ICparameters {file} {
 	variable ICparameters
 	variable ICkey
 	variable ICresi
+	variable ICpres	
 	variable ICbond 
 	variable ICangle
 	variable ICdihedral
@@ -148,7 +157,10 @@ proc ::smile2topology::read_ICparameters {file} {
 	set resname "none"
 	set keys [list]
 	set atoms [list]
-	set infile [open $file "r"]
+	set connect [list]
+	if {[file exists $file]} {
+		set infile [open $file "r"]
+		set patch_counter 0
         while {[gets $infile line] >= 0} {
                 switch -regexp  $line {
 			{^\s*RESI} {
@@ -168,6 +180,22 @@ proc ::smile2topology::read_ICparameters {file} {
 			continue}
 			{^\s*KEY} {
 			set type "key"
+			}
+			{^\s*PRES} {
+			set type "pres"
+			}
+			{^\s*SERP} {
+			#save patch
+			set ICpres_array($resname-$patch_counter) [list [list "connect" $connect] [list "atom" $atoms]]
+			incr patch_counter
+			# reinitialize variable and lists
+			set type "none"
+			set resname "none"
+			set atoms [list]
+			set connect [list]
+			continue}
+			{^\s*CONNECT} {
+			set type "connect"
 			}
 			{^\s*ATOM} {
 			set type "atom"
@@ -204,6 +232,12 @@ proc ::smile2topology::read_ICparameters {file} {
 						} else {
 								puts "WARNING invalid KEY in resi $resname: $linearray"
 							}
+						}
+						"pres" {
+							set resname [lindex $linearray 1]
+						}
+						"connect" {
+							lappend connect [lsort [lrange $linearray 1 end]]
 						}
 						"atom" {
 							set linearray [lrange $linearray 1 end]
@@ -260,18 +294,22 @@ proc ::smile2topology::read_ICparameters {file} {
 								 puts "WARNING invalid dihedral: $linearray"
 							}
 						}
-        		}
-  			}
+					}
+				}
+			}
 		}
+		close $infile
+		#Convert arrays to lists
+		set ICresi [concat $ICresi [array get ICresi_array]]
+		set ICpres [concat $ICpres [array get ICpres_array]]
+		set ICkey [concat $ICkey [array get ICkey_array]]
+		set ICbond [concat $ICbond [array get ICbond_array]]
+		set ICangle [concat $ICangle [array get ICangle_array]]
+		set ICdihedral [concat $ICdihedral [array get ICdihedral_array]]
+		set ICparameters [concat $ICparameters [list $ICresi $ICbond $ICangle $ICdihedral]]
+	} else {
+		puts "Cannot open file $file"
 	}
-	close $infile
-	#Convert arrays to lists
-	set ICresi [array get ICresi_array]
-	set ICkey [array get ICkey_array]
-	set ICbond [array get ICbond_array]
-	set ICangle [array get ICangle_array]
-	set ICdihedral [array get ICdihedral_array]
-	set ICparameters [list $ICresi $ICbond $ICangle $ICdihedral]
 }	
 
 
@@ -664,9 +702,7 @@ proc ::smile2topology::set_stereo {key names hydrogens table} {
 		if {$nstereo != "none" && [llength $nstereo] == 4} {
 			lappend ICs [join $nstereo " "] 
 			lappend ICs $table_array($k)
-		} else {
-			puts "$k"
-		}
+		} 
 	}
 	return $lstereo			
 }
@@ -698,4 +734,59 @@ proc ::smile2topology::lookup_topology {key table} {
 		return ""
 	}
 	
+}
+
+proc ::smile2topology::apply_patch {} {
+	variable atoms
+	variable connectivity
+	variable ICpres
+	array set connectivity_array $connectivity
+	array set ICpres_array $ICpres
+	set patches [array names ICpres_array]
+	foreach p $patches {
+		set atom_indices [lsearch -all -regexp $atoms [lindex [split $p "-"] 0]]
+		foreach i $atom_indices {
+			set connect_type [list]
+			set connect $connectivity_array($i)
+			foreach c $connect {
+				lappend connect_type [lindex $atoms [list $c $::smile2topology::itype]]
+			}
+			set connect_type [lsort $connect_type]
+			foreach ICp [lindex $ICpres_array($p) {0 1}] {
+				if {[join $connect_type " "] == [join $ICp " "]} {
+					set pres_atom [lindex $ICpres_array($p) {1 1}]
+					set patch_atom [lindex $atoms $i]
+					foreach pa $pres_atom {
+						if {[lindex $pa 0] == "heavy"} {
+							eval "set patch_atom \[lreplace  \$patch_atom $::smile2topology::itype $::smile2topology::icharge [join [lrange $pa 2 3] " "]\]"
+						} else {
+							set hydrogens [lindex $patch_atom $::smile2topology::ihydrogen]
+							set hi [lsearch -regexp $hydrogens [lindex $pa 1]] 
+							eval "set hydrogens \[lreplace \$hydrogens $hi $hi \[lreplace \{[lindex $hydrogens $hi]\} 2 3 [join [lrange $pa 2 3] " "]\]\]"
+							set patch_atom [lreplace $patch_atom $::smile2topology::ihydrogen $::smile2topology::ihydrogen $hydrogens]
+						}
+					}
+					set atoms [lreplace $atoms $i $i $patch_atom]
+					break
+				}
+			}
+		}
+	}
+}
+
+proc ::smile2topology::get_connectivity {structure} {
+   	variable connectivity
+	set bonds [lsearch -inline -all -regexp [lindex $structure 1] bond]
+	foreach bond $bonds {
+		set b [lindex $bond $::smiles_parser::bond_linking]
+		foreach i {0 1} {
+			eval "lassign \$b b$i b[expr !$i]"
+			if {[info exists connectivity_array($b0)]} {
+					set aa $connectivity_array($b0)
+					set b1 [concat $aa $b1] 
+				}
+			set connectivity_array($b0) $b1
+		}
+	}
+	set connectivity [array get connectivity_array]
 }

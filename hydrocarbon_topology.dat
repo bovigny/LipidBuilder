@@ -1,5 +1,6 @@
 !List of parameters for acyl chains
 !
+!RESI: defines a heavy atom 
 !
 !KEY: ELEMENT LINKER CONNECTIVITY RING BRANCH BOND
 !	ELEMENT: chemical element (C, N, O, ...)
@@ -13,6 +14,13 @@
 ! &: Improper angle
 ! -: previous atom
 ! +: following atom 
+!HATOM: heavy atom (e.g carbon)
+!ATOM: hydrogens
+!
+!PRES: patch correcting atoms types
+!HATOM
+!ATOM
+!
 !Thomas Lemmin
 !Laboratory for Biomolecular Modeling, EPFL
 !2013
@@ -45,24 +53,6 @@ RESI CH2 ! single bond CH2
 	STEREO CH2:H1 *:C*- &CH2:C CH2:H2 1.10 110 -120 110 1.10
 ISER
 
-RESI CLH2 ! linker CH2
-	KEY C 1 1 0 0 1   
-	HATOM C CTL2 -0.22
-	ATOM H1 HAL2 0.09
-	ATOM H2 HAL2 0.09 
-	!STEREO *:C-- *:C- &CH2:C CH2:H1  1.53 110 120 110 1.10
-	!STEREO CH2:H1 *:C- &CH2:C CH2:H2 1.10 110 120 110 1.10
-ISER
-
-RESI CLH3 ! linker CH3
-	KEY C 0 1 0 0 1   
-	HATOM C CTL3 -0.31	
-	ATOM H1 HAL3 0.09
-	ATOM H2 HAL3 0.09 
-	ATOM H3 HAL3 0.09 
-	!STEREO *:C-- *:C- &CH2:C CH2:H1  1.53 110 120 110 1.10
-	!STEREO CH2:H1 *:C- &CH2:C CH2:H2 1.10 110 120 110 1.10
-ISER
 
 RESI CH3 ! terminal CH3
 	KEY C 0 1 0 0 1
@@ -118,6 +108,13 @@ RESI CBRH1 ! cycloprane CH1 branch
 	ATOM H1 HCP1 0.09
 	STEREO *:C*+ CRH1:C- &CBRH1:C CBRH1:H1 1.53 115 -145 115 1.10
 ISER
+
+PRES CEL1 !correction for trans lipid
+	CONNECT CTL2 CEL1
+	CONNECT CTL1 CEL2
+	HATOM C XXX -0.15 
+	ATOM H1 YYY 0.15
+SERP
 
 BOND
 *:C* *:C* 1.52 ! default value C-C

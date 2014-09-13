@@ -1,0 +1,2409 @@
+*  \\\\\\\ CHARMM36 All-Hydrogen Lipid Parameter File ///////
+*  All comments and questions should be submitted to the
+*  parameter forum at the CHARMM website: www.charmm.org
+*
+
+ATOMS
+MASS 100  CCP2  12.011000  ! cyclopropane
+MASS 101  CCP1  12.011000  ! cyclopropane     
+MASS 102  CGT2  12.011000  ! ethylene 
+MASS 103  HCP2    1.00800  ! cyclopropane   
+MASS 104  HGT2    1.00800  ! ethylene
+!i0
+MASS 174  CC3161  12.01100  ! C2, C3, C4 CH bound to OH
+MASS 185  HCA1     1.00800  ! aliphatic proton, CH
+MASS 188  HCP1     1.00800  ! polar H
+MASS 222  OC30P   15.99940  ! ester O in PO3H (phosphate) || OSL in top_all27_lipid.rtf
+MASS 378  OG311   15.99940  ! hydroxyl oxygen
+!i3
+MASS   223 OC2DP   15.99940  ! =0 in P03H (phosphate) || O2L in top_all27_lipid.rtf
+MASS   224 PC      30.974000 ! phosphorus || PL in top_all27_lipid.rtf
+!i1
+MASS   221 OC312   15.99940  O ! OH in PO3H (phosphate) || OHL in top_all27_lipid.rtf
+!sphingomyelin
+MASS   165 NHL   14.00700 N !
+MASS   166 CTO1  12.01100 C !
+MASS   167 CEL3  12.01100 C !
+MASS   168 CTO2  12.01100 C !
+MASS    31 H      1.00800 ! polar H
+MASS    76 O     15.99900 ! carbonyl oxygen
+MASS    46 C     12.01100 ! carbonyl C, peptide backbone
+!sterols
+MASS 256  HGA1  1.008000 ! alphatic proton, CHMASS 257  HGA2  1.008000 ! alphatic proton, CH2
+!lipids
+MASS 136  HL    1.008000 ! polar H (equivalent to protein H)
+MASS 137  HCL   1.008000 ! charged H for PE (equivalent to protein HC)
+MASS 138  HOL   1.008000 ! Nucleic acid phosphate hydroxyl proton
+MASS 139  HAL1  1.008000 ! alphatic proton
+MASS 140  HAL2  1.008000 ! alphatic proton
+MASS 141  HAL3  1.008000 ! alphatic proton
+MASS 142  HEL1  1.008000 ! for alkene; RHC=CR
+MASS 143  HEL2  1.008000 ! for alkene; H2C=CR
+MASS 144  HBL   1.008000 ! POPS SER backbone H
+MASS 145  CL   12.011000 ! carbonyl C (acetic acid/methyl acetate)
+MASS 146  CTL1 12.011000 ! sp3 carbon with 1 H  (-CH1-)
+MASS 147  CTL2 12.011000 ! carbon of methylene group (-CH2-)
+MASS 148  CTL3 12.011000 ! carbon of methyl group (-CH3)
+MASS 149  CTL5 12.011000 ! carbon of methyl group (-CH3) for tetramethylammonium
+MASS 150  CEL1 12.011000 ! for alkene; RHC=CR
+MASS 151  CEL2 12.011000 ! for alkene; H2C=CR
+MASS 152  CCL  12.011000 ! for POPS
+MASS 153  NTL  14.007000 ! ammonium nitrogen
+MASS 154  NH3L 14.007000 ! nitrogen phosphatidylethanolamine
+MASS 155  OBL  15.999400 ! acetic acid carboxyl oxygen (e. to protein OB)
+MASS 156  OCL  15.999400 ! acetate oxygen
+MASS 157  OSL  15.999400 ! ester oxygen
+MASS 158  O2L  15.999400 ! Nucleic acid =O in phosphate or sulfate
+MASS 159  OHL  15.999400 ! Nucleic acid phosphate hydroxyl oxygen
+MASS 160  OSLP 15.999400 ! Phosphate oxygen, to avoid conflict with methylacetate type O
+MASS 161  PL   30.974000 ! phosphorus
+MASS 162  SL   32.060000 ! Sulfate sulfur
+MASS 163  CRL1 12.011000 ! sp3 carbon with 1 H on a ring  (-CH1-) for sterols
+MASS 164  CRL2 12.011000 ! carbon of methylene group on a ring (-CH2-) for sterols
+
+BONDS
+!ethylene
+CEL1  CGT2  510.00     1.3300 ! LIPID ethene yin,adm jr., 12/95
+CGT2  HGT2  365.00     1.1000 ! LIPID propene; from ethene, yin,adm jr., 12/95 
+!cyclopropane
+CTL2  CCP1 222.500     1.530   ! alkanes, 3/92
+CTL3  CCP1  222.50     1.5380 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, from genFF
+CTL3  CCP2  240.00     1.5010 ! PROTMOD cyclopropane, taken from CG321 CCP2, genFF
+CTL2  CCP2  240.00     1.5010 ! PROTMOD cyclopropane, from genFF
+CCP1  CCP2  222.50     1.5280 ! PROTMOD cyclopropane, from genFF
+CCP1  CCP1  240.00     1.5010 ! PROTMOD cyclopropane, from genFF
+CCP1  HCP1  309.00     1.1110 !
+CCP2  HCP2  340.00     1.0830 ! PROTMOD cyclopropane
+CEL1  CGT2  510.00     1.3300 ! LIPID ethene yin,adm jr., 12/95
+CGT2  HGT2  365.00     1.1000 ! LIPID propene; from ethene, yin,adm jr., 12/95 
+!sterols
+CEL1  CTL1  240.000     1.502   ! from CEL1  CTL2: sR12cc (c8-c39)
+! added for new mixing rule for decalin/heptane by jbl
+! CRL1 equivalent to CTL1, HGA1 equivalent to HAL1, etc. (jbl)
+CTL1  CRL1  222.500     1.500   ! alkanes, 3/92
+CRL1  CRL1  222.500     1.500   ! alkanes, 3/92
+CRL1  CTL2  222.500     1.538   ! alkanes, 3/92
+CRL1  CRL2  222.500     1.538   ! alkanes, 3/92
+CTL1  CRL2  222.500     1.538   ! alkanes, 3/92
+CRL2  CRL2  222.500     1.530   ! alkanes, 3/92
+CTL2  CRL2  222.500     1.530   ! alkanes, 3/92
+CRL1  HGA1  309.00      1.111   ! alkanes, 3/92
+CRL2  HGA2  309.00      1.111   ! alkanes, 4/98
+OHL   CRL1  428.0       1.420   !  glycerol
+CRL1  CTL3  222.500     1.538   ! alkanes, 3/92
+CEL1  CRL2  365.000     1.502   ! butene; from propene, yin,adm jr., 12/95
+CEL1  CRL1  240.000     1.502   ! from CEL1  CTL2: sR12cc (c8-c39)
+! Added for ergosterol (bjr 3/12)
+! CEL1  CTL1  240.000     1.502   ! butene, yin,adm jr., 12/95
+!sphingolipids
+O     C     620.00      1.2300 ! ALLOW   PEP POL ARO
+CTL1  CEL3  250.000     1.490  ! prot22; Ala Dipeptide ab initio calc's (LK) fixed from 10/90 (5/91); CT1-C
+CTO1  CEL3  250.000     1.490  ! prot22; Ala Dipeptide ab initio calc's (LK) fixed from 10/90 (5/91) ; CT1-C
+CTO1  CTL1  222.500     1.500  ! lip36; alkanes, 3/92; CTL1-CTL1
+CTO1  CTL2  222.500     1.538  ! lip36; alkanes, 3/92; CTL1-CTL2
+CTO1  CTL3  222.500     1.538  ! lip36; alkanes, 3/92; CTL1-CTL3
+CEL3  CTL2  365.000     1.502  ! lip36; butene; from propene, yin,adm jr., 12/95; CEL1-CTL2
+CEL3  CEL3  440.000     1.340  ! lip36; butene, yin,adm jr., 12/95; CEL1-CEL1
+CTL2  C     250.000     1.490  ! prot22; Ala Dipeptide ab initio calc's (LK) fixed from 10/90 (5/91); CT2-C
+CTL3  C     250.000     1.490  ! prot22; Ala Dipeptide ab initio calc's (LK) fixed from 10/90 (5/91); CT3-C
+CTO1  OHL   428.000     1.420  ! lip36; glycerol; OHL-CTL1
+CTO1  OSL   340.000     1.430  ! lipid ester; rmv nov 2009
+CTO1  HAL1  309.000     1.111  ! lip36; alkanes, 3/92; CTL1-HAL1
+HEL1  CEL3  360.500     1.100  ! lip36; propene, yin,adm jr., 12/95; HEL1-CEL1
+NHL   H     440.000     0.997  ! prot22; Alanine Dipeptide ab initio calc's (LK); NH1-H
+NHL   CTL3  320.000     1.430  ! prot22; NMA Gas & Liquid Phase IR Spectra (LK); NH1-CT3
+NHL   C     370.000     1.345  ! prot22; Alanine Dipeptide ab initio calc's (LK); NH1-C
+NHL   CTL1  320.000     1.430  ! prot22; NMA Gas & Liquid Phase IR Spectra (LK); NH1-CT1
+CTO2  HAL2  309.000     1.111  ! lip36; alkanes, 4/98
+CTO2  CTL1  222.500     1.538  ! lip36; alkanes, 3/92
+CTO2  OHL   428.000     1.420  ! glycerol
+!inositol
+CC3161  OG311    410.00  1.410   !from carb ff : CC3161-OC311; og crystal analysis
+OG311   HCP1     545.00  0.960   !from carb ff : OC311-HCP1;  par22 OH1 H
+CC3161  CC3163   222.50  1.500   ! par22 CT1 CT1
+CC3161  CC3263   222.50  1.500   ! CC3161 CC3163 og xtal xylose
+CC3161  CC3161   222.50  1.480   ! sng qm and crystal analysis
+CC3261  CC3161   222.50  1.480   ! from CC3161 CC3161
+CC3161  CC3162   222.50  1.480   ! sng qm and crystal analysis
+CC3161  OC311    410.00  1.410   ! og crystal analysis
+CC3161  OC301    360.00  1.415   ! og/rmv disac crystals
+NC2D1   CC3161   320.00  1.430   ! par22 NH1 CT1
+CC3161  HCA1     309.00  1.111   ! par22 HA  CT1
+CC3161  OC30P    360.00  1.425   ! 
+CC311   HCA1     309.00  1.111   ! par22 HA  CT1
+CC312   HCA1     309.00  1.111   ! par22 HA  CT1
+CC3161  HCA1     309.00  1.111   ! par22 HA  CT1
+CC3162  HCA1     309.00  1.111   ! par22 HA  CT1
+CC3163  HCA1     309.00  1.111   ! par22 HA  CT1
+CC311C  HCA1     309.00  1.111   ! par22 HA  CT1
+CC311D  HCA1     309.00  1.111   ! par22 HA  CT1
+CC3152  HCA1     309.00  1.111   ! par22 HA  CT1
+CC3151  HCA1     309.00  1.111   ! par22 HA  CT1
+CC3153  HCA1     309.00  1.111   ! par22 HA  CT1
+CC312D  HCA1     307.00  1.100   ! THF w/me CC312C  HCA1C2
+CC312C  HCA1     307.00  1.100   ! THF w/me CC312C  HCA1C2
+OC311   HCP1     545.00  0.960   ! par22 OH1 H
+OC311M  HCP1     545.00  0.960   ! par22 OH1 H
+NC2D1    HCP1    440.00  0.997   ! par22 NH1 H
+OC312   HCP1     545.0   0.960   !
+CC3161  OC30P    360.00  1.425   ! 
+CC311D  OC30P    360.00  1.425   ! 
+CC3162  OC30P    360.00  1.425   ! 
+CC321   OC30P    360.00  1.452   ! 
+OC30P   PC       270.0   1.675   !
+SC    OC30P     250.0       1.610   ! methylsulfate
+CG2O2  OG311   230.00     1.4000 ! PROT adm jr. 5/02/91, acetic acid pure solvent
+CG2R61 OG311   334.30     1.4110 ! PROT MeOH, EMB 10/10/89,
+CG301  OG311   428.00     1.4200 ! AMOL, alpha-methoxy-lactic acid, og par22 OH1 CT1
+CG311  OG311   428.00     1.4200 ! PROT methanol vib fit EMB 11/21/89
+CG311  OG312   358.00     1.3130 ! COMPDS peml original OG311  CG311   428.000     1.4200 !
+CG321  OG311   428.00     1.4200 ! PROT methanol vib fit EMB 11/21/89
+CG331  OG311   428.00     1.4200 ! PROT methanol vib fit EMB 11/21/89
+CG3C51 OG311   428.00     1.4200 ! PROT methanol vib fit EMB 11/21/89
+NG3P0  OG311   245.00     1.4000 ! TMAOP, Hydroxy(trimethyl)Ammonium, xxwy
+OG311  PG0     237.00     1.5800 ! NA MP_1, ADM Jr. !Reorganization:MP_0 RE-OPTIMIZE!
+OG311  PG1     237.00     1.6100 ! MP_1 reorganization, kevo
+OG311  HGP1    545.00     0.9600 ! PROT EMB 11/21/89 methanol vib fit; og tested on MeOH EtOH,...
+OC30P   PL       270.0   1.675   !
+OC2DP   PL       580.0   1.525   !
+OC2DP   PC       580.0   1.525   !
+OC312   PL       237.0   1.61    !
+OC312   PC       237.0   1.61    !
+OC312   HCP1     545.0   0.960   !
+CTL3  CL    200.0       1.522   ! methyl acetate
+CTL2  CL    200.0       1.522   ! methyl acetate
+CTL1  CL    200.0       1.522   ! methyl acetate
+CTL1  CCL   200.0       1.522   ! for POPS
+OBL   CL    750.0       1.220   ! methyl acetate
+OCL   CL    525.0       1.260   ! acetate, protein
+OCL   CCL   525.0       1.260   ! for POPS
+OSL   CL    150.0       1.334   ! methyl acetate
+OSLP  CL    150.0       1.334   ! methyl acetate
+OHL   CL    230.0       1.40    ! methyl acetate
+HOL   OHL   545.0       0.960   ! acetic acid
+CTL1  HAL1  309.00      1.111   ! alkanes, 3/92
+CTL1  HBL   330.00      1.080   ! for POPS
+CTL2  HAL2  309.00      1.111   ! alkanes, 4/98
+CTL3  HAL3  322.00      1.111   ! alkanes, 4/98
+CTL3  OSL   340.0       1.43    ! phosphate
+CTL2  OSL   340.0       1.43    ! phosphate
+CTL1  OSL   340.0       1.43    ! phosphate
+CTL3  OSLP  340.0       1.43    !
+CTL2  OSLP  340.0       1.43    !
+CTL1  OSLP  340.0       1.43    !
+OSL   PL    270.0       1.60    ! phosphate
+OSLP  PL    270.0       1.60    !
+O2L   PL    580.0       1.48    ! phosphate
+OHL   PL    237.0       1.59    ! phosphate
+NH3L  HCL   410.0       1.04    ! ethanolamine
+NH3L  CTL1  200.0       1.48    ! for POPS
+NH3L  CTL2  261.0       1.51    ! ethanolamine
+NTL   CTL2  215.00      1.51    ! tetramethylammonium
+NTL   CTL5  215.00      1.51    ! tetramethylammonium
+CTL5  HL    300.00      1.08    ! tetramethylammonium
+CTL2  HL    300.00      1.08    ! tetramethylammonium
+CTL1  CTL1  222.500     1.500   ! alkanes, 3/92
+CTL1  CTL2  222.500     1.538   ! alkanes, 3/92
+CTL1  CTL3  222.500     1.538   ! alkanes, 3/92
+CTL2  CTL2  222.500     1.530   ! alkanes, 3/92
+CTL2  CTL3  222.500     1.528   ! alkanes, 3/92
+CTL3  CTL3  222.500     1.530   ! alkanes, 3/92
+OHL   CTL1  428.0       1.420   !  glycerol
+OHL   CTL2  428.0       1.420   !  glycerol
+OHL   CTL3  428.0       1.420   !  glycerol
+SL    O2L   540.0       1.448   ! methylsulfate
+SL    OSL   250.0       1.575   ! methylsulfate
+CEL2  CEL2  510.000     1.330   ! ethene yin,adm jr., 12/95
+HEL2  CEL2  365.000     1.100   ! propene; from ethene, yin,adm jr., 12/95
+CEL1  CTL3  383.000     1.504   ! butene, yin,adm jr., 12/95
+CEL1  CEL2  500.000     1.342   ! propene, yin,adm jr., 12/95
+HEL1  CEL1  360.500     1.100   ! propene, yin,adm jr., 12/95
+CEL1  CTL2  365.000     1.502   ! butene; from propene, yin,adm jr., 12/95
+CEL1  CEL1  440.000     1.340   ! butene, yin,adm jr., 12/95
+
+ANGLES
+!ethylene
+CEL1 CGT2 HGT2 55.50    120.50 ! LIPID ethene, yin,adm jr., 12/95
+CTL2 CEL1 CGT2 47.00    125.20 ! LIPID propene, yin,adm jr., 12/95
+!cyclopropane
+CTL2 CCP1 HCP1 34.50     110.10   22.53 2.179  ! propane ring, MacKerell
+CTL2 CTL2 CCP1 53.35    111.00    8.0   2.561 ! propane ring, MacKerell
+HAL2 CTL2 CCP1 34.50    110.10   22.53 2.179 ! propane ring, MacKerell
+CTL2 CCP1 CCP2 53.35    111.00    8.0   2.561 ! propane ring, MacKerell
+CTL2 CCP1 CCP1 53.35    111.00    8.0   2.561 ! propane ring, MacKerell
+! For Dihedral Mapping with Propane Ring
+CCP1 CTL3  HAL3     33.43    110.10   22.53   2.179 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, from GenFF
+CTL3  CCP1 CCP1   58.35    113.50   11.16   2.561 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, from GenFF
+CTL3  CCP1 HCP1     34.50    110.10   22.53 2.179  ! CARBOCY carbocyclic sugars, taken from CG321-CCP1-HCP1, from GenFF 
+CTL3  CCP1 CCP2   53.35    111.00    8.0   2.561 ! CARBOCY carbocyclic sugars, taken from CG321-CCP1-HCP1, from GenFF
+CCP2 CTL2   HAL2     26.50    110.10   22.53   2.17900 ! PROT alkane update, adm jr., 3/2/92, from genFF
+CTL1 CTL2 CL      52.0     108.00   ! best guess made by jbl for PhPC
+CCP1 CCP1 CCP2 53.35     62.50 ! CARBOCY carbocyclic sugars
+CCP1 CCP2 CCP1 53.35     58.50 ! CARBOCY carbocyclic sugars
+CCP1 CCP2 HCP2 34.50    110.10   22.53 2.179 ! CARBOCY carbocyclic sugars
+CCP1 CCP1 HCP1  34.50    110.10   22.53 2.179  ! CARBOCY carbocyclic sugars
+CCP2 CCP1 HCP1   34.50    110.10   22.53  2.179 !CARBOCY carbocyclic sugars
+HCP2 CCP2 HCP2 23.00    117.00    5.40  1.80200 ! PROTMOD cyclopropane
+!sterols
+CTL1 CTL2 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !all CEL1 containing terms will
+CTL1 CEL1 CTL2   50.00     113.00   !guess FC, eq. angle to yield 360 deg sum
+CEL1 CEL1 CTL1   48.00     123.50   ! from CEL1 CEL1 CTL1
+CTL1 CTL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2
+CTL3 CTL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2
+CTL2 CTL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !involve the dR1 and dR2 terms
+OHL  CTL1 CTL3   75.700    110.10   ! glycerol
+! added for new mixing rule for decalin/heptane by jbl
+! CRL1 equivalent to CTL1, HGA1 equivalent to HAL1, etc. (jbl)
+HOL  OHL  CRL1   57.500    106.00   ! glycerol
+OHL  CRL1 CRL2   75.700    110.10   ! glycerol
+OHL  CRL1 HGA1   45.900    108.89   ! glycerol
+HAL3 CTL3 CRL1   33.430    110.10   22.53   2.179  ! alkane, 4/98
+CRL1 CRL1 CTL3   53.350    108.50    8.00   2.561  ! alkane, 3/92
+CRL2 CRL1 CTL3   58.350    113.50   11.16   2.561  ! glycerol
+HEL1 CEL1 CRL2   40.00     116.00   ! 1-butene; from propene, yin,adm jr., 12/95
+HGA2 CRL2 CEL1   45.00     111.50   ! 1-butene; from propene, yin,adm jr., 12/95
+HAL2 CRL2 CEL1   45.00     111.50   ! 1-butene; from propene, yin,adm jr., 12/95
+HGA2 CTL2 CEL1   45.00     111.50   ! 1-butene; from propene, yin,adm jr., 12/95
+CRL1 CRL2 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !all CEL1 containing terms will
+CEL1 CEL1 CRL2   48.00     123.50   ! from 2-butene, yin,adm jr., 12/95
+CEL1 CEL1 CRL1   48.00     123.50   ! from CEL1 CEL1 CTL1
+CRL1 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2
+CTL1 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2
+CRL1 CTL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2
+CTL3 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2
+CRL2 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !involve the dR1 and dR2 terms
+CTL2 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !involve the dR1 and dR2 terms
+CRL2 CTL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !involve the dR1 and dR2 terms
+CRL2 CRL1 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CRL2 CRL1 CRL2   58.350    113.50   11.16   2.561  ! glycerol
+HGA1 CRL1 CTL2   34.500    110.10   22.53   2.179  ! alkane, 3/92
+HGA1 CRL1 CRL2   34.500    110.10   22.53   2.179  ! alkane, 3/92
+CRL1 CRL1 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CRL1 CRL1 CRL2   58.350    113.50   11.16   2.561  ! glycerol
+CRL1 CTL2 CTL3   58.350    113.50   11.16   2.561  ! glycerol
+HAL2 CTL2 CRL1   26.500    110.10   22.53   2.179  ! alkane, 4/98
+HGA2 CRL2 CRL1   26.500    110.10   22.53   2.179  ! alkane, 4/98
+CRL1 CTL2 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CRL1 CRL2 CRL2   58.350    113.50   11.16   2.561  ! glycerol
+CRL1 CEL1 CRL2   50.00     113.00   !guess FC, eq. angle to yield 360 deg sum
+CRL1 CRL1 CRL1   53.350    111.00    8.00   2.561  ! alkane, 3/92
+CTL1 CRL1 CRL2   58.350    113.50   11.16   2.561  ! glycerol
+HGA1 CRL1 CTL1   34.500    110.10   22.53   2.179  ! alkane, 3/92
+HGA1 CRL1 CRL1   34.500    110.10   22.53   2.179  ! alkane, 3/92
+CTL1 CRL1 CRL1   53.350    111.00    8.00   2.561  ! alkane, 3/92
+HAL1 CTL1 CRL1   34.500    110.10   22.53   2.179  ! alkane, 3/92
+CRL1 CTL1 CTL3   53.350    108.50    8.00   2.561  ! alkane, 3/92
+CRL1 CTL1 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CEL2 CEL1 CRL2   48.00     126.00   ! 1-butene; from propene, yin,adm jr., 12/95
+CEL1 CRL2 CRL2   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95
+CEL1 CTL2 CRL2   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95
+CEL1 CRL2 CTL2   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95
+CEL1 CRL2 CTL3   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95
+CEL1 CRL2 CEL1   30.0      114.0    ! 1,4-dipentene, adm jr., 2/00
+CTL1 CRL2 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !all CEL1 containing terms will
+CRL1 CTL2 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !all CEL1 containing terms will
+CTL1 CEL1 CRL2   50.00     113.00   !guess FC, eq. angle to yield 360 deg sum
+CRL1 CEL1 CTL2   50.00     113.00   !guess FC, eq. angle to yield 360 deg sum
+HGA2 CRL2 HGA2   35.500    109.00    5.40   1.80200 ! alkane, 3/92
+HGA2 CRL2 CRL2   26.500    110.10   22.53   2.179  ! alkane, 4/98
+HGA1 CRL1 CTL3   34.500    110.10   22.53   2.179  ! alkane, 3/92
+CRL2 CRL2 CRL2   58.350    113.60   11.16   2.561  ! alkane, 3/92
+!Angles appended for ergosterol (bjr)
+CEL1 CEL1 CEL1    48.00    123.50   ! From CEL1 CEL1 CTL1
+CRL1 CEL1 CRL1    50.00    113.00   ! From CTL1 CEL1 CTL2
+CEL1 CRL1 HGA1    45.00    111.50   ! From HAL2 CTL2 CEL1
+HEL1 CEL1 CTL1    40.00    116.00   ! From HAL2 CTL2 CEL1
+CTL1 CEL1 CTL1    50.00    113.00   !guess from CTL1 CEL1 CTL2
+CEL1 CTL1 HAL1    45.00    111.50   !guess from HAL2 CTL2 CEL1
+! added for new mixing rule for decalin/heptane by jbl! CRL1 equivalent to CTL1, HGA1 equivalent to HAL1, etc. (jbl)HOL  OHL  CRL1   57.500    106.00   ! glycerolOHL  CRL1 CRL2   75.700    110.10   ! glycerolOHL  CRL1 HGA1   45.900    108.89   ! glycerolHAL3 CTL3 CRL1   33.430    110.10   22.53   2.179  ! alkane, 4/98CRL1 CRL1 CTL3   53.350    108.50    8.00   2.561  ! alkane, 3/92CRL2 CRL1 CTL3   58.350    113.50   11.16   2.561  ! glycerolHEL1 CEL1 CRL2   40.00     116.00   ! 1-butene; from propene, yin,adm jr., 12/95HGA2 CRL2 CEL1   45.00     111.50   ! 1-butene; from propene, yin,adm jr., 12/95HAL2 CRL2 CEL1   45.00     111.50   ! 1-butene; from propene, yin,adm jr., 12/95HGA2 CTL2 CEL1   45.00     111.50   ! 1-butene; from propene, yin,adm jr., 12/95CRL1 CRL2 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !all CEL1 containing terms willCEL1 CEL1 CRL2   48.00     123.50   ! from 2-butene, yin,adm jr., 12/95CEL1 CEL1 CRL1   48.00     123.50   ! from CEL1 CEL1 CTL1CRL1 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2CTL1 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2CRL1 CTL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2CTL3 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2CRL2 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !involve the dR1 and dR2 termsCTL2 CRL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !involve the dR1 and dR2 termsCRL2 CTL1 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !involve the dR1 and dR2 termsCRL2 CRL1 CTL2   58.350    113.50   11.16   2.561  ! glycerolCRL2 CRL1 CRL2   58.350    113.50   11.16   2.561  ! glycerolHGA1 CRL1 CTL2   34.500    110.10   22.53   2.179  ! alkane, 3/92HGA1 CRL1 CRL2   34.500    110.10   22.53   2.179  ! alkane, 3/92CRL1 CRL1 CTL2   58.350    113.50   11.16   2.561  ! glycerolCRL1 CRL1 CRL2   58.350    113.50   11.16   2.561  ! glycerolCRL1 CTL2 CTL3   58.350    113.50   11.16   2.561  ! glycerolHAL2 CTL2 CRL1   26.500    110.10   22.53   2.179  ! alkane, 4/98HGA2 CRL2 CRL1   26.500    110.10   22.53   2.179  ! alkane, 4/98CRL1 CTL2 CTL2   58.350    113.50   11.16   2.561  ! glycerolCRL1 CRL2 CRL2   58.350    113.50   11.16   2.561  ! glycerolCRL1 CEL1 CRL2   50.00     113.00   !guess FC, eq. angle to yield 360 deg sumCRL1 CRL1 CRL1   53.350    111.00    8.00   2.561  ! alkane, 3/92CTL1 CRL1 CRL2   58.350    113.50   11.16   2.561  ! glycerolHGA1 CRL1 CTL1   34.500    110.10   22.53   2.179  ! alkane, 3/92HGA1 CRL1 CRL1   34.500    110.10   22.53   2.179  ! alkane, 3/92CTL1 CRL1 CRL1   53.350    111.00    8.00   2.561  ! alkane, 3/92HAL1 CTL1 CRL1   34.500    110.10   22.53   2.179  ! alkane, 3/92CRL1 CTL1 CTL3   53.350    108.50    8.00   2.561  ! alkane, 3/92CRL1 CTL1 CTL2   58.350    113.50   11.16   2.561  ! glycerolCEL2 CEL1 CRL2   48.00     126.00   ! 1-butene; from propene, yin,adm jr., 12/95CEL1 CRL2 CRL2   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95CEL1 CTL2 CRL2   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95CEL1 CRL2 CTL2   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95CEL1 CRL2 CTL3   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95CEL1 CRL2 CEL1   30.0      114.0    ! 1,4-dipentene, adm jr., 2/00CTL1 CRL2 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !all CEL1 containing terms willCRL1 CTL2 CEL1   32.00     112.20   !from CEL1 CTL2 CTL2 !all CEL1 containing terms willCTL1 CEL1 CRL2   50.00     113.00   !guess FC, eq. angle to yield 360 deg sumCRL1 CEL1 CTL2   50.00     113.00   !guess FC, eq. angle to yield 360 deg sumHGA2 CRL2 HGA2   35.500    109.00    5.40   1.80200 ! alkane, 3/92HGA2 CRL2 CRL2   26.500    110.10   22.53   2.179  ! alkane, 4/98HGA1 CRL1 CTL3   34.500    110.10   22.53   2.179  ! alkane, 3/92CRL2 CRL2 CRL2   58.350    113.60   11.16   2.561  ! alkane, 3/92!Angles appended for ergosterol (bjr)CEL1 CEL1 CEL1    48.00    123.50   ! From CEL1 CEL1 CTL1CRL1 CEL1 CRL1    50.00    113.00   ! From CTL1 CEL1 CTL2CEL1 CRL1 HGA1    45.00    111.50   ! From HAL2 CTL2 CEL1HEL1 CEL1 CTL1    40.00    116.00   ! From HAL2 CTL2 CEL1CTL1 CEL1 CTL1    50.00    113.00   !guess from CTL1 CEL1 CTL2CEL1 CTL1 HAL1    45.00    111.50   !guess from HAL2 CTL2 CEL1
+!spingolipids
+O    C    CP1    80.000   118.0000 ! ALLOW PEP PRO
+O    C    CT1    80.000   121.0000 ! ALLOW   ALI PEP POL ARO
+O    C    CT2    80.000   121.0000 ! ALLOW   ALI PEP POL ARO
+O    C    CT3    80.000   121.0000 ! ALLOW   ALI PEP POL ARO
+O    C    H      50.000   121.7000 ! ALLOW   PEP POL ARO
+O    C    N      80.000   122.5000 ! ALLOW PRO PEP POL ARO
+O    C    NH1    80.000   122.5000 ! ALLOW   PEP POL ARO
+HAL2 CTL2 CTO1   26.500    110.10   22.53   2.179  ! lip36; alkane, 4/98 HAL2 CTL2 CTL1
+HAL1 CTO1 CTL2   34.500    110.10   22.53   2.179  ! lip36; alkane, 3/92 HAL1 CTL1 CTL2
+OHL  CTO1 CTL2   75.700    110.10   ! lip36; glycerol OHL  CTL1 CTL2
+OHL  CTO2 CTL1   75.700    110.10   ! lip36; glycerol OHL  CTL2 CTL1
+CTL3   CTL1   CEL3    52.000   108.00   ! prot22; Alanine Dipeptide ab initio calc's (LK); CT3-CT1-C
+CTL3   CTO1   CEL3    52.000   108.00   ! prot22; Alanine Dipeptide ab initio calc's (LK); CT3-CT1-C
+CTL1   CEL3   CEL3    48.00    123.50   ! lip36; 2-butene,from 2-butene, yin,adm jr., 12/95; CEL1-CEL1-CTL2
+CTO1   CEL3   CEL3    48.00    123.50   ! lip36; 2-butene,from 2-butene, yin,adm jr., 12/95; CEL1-CEL1-CTL2
+CTL1   CTL1   CEL3    52.000   108.00   ! prot22; Alanine Dipeptide ab inition calc's (LK); CT1 CT1 C
+CTL1   CTO1   CEL3    52.000   108.00   ! prot22; Alanine Dipeptide ab inition calc's (LK); CT1 CT1 C
+CTO1 CTL1 CTL2   58.350    113.50   11.16   2.561  !lip36; glycerol CTL1 CTL1 CTL2
+CTO1 CTL2 CTL1   58.350    113.50   11.16   2.561  !lip36; glycerol CTL1 CTL2 CTL1 
+CTO1 CTL2 CTL2   58.350    113.50   11.16   2.561  !lip36; glycerol CTL1 CTL2 CTL2 
+CTO1 CTL2 CTL3   58.350    113.50   11.16   2.561  !lip36; glycerol CTL1 CTL2 CTL3
+CTL1 CTO1 CTL2   58.350    113.50   11.16   2.561  !lip36; glycerol CTL1 CTL1 CTL2
+CTL1 CTO1 CTL1   53.350    111.00    8.00   2.561  !lpi36; alkane, 3/92 CTL1 CTL1 CTL1
+CTL1 CTO1 CTL2   58.350    113.50   11.16   2.561  !lip36; glycerol CTL1 CTL1 CTL2
+CTL1 CTO1 CTL3   53.350    108.50    8.00   2.561  !lip36; alkane, 3/92 CTL1 CTL1 CTL3
+C      CTL2   CTL2    52.000   108.00   ! prot22; Alanine Dipeptide ab initio calc's (LK); CT3-CT1-C
+CTL2   CTL1   CTO1    58.350   113.50   11.16   2.561  ! lip36; glycerol; CTL1-CTL1-CTL2
+CEL3   CEL3   CTL2    48.000   123.50   ! lip36; 2-butene,from 2-butene, yin,adm jr., 12/95; CEL1-CEL1-CTL2
+CEL3   CTL2   CTL3    32.00    112.20   ! lip36; 1-butene; from propene, yin,adm jr., 12/95; CEL1-CTL2-CTL3
+CEL3   CTL2   CTL2    32.00    112.20   ! lip36; 1-butene; from propene, yin,adm jr., 12/95; CEL1-CTL2-CTL2
+CTL3   CTL2   C       52.000   108.00   ! prot22; Alanine Dipeptide ab initio calc's (LK); CT3-CT1-C
+OHL    CTL1   CEL3    75.700   110.10   ! prot22; MeOH, EMB, 10/10/89; OH1-CT1-CT1
+OHL    CTO1   CEL3    75.700   110.10   ! prot22; MeOH, EMB, 10/10/89; OH1-CT1-CT1
+OHL    CTO1   CTL3    75.700   110.10   ! prot22; MeOH, EMB, 10/10/89; OH1 CT1 CT3
+OHL    CTO1   CTL1    75.700   110.10   ! prot22; MeOH, EMB, 10/10/89; OH1 CT1 CT1
+O      C      CTL2    80.000   121.00   ! prot22; Alanine Dipeptide ab initio calc's (LK); O-C-CT2
+O      C      CTL3    80.000   121.00   ! prot22; Alanine Dipeptide ab initio calc's (LK); O C CT3
+OSL    CTO1   CTL1    75.700   110.10   ! analog for acetyl at sphingosine O3; rmv nov 2009
+OSL    CTO1   CEL3    75.700   110.10   ! analog for acetyl at sphingosine O3; rmv nov 2009
+CL     OSL    CTO1    40.00    109.60    30.0   2.2651 ! analog for acetyl at sphingosine O3; rmv nov 2009
+CTL1   CEL3   HEL1    40.00    116.00   ! lip36; 1-butene, from propene,yin.adm jr.,12/95; HEL1-CEL1-CTL2
+CTO1   CEL3   HEL1    40.00    116.00   ! lip36; 1-butene, from propene,yin.adm jr.,12/95; HEL1-CEL1-CTL2
+HAL1   CTL1   CEL3    33.000   109.50   30.00   2.16300 ! prot22; alanine dipeptide, LK, replaced, adm jr., 5/09/91; HA-CT1-C (Protein)
+HAL1   CTO1   CEL3    33.000   109.50   30.00   2.16300 ! prot22; alanine dipeptide, LK, replaced, adm jr., 5/09/91; HA-CT1-C (Protein)
+HAL1   CTO1   CTL3    34.500   110.10   22.53   2.179  ! lip36; alkane, 3/92; HAL1-CTL1-CTL3
+HAL1   CTO1   CTL1    34.500   110.10   22.53   2.179  ! lip36; alkane, 3/92; HAL1-CTL1-CTL1
+HAL1   CTL1   CTO1    34.500   110.10   22.53   2.179  ! lip36; alkane, 3/92; HAL1-CTL1-CTL1
+HAL3   CTL3   CTO1    33.430   110.10   22.53   2.179  ! lip36; alkane, 4/98; HAL3-CTL3-CTL
+HEL1   CEL3   CEL3    52.00    119.50   ! lip36; 2-butene, yin,adm jr., 12/95; HEL1-CEL1-CEL1
+HEL1   CEL3   CTL2    40.00    116.00   ! lip36; 1-butene; from propene, yin,adm jr., 12/95; HEL1-CEL1-CTL2
+CEL3   CTL2   HAL2    45.00    111.50   ! lip36; 1-butene; from propene, yin,adm jr., 12/95; HAL2-CTL2-CEL1
+HAL2   CTL2   C       33.000   109.50   30.00   2.16300 ! prot22; alanine dipeptide, LK, replaced, adm jr., 5/09/91; HA-CT2-C
+HAL3   CTL3   C       33.000   109.50   30.00   2.16300 ! prot22; alanine dipeptide, LK, replaced, adm jr., 5/09/91; C CT3 HA
+NHL    CTL1   OSL     80.000   122.50   ! prot22; NMA Vib Modes (LK); O-C-NH1
+O      C      NHL     80.000   122.50   ! prot22; NMA Vib Modes (LK); O-C-NH1
+HOL    OHL    CTO1    57.500   106.00   ! lip36; glycerol; HOL-OHL-CTL1
+OHL    CTO1   HAL1    45.900   108.89   ! lip36; glycerol; OHL-CTL1-HAL1
+OSL    CTO1   HAL1    45.900   108.89   ! lip36; glycerol; OHL-CTL1-HAL1; rmv nov 2009
+NHL    CTL1   CTO1    70.000   113.50   ! prot22; Alanine Dipeptide ab initio calc's (LK); NH1-CT1-CT1
+NHL    C      CTL2    80.000   116.50   ! prot22; NMA Vib Modes (LK);  NH1-C-CT2
+NHL    CTL1   CTL2    70.000   113.50   ! prot22; Alanine Dipeptide ab initio calc's (LK); NH1-CT1-CT2
+NHL    CTL1   CTL3    70.000   113.50   ! prot22;
+NHL    CTL1   CTL1    70.000   113.50   ! prot22; Alanine Dipeptide ab initio calc's (LK); NH1-CT1-CT1
+NHL    C      CTL3    80.000   116.50   ! prot22; NMA Vib Modes (LK); NH1-C-CT3
+H      NHL    CTL3    35.000   117.00   ! prot22; NMA Vibrational Modes (LK); H-NH1-CT3
+H      NHL    C       34.000   123.00   ! prot22; NMA Vib Modes (LK); H-NH1-C
+H      NHL    CTL1    35.000   117.00   ! prot22; NMA Vibrational Modes (LK); H-NH1-CT1
+CTL3   NHL    C       50.000   120.00   ! prot22; NMA Vib Modes (LK); CT3-NH1-C
+CTL1   NHL    C       50.000   120.00   ! prot22; NMA Vib Modes (LK); CT1 NH1 C
+NHL    CTL3   HAL3    51.500   109.50   ! prot22; NMA crystal (JCS); NH1-CT3-HA
+NHL    CTL1   HAL1    48.000   108.00   ! prot22; Alanine Dipeptide ab initio calc's (LK); NH1-CT1-HB
+HOL    OHL    CTO2    57.500   106.00   ! lip36; glycerol; HOL-OHL-CTL2
+OHL    CTO2   HAL2    45.900   108.89   ! lip36; glycerol; OHL-CTL2-HAL1
+HAL2   CTO2   CTL1    26.500   110.10   22.53   2.179  ! lip36; alkane, 4/98; HAL2-CTL2-CTL1
+HAL1   CTL1   CTO2    34.500   110.10   22.53   2.179  ! lip36; alkane, 3/92; HAL1-CTL1-CTL2
+NHL    CTL1   CTO2    70.000   113.50   ! prot22; Alanine Dipeptide ab initio calc's(LK);NH1-CT1-CTO2
+CTO2   CTL1   CTO1    58.350   113.50   11.16   2.561  ! lip36; glycerol; CTL1-CTL1-CTL2
+HAL2   CTO2   HAL2    35.500   109.00    5.40   1.80200 ! alkane, 3/92 HAL2-CLT2-HAL2
+OHL    CTO2   CTL1    75.700   110.10   ! prot22; MeOH, EMB, 10/10/89; OH1 CT2 CT2
+!inositol
+CC3161  OG311   HCP1     50.00   109.00  !from carb ff: CC3161-OC311-HCP1; sng mod (qm and crystal data) II
+CC3161  CC3161  OG311    75.70   110.10  !from carb ff: CC3161-CC3161-OC311 par22 OH1  CT1  CT1
+CC3161  CC3161  CC3161   53.35   111.00   8.00  2.561  ! par22 CT1 CT1 CT1
+CC3261  CC3161  CC3161   53.35   111.00   8.00  2.561  ! par22 CT2 CT1 CT1
+CC3161  CC3161  CC3163   53.35   111.00   8.00  2.561  ! par22 CT1 CT1 CT1
+CC3161  CC3161  CC3263   53.35   111.00   8.00  2.561  ! par22 CT1 CT1 CT1; erh transferred by analogy
+CC3162  CC3161  CC3161   53.35   111.00   8.00  2.561  ! par22 CT1 CT1 CT1
+CC3062  CC3261  CC3161   58.35   113.50  11.16  2.561  ! par22 CT1 CT2 CT1
+CC3161  CC3163  CC321    58.35   113.50  11.16  2.561  ! sng
+CC3161  CC3163  CC312    58.35   113.50  11.16  2.561  ! from CC3161 CC3163 CC321
+CC3161  CC3163  CC331    58.35   113.50  11.16  2.561  ! CC3161 CC3163 CC321 og xylose xtal ok
+CC2O2   CC3163  CC3161   52.00   108.00  ! par22 CT1  CT1  CC
+CC321   CC311C  CC321C   58.35   113.50  11.16  2.561  ! from CC3161 CC3163 CC321
+CC3161  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3161  CC3162  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3261  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+CC3162  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3163  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3161  CC3163  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3263  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+CC3161  CC3261  HCA2     33.43   110.10  22.53  2.179  ! par22 HA  CT2 CT1
+CC3161  CC3263  HCA2     33.43   110.10  22.53  2.179  ! par22 HA  CT2 CT1
+CC3161  CC3161  NC2D1    70.00   113.50  ! par22 NH1  CT1  CT1
+CC3162  CC3161  NC2D1    70.00   113.50  ! par22 NH1  CT1  CT1
+CC3163  CC3161  NC2D1    70.00   113.50  ! par22 NH1  CT1  CT1
+CC3161   NC2D1    CC2O1  50.00   120.00  ! par22 CT1  NH1  C
+NC2D1    CC3161   HCA1   48.00   108.00  ! par22 NH1  CT1  HB
+CC3161   NC2D1    HCP1   35.00   117.00  ! par22 H    NH1  CT1
+CC3161  CC3163  OC3C61   45.00   110.00  ! sng mod (qm and crystal data)
+CC3161  CC3263  OC3C61   45.00   110.00  ! CC3161 CC3163 OC3C61 + og xtal xylose
+CC3161  CC3162  OC3C61   45.00   106.00  ! og crystal analysis
+CC3161  CC3162  OC311    75.70   107.00  ! sng mod (qm and crystal data) III
+CC3161  CC3161  OC311    75.70   110.10  ! par22 OH1  CT1  CT1
+CC3261  CC3161  OC311    75.70   110.10  ! par22 OH1  CT1  CT1
+CC3162  CC3161  OC311    75.70   110.10  ! par22 OH1  CT1  CT1
+CC3163  CC3161  OC311    75.70   110.10  ! par22 OH1  CT1  CT1
+CC3263  CC3161  OC311    75.70   110.10  ! par22 OH1  CT1  CT1
+OC301   CC3162  CC3161   45.00   105.00  ! og/rmv disac crystal analysis
+OC301   CC3062  CC3261   45.00   105.00  ! from OC301   CC3162  CC3161
+OC302   CC3162  CC3161   45.00   105.00  ! og/rmv disac crystal analysis
+OC301   CC3161  CC3161   45.00   109.00  ! og OMeTHP qm compounds 2 and 3
+OC301   CC3161  CC3163   45.00   109.00  ! og OMeTHP qm compounds 2 and 3
+OC301   CC3161  CC3162   45.00   109.00  ! og OMeTHP qm compounds 2 and 3
+CC3161  OC311   HCP1     50.00   109.00  ! sng mod (qm and crystal data) II
+CC3161  OC301   CC3162   50.00   109.20  ! og QM theta vs phi/psi comp 7 to 10
+CC3161  OC301   CC3062   50.00   109.20  ! from CC3161  OC301   CC3162 
+HCA1    CC3161  OC311    55.00   108.89  ! og 1/06 EtOH NIST IR fit
+HCA1    CC3161  OG311    55.00   108.89  ! equivalent to previous
+HCA1    CC3161  OG301    60.00   109.50  ! par35 HCA2 CC32A OC30A
+OC311  CC3151 CC3251     75.70   110.10  ! par22 OH1  CT1  CT1; par_Sugars, CC3263  CC3161  OC311
+OC311  CC3152 CC3251     75.70   110.10  ! par22 OH1  CT1  CT1; par_carb, CC3263  CC3161  OC311
+OC311  CC3051 CC3251     75.70   110.10  ! par22 OH1  CT1  CT1; par_carb, CC3263  CC3161  OC311
+OC311  CC3151 HCA1       55.00   108.89  ! og 1/06 EtOH NIST IR fit; par_carb, HCA1    CC3161  OC311
+CC3151 OC311  HCP1       50.00   109.00  ! par_carb CC3161  OC311   HCP1
+CC3151 CC3153 CC321      58.35   113.50  11.16  2.561  ! sng, par_carb CC3161 CC3163 CC321; erh 7/08
+CC3151 CC3051 CC321      58.35   113.50  11.16  2.561  ! sng, par_carb CC3161 CC3163 CC321; erh 7/08
+OC30P   CC3161  CC3161    45.00    107.00                  ! og OMeTHP qm compounds 2 and 3
+OC30P   CC3161  CC3163    45.00    107.00                  ! og OMeTHP qm compounds 2 and 3
+OC30P   CC3162  CC3161    45.00    109.00
+OC30P   CC3161  CC3162    45.00    109.00
+OC30P   CC3161  HCA1      60.00    109.50                  ! par35 HCA2 CC32A OC30A
+CC3161  OC30P      PC     20.0     120.0    35.0    2.33   !
+CC3161  OC30P      SC     15.0     109.00   27.00   1.90   ! methylsulfate
+OC303   CC3162  CC3161   45.00   105.00                   ! OC301   CC3162  CC3161
+CC3161  OC301   CC3152   50.00   109.20                   ! CC311C  OC301   CC311D, model compound 4
+OC301   CC3161  CC3263   45.00   109.00  ! from OC301   CC3161  CC3163
+HCA1    CC312   CC2O3    50.00   109.50  ! ketone, par22 HB   CT1  CD
+CC2O4   CC312   HCA1     33.00   109.50   30.00   2.16300 ! acetaldehyde, adm
+CC312   CC312   HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC312   CC3163  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3161  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3161  CC3162  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3261  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+CC3162  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3163  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3161  CC3163  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC3163  CC312   HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT1
+CC322   CC312   HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+CC321   CC3163  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+CC331   CC311   HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT3
+CC331   CC3163  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT3
+CC3263  CC3161  HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+CC321   CC311   HCA1     34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+CC2O2   CC3163  HCA1     50.00   109.50  ! par 22 HB   CT1  CC
+CC2O2   CC311   HCA1     50.00   109.50  ! par 22 HB   CT1  CC
+HCA1    CC311C  CC321    34.50   110.10  22.53  2.179  ! par22 HA   CT1  CT2
+HCA1    CC311D  CC321C   34.50   110.10  22.53  2.179  ! par22 HA   CT1  CT2
+HCA1    CC311C  CC321C   34.50   110.10  22.53  2.179  ! par22 HA   CT1  CT2
+HCA1    CC311C  CC321D   34.50   110.10  22.53  2.179  ! par22 HA   CT1  CT2
+NC2D1    CC3161   HCA1   48.00   108.00  ! par22 NH1  CT1  HB
+NC2D1    CC311    HCA1   48.00   108.00  ! par22 NH1  CT1  HB
+HCA1    CC312   OC311    55.00   108.89  ! og 1/06 EtOH NIST IR fit
+HCA1    CC3161  OC311    55.00   108.89  ! og 1/06 EtOH NIST IR fit
+HCA1    CC3162  OC311    55.00   108.89  ! og 1/06 EtOH NIST IR fit
+HCA1    CC3163  OC311    55.00   108.89  ! og 1/06 EtOH NIST IR fit
+HCA1    CC3162  OC3C61   45.00   109.50  ! sng from thp
+HCA1    CC3163  OC3C61   45.00   109.50  ! sng from thp
+HCA1    CC311   OC301    60.00   109.50  ! par34 HCA2 CC32A OC30A
+HCA1    CC311   OC311M   55.00   108.89  ! og 1/06 EtOH NIST IR fit
+HCA1    CC311C  OC3C61   45.00   109.50  ! sng from thp
+HCA1    CC311D  OC3C61   45.00   109.50  ! sng from thp
+HCA1    CC311D  OC301    60.00   109.50  ! par35 HCA2 CC32A OC30A
+HCA1    CC3162  OC301    60.00   109.50  ! par35 HCA2 CC32A OC30A
+HCA1    CC311D  OC302    60.00   109.50  ! par35 HCA2 CC32A OC30A
+HCA1    CC3162  OC302    60.00   109.50  ! par35 HCA2 CC32A OC30A
+HCA1    CC311C  OC301    60.00   109.50  ! par35 HCA2 CC32A OC30A
+HCA1    CC3161  OC301    60.00   109.50  ! par35 HCA2 CC32A OC30A
+OC3C51 CC3152 HCA1       70.00   107.30  ! THF, par_carb,  OC3C5M CC322C HCA2C2
+OC3C51 CC3153 HCA1       70.00   107.30  ! THF, par_carb,  OC3C5M CC322C HCA2C2
+OC311  CC3152 HCA1       55.00   108.89  ! og 1/06 EtOH NIST IR fit; par_carb, HCA1    CC3162  OC311
+OC311  CC3151 HCA1       55.00   108.89  ! og 1/06 EtOH NIST IR fit; par_carb, HCA1    CC3161  OC311
+CC3251 CC3152 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC3251 CC3151 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC3153 CC3151 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC3152 CC3151 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC3051 CC3151 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC3151 CC3151 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC3151 CC3152 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC3151 CC3153 HCA1       35.00   111.40  22.53  2.179  ! cyclopentane, par_carb HCA2C2 CC322C CC322C
+CC321  CC3153 HCA1       34.50   110.10  22.53  2.179  ! par22 HA  CT1 CT2
+HCA1    CC3152  OC301    60.00   109.50  ! par35 HCA2 CC32A OC30A
+HCA1    CC311D  CC311D    34.500   110.10  22.53  2.179    ! par22 HA   CT1  CT2
+HCA1    CC311D  CC321D    34.500   110.10  22.53  2.179    ! par22 HA   CT1  CT2
+OC30P   CC3162  HCA1      60.00    109.50                  ! par35 HCA2 CC32A OC30A
+OC30P   CC3161  HCA1      60.00    109.50                  ! par35 HCA2 CC32A OC30A
+OC30P   CC311D  HCA1      60.00    109.50                  ! par35 HCA2 CC32A OC30A
+HCA1    CC312D  OC301    60.00   109.50                   ! OMe-THF HCA1C2  CC312C  OC301
+HCA1    CC312D  OC302    60.00   109.50                   ! OMe-THF   HCA1C2  CC312C  OC301
+HCA1    CC312D  OC3C5M   70.00   107.30                   ! THF w/me  HCA1C2 CC312C OC3C5M
+HCA1    CC312D  CC322C   35.00   111.40   22.53   2.179   ! THF w/me  HCA1C2 CC312C CC322C
+HCA1    CC312C  OC3C5M   70.00   107.30                   ! THF w/me  HCA1C2 CC312C OC3C5M
+HCA1    CC312C  CC322C   35.00   111.40   22.53   2.179   ! THF w/me  HCA1C2 CC312C CC322C
+HCA1    CC312C  CC321    34.50   110.10   22.53   2.179   ! THF w/me  HCA1C2 CC312C CC331
+HCA1    CC311D  OC303    60.00   109.50                   ! HCA1    CC311D  OC301 
+HCA1    CC312C  OC303    60.00   109.50                   ! HCA1C2  CC312C  OC301
+HCA1    CC3162  OC303    60.00   109.50                   ! pram, model compound 3(raman et al)  HCA1    CC311D  OC303
+OC303   CC3151  HCA1     60.00   109.50                   ! pram, model compound 3(raman et al)  HCA1    CC312C  OC303
+HCP1     NC2D1    CC2O1  34.00   123.00  ! par22 H    NH1  C
+CC3161   NC2D1    HCP1   35.00   117.00  ! par22 H    NH1  CT1
+HCP1     NC2D1    CC311  35.00   117.00  ! par22 H    NH1  CT1
+HCP1     NC2D1    CC331  35.00   117.00  ! par22 H    NH1  CT3
+CC3161  OC311   HCP1     50.00   109.00  ! sng mod (qm and crystal data) II
+CC321   OC311   HCP1     50.00   109.00  ! sng mod (qm and crystal data)
+CC3162  OC311   HCP1     50.00   109.00  ! sng mod (qm and crystal data) II
+CC3062  OC311   HCP1     50.00   109.00  ! from CC3162 OC311  HCP1 for ne5ac
+HCP1    OC311   CC311    50.00   106.00  ! og 1/06 EtOH IR fit
+HCP1    OC311   CC312    50.00   106.00  ! og 1/06 EtOH IR fit
+HCP1    OC311   CC301    50.00   106.00  ! og 1/06 EtOH IR fit
+HCP1    OC311   CC322    50.00   106.00  ! og 1/06 EtOH IR fit
+HCP1    OC311M  CC321    50.00   106.00  ! og 1/06 EtOH IR fit
+HCP1    OC311M  CC311    50.00   106.00  ! og 1/06 EtOH IR fit
+HCP1    OC311M  CC331    57.50   106.00  ! par22 H OH1 CT3
+CC3152 OC311  HCP1       50.00   109.00  ! par_carb CC3162  OC311   HCP1
+CC3051 OC311  HCP1       50.00   109.00  ! par_carb CC3162  OC311   HCP1
+CC3151 OC311  HCP1       50.00   109.00  ! par_carb CC3161  OC311   HCP1
+HCP1    OC312      PC     30.0     115.0    40.0    2.35   !
+OC30P   CC311D  CC321C    45.00    107.00                  ! og OMeTHP qm compounds 2 and 3
+OC30P   CC311D  CC311D    45.000   107.00                  ! og OMeTHP qm compounds 2 and 3
+OC30P   CC3161  CC3161    45.00    107.00                  ! og OMeTHP qm compounds 2 and 3
+OC30P   CC3161  CC3163    45.00    107.00                  ! og OMeTHP qm compounds 2 and 3
+OC30P   CC311D  CC321D    45.00    109.00
+OC30P   CC3162  CC3161    45.00    109.00
+OC30P   CC3161  CC3162    45.00    109.00
+OC30P   CC321   CC311C    75.700   107.50                  !
+OC30P   CC321   CC3163    75.700   107.50                  !
+OC30P   CC311D  OC3C61    90.00    110.00                  ! og OMeTHP qm compounds 2 and 3
+OC30P   CC3162  OC3C61    90.00    110.00
+OC30P   CC321   HCA2      60.0     109.5                   !
+OC30P   CC3162  HCA1      60.00    109.50                  ! par35 HCA2 CC32A OC30A
+OC30P   CC3161  HCA1      60.00    109.50                  ! par35 HCA2 CC32A OC30A
+OC30P   CC311D  HCA1      60.00    109.50                  ! par35 HCA2 CC32A OC30A
+OC30P   PC      OC2DP     98.9     111.6                   !  
+OC30P   PC      OC312     48.1     108.0                   !  ON2  P    ON4     48.1     108.0  !MP_1, ADM Jr. ! 
+CC3161  OC30P      PC     20.0     120.0    35.0    2.33   !
+CC311D  OC30P      PC     20.0     120.0    35.0    2.33   !
+CC3162  OC30P      PC     20.0     120.0    35.0    2.33   !
+CC311D  OC30P      SC     15.0     109.00   27.00   1.90   ! methylsulfate
+CC3161  OC30P      SC     15.0     109.00   27.00   1.90   ! methylsulfate
+CC321   OC30P      SC     15.0     110.10   27.00   1.90   ! methylsulfate
+OC30P   SC      OC2DP      85.0     98.0                   ! methylsulfate
+CG2R61 CG2O2  OG311    40.00    113.90   30.00   2.3700 ! ZOIC, benzoic acid, jal 
+CG311  CG2O2  OG311    55.00    110.50 ! drug design project, xxwy
+CG321  CG2O2  OG311    55.00    110.50 ! PROT adm jr, 10/17/90, acetic acid vibrations
+CG331  CG2O2  OG311    55.00    110.50 ! PROT adm jr, 10/17/90, acetic acid vibrations
+OG2D1  CG2O2  OG311    50.00    123.00   210.00   2.26200 ! PROT adm jr, 10/17/90, acetic acid vibrations
+OG311  CG2O2  HGR52    47.00    105.00 ! FORH, formic acid, xxwy
+CG2R61 CG2R61 OG311    45.20    120.00 ! PYRIDINE phenol, yin
+CG2R64 CG2R61 OG311    45.20    120.00 ! 2A3HPD, from PYRIDINE phenol, cacha
+CG2O3  CG301  OG311    75.70    110.10 ! AMOL, alpha-methoxy-lactic acid, og
+CG331  CG301  OG311    75.70    110.10 ! AMOL, alpha-methoxy-lactic acid, og
+OG301  CG301  OG311    45.00    116.50 ! AMOL, alpha-methoxy-lactic acid, og
+CG2O5  CG311  OG311   112.00    111.00 ! BIPHENYL ANALOGS unmodified, peml ! reset by kevo to value from CG2O5 CG311 OG312 (see discussion with Dan Arlow) ==> RE-OPTIMIZE !!!
+CG311  CG311  OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG321  CG311  OG311    75.70    110.00 ! NA
+CG324  CG311  OG311    75.70    112.10 ! FLAVOP PIP1,2,3
+CG331  CG311  OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG3RC1 CG311  OG311    75.70    110.10 ! CARBOCY ncarbocyclic sugars
+OG311  CG311  OG312   111.90    111.00   100.00   2.35000 ! BIPHENYL ANALOGS, peml
+OG311  CG311  HGA1     45.90    108.89 ! PROT MeOH, EMB, 10/10/89
+CG2D1  CG321  OG311    75.70    110.10 ! RETINOL PROL
+CG2DC1 CG321  OG311    75.70    110.10 ! RETINOL PROL
+CG2DC2 CG321  OG311    75.70    110.10 ! RETINOL PROL
+CG2R61 CG321  OG311    75.70    110.10 ! toppar_all22_prot_pyridines.str has 115.1 but that appears to be a copy-paste error! - kevo
+CG302  CG321  OG311    75.70    110.10 ! TFE, triflouroethanol
+CG311  CG321  OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG314  CG321  OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG321  CG321  OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG324  CG321  OG311    75.70    112.10 ! FLAVOP PIP1,2,3
+CG331  CG321  OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG3C51 CG321  OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+OG311  CG321  HGA2     45.90    108.89 ! PROT MeOH, EMB, 10/10/89
+OG311  CG331  HGA3     45.90    108.89 ! PROT MeOH, EMB, 10/10/89
+CG3C51 CG3C51 OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG3C52 CG3C51 OG311    75.70    110.00 ! NA
+CG3C53 CG3C51 OG311    75.70    110.10 ! PROT MeOH, EMB, 10/10/89
+CG3RC1 CG3C51 OG311    75.70    110.10 ! CARBOCY ncarbocyclic sugars
+OG311  CG3C51 HGA1     45.90    108.89 ! PROT MeOH, EMB, 10/10/89
+CG334  NG3P0  OG311    69.00    100.00 ! TMAOP, Hydroxy(trimethyl)Ammonium, xxwy
+CG2O2  OG311  HGP1     55.00    115.00 ! PROT adm jr. 5/02/91, acetic acid pure solvent
+CG2R61 OG311  HGP1     65.00    108.00 ! PROT JES 8/25/89 phenol
+CG301  OG311  HGP1     50.00    106.00 ! AMOL, alpha-methoxy-lactic acid, og
+CG311  OG311  HGP1     50.00    106.00 ! og 1/06 EtOH IR fit; was 57.5 106
+CG321  OG311  HGP1     50.00    106.00 ! sng mod (qm and crystal data); was 57.5 106
+CG331  OG311  HGP1     57.50    106.00 ! Team Sugar, HCP1M OC311M CC331M; unchanged
+CG3C51 OG311  HGP1     50.00    109.00 ! par_Sugars, CC315x OC311 HCP1; was 57.5 106
+NG3P0  OG311  HGP1     60.00    101.50 ! TMAOP, Hydroxy(trimethyl)Ammonium, xxwy
+PG0    OG311  HGP1     30.00    115.00   40.00   2.3500 ! NA MP_1, ADM Jr. !Reorganization:MP_0
+PG1    OG311  HGP1     30.00    115.00   40.00   2.3500 ! NA MP_1, ADM Jr. !Reorganization:MP_1
+OG2P1  PG0    OG311    98.90    108.23 ! NA MP_1, ADM Jr. !Reorganization:MP_0 RE-OPTIMIZE!
+OG303  PG0    OG311    48.10    108.00 ! NA MP_1, ADM Jr. !Reorganization:MP_0 RE-OPTIMIZE!
+OG311  PG0    OG311    98.90    104.00 ! NA MP_0, ADM Jr.
+CG312  PG1    OG311    90.10     90.00 ! BDFP, BDFD, Difuorobenzylphosphonate
+CG321  PG1    OG311    90.10     94.00 ! BDFP, BDFD, Benzylphosphonate
+OG2P1  PG1    OG311    98.90    111.00 ! MP_1 reorganization, kevo
+OG303  PG1    OG311    48.10    108.00 ! MP_1 reorganization, kevo
+OG304  PG1    OG311    48.10    111.00 ! PPI2 reorganization, kevo
+OC30P   PL      OC2DP     98.9     111.6   
+OC2DP   PL      OC2DP    120.0     120.0
+OC2DP   PC      OC2DP    120.0     120.0      
+OC30P   PL      OC30P     80.0     104.3   ! ON2  P    ON2 !DMP, ADM Jr.
+CC3161  OC30P   PL        20.0     120.0    35.0    2.33   !CTL2 OSLP PL  ! phosphate, PIP
+OC30P   PL      O2L       98.9      111.6  ! OSLP PL   O2L  ! phosphate
+OC30P   PL      OSLP      80.0      104.3  ! OSLP PL   OSLP ! phosphate
+OC2DP   PC      OC312     98.9     113.23                  !  ON3  P    ON4     98.9     108.23 !MP_1, ADM Jr. ! 
+OC312   PC      OC312     98.9     104.413                 !  ON4  P    ON4     98.9     104.0  !MP_0, ADM Jr. ! 
+OBL  CL   CTL3    70.0     125.0     20.0   2.442  ! methyl acetate
+OBL  CL   CTL2    70.0     125.0     20.0   2.442  ! methyl acetate
+OBL  CL   CTL1    70.0     125.0     20.0   2.442  ! methyl acetate
+OSL  CL   OBL     90.0     125.9    160.0   2.2576 ! acetic acid
+CL   OSL  CTL1    40.0     109.6     30.0   2.2651 ! methyl acetate
+CL   OSL  CTL2    40.0     109.6     30.0   2.2651 ! methyl acetate
+CL   OSL  CTL3    40.0     109.6     30.0   2.2651 ! methyl acetate
+HAL2 CTL2 CL      33.00    109.50   30.00   2.163  ! methyl acetate
+HAL3 CTL3 CL      33.00    109.50   30.00   2.163  ! methyl acetate
+CTL2 CTL2 CL      52.0     108.00   ! alkane
+CTL2 CTL1 CCL     52.0     108.00   ! for POPS
+CTL3 CTL2 CL      52.0     108.00   ! alkane
+OSL  CL   CTL3    55.0     109.0    20.00   2.3260 ! methyl acetate
+OSL  CL   CTL2    55.0     109.0    20.00   2.3260 ! methyl acetate
+OSL  CL   CTL1    55.0     109.0    20.00   2.3260 ! methyl acetate
+OHL  CL   OBL     50.0     123.0    210.0   2.2620 ! acetic acid
+OCL  CL   CTL2    40.0     118.0     50.0   2.3880 ! acetate
+OCL  CL   CTL3    40.0     118.0     50.0   2.3880 ! acetate
+OCL  CL   OCL    100.0     124.0     70.0   2.2250 ! acetate
+OCL  CCL  OCL    100.0     124.0     70.0   2.2250 ! for POPS
+OCL  CCL  CTL1    40.0     118.0     50.0   2.3880 ! for POPS
+OHL  CL   CTL3    55.0     110.50   ! acetic acid
+OHL  CL   CTL2    55.0     110.50   ! acetic acid
+HOL  OHL  CL     55.0      115.0    ! acetic acid
+OSL  CTL1 CTL1   75.700    110.10   ! acetic acid, PIP
+OSL  CTL1 CTL2   75.700    110.10   ! acetic acid
+OSL  CTL1 CTL3   75.700    110.10   ! acetic acid
+OSL  CTL2 CTL1   75.700    110.10   ! acetic acid
+OSL  CTL2 CTL2   75.700    110.10   ! acetic acid
+OSL  CTL2 CTL3   75.700    110.10   ! acetic acid
+OSLP CTL1 CTL1   75.700    110.10   ! acetic acid, PIP
+OSLP CTL1 CTL2   75.700    110.10   ! acetic acid
+OSLP CTL1 CTL3   75.700    110.10   ! acetic acid
+OSLP CTL2 CTL1   75.700    110.10   ! acetic acid
+OSLP CTL2 CTL2   75.700    110.10   ! acetic acid
+OSLP CTL2 CTL3   75.700    110.10   ! acetic acid
+HAL2 CTL2 HAL2   35.500    109.00    5.40   1.80200 ! alkane, 3/92
+HAL3 CTL3 HAL3   35.500    108.40    5.40   1.80200 ! alkane, 3/92
+HAL1 CTL1 OSL    60.0      109.5    ! phosphate
+HAL2 CTL2 OSL    60.0      109.5    ! phosphate
+HAL3 CTL3 OSL    60.0      109.5    ! phosphate
+HAL1 CTL1 OSLP   60.0      109.5    ! phosphate
+HAL2 CTL2 OSLP   60.0      109.5    ! phosphate
+HAL3 CTL3 OSLP   60.0      109.5    ! phosphate
+CTL1 OSL  PL     20.0      120.0    35.0    2.33   ! phosphate, PIP
+CTL2 OSL  PL     20.0      120.0    35.0    2.33   ! phosphate
+CTL3 OSL  PL     20.0      120.0    35.0    2.33   ! phosphate
+CTL1 OSLP PL     20.0      120.0    35.0    2.33   ! phosphate, PIP
+CTL2 OSLP PL     20.0      120.0    35.0    2.33   ! phosphate
+CTL3 OSLP PL     20.0      120.0    35.0    2.33   ! phosphate
+HOL  OHL  PL     30.0      115.0    40.0    2.30   ! phosphate
+OSL  PL   OSL    80.0      104.3    ! phosphate
+OSL  PL   O2L    98.9      111.6    ! phosphate
+OSL  PL   OHL    48.1      108.0    ! phosphate
+OSLP PL   OSLP   80.0      104.3    ! phosphate
+OSLP PL   O2L    98.9      111.6    ! phosphate
+OSLP PL   OHL    48.1      108.0    ! phosphate
+O2L  PL   O2L   120.0      120.0    ! phosphate
+O2L  PL   OHL    98.9      108.23   ! phosphate
+NTL  CTL2 HL     40.0      109.5    27.     2.13   ! tetramethylammonium
+NTL  CTL5 HL     40.0      109.5    27.     2.13   ! tetramethylammonium
+HL   CTL2 HL     24.0      109.50   28.     1.767  ! tetramethylammonium
+HL   CTL5 HL     24.0      109.50   28.     1.767  ! tetramethylammonium
+CTL2 NTL  CTL2   60.0      109.5    26.     2.466  ! tetraethylammonium, from CTL5 NTL  CTL2
+CTL5 NTL  CTL2   60.0      109.5    26.     2.466  ! tetramethylammonium
+CTL5 NTL  CTL5   60.0      109.5    26.     2.466  ! tetramethylammonium
+HL   CTL2 CTL2   33.430    110.10   22.53   2.179  ! alkane
+HL   CTL2 CTL3   33.430    110.10   22.53   2.179  ! alkane
+HAL1 CTL1 CTL1   34.500    110.10   22.53   2.179  ! alkane, 3/92
+HAL1 CTL1 CTL2   34.500    110.10   22.53   2.179  ! alkane, 3/92
+HAL1 CTL1 CTL3   34.500    110.10   22.53   2.179  ! alkane, 3/92
+HAL2 CTL2 CTL1   26.500    110.10   22.53   2.179  ! alkane, 4/98
+HAL2 CTL2 CTL2   26.500    110.10   22.53   2.179  ! alkane, 4/98
+HAL2 CTL2 CTL3   34.600    110.10   22.53   2.179  ! alkane, 4/98
+HAL3 CTL3 CTL1   33.430    110.10   22.53   2.179  ! alkane, 4/98
+HAL3 CTL3 CTL2   34.600    110.10   22.53   2.179  ! alkane, 4/98
+HAL3 CTL3 CTL3   37.500    110.10   22.53   2.179  ! alkane, 4/98
+HBL  CTL1 CCL    50.000    109.50   ! for POPS
+HBL  CTL1 CTL2   35.000    111.00   ! for POPS
+NTL  CTL2 CTL2   67.7      115.00   ! tetramethylammonium
+NTL  CTL2 CTL3   67.7      115.00   ! tetramethylammonium
+HCL  NH3L CTL2   33.0      109.50    4.00   2.056  ! ethanolamine
+HCL  NH3L CTL1   30.0      109.50   20.00   2.074  ! for POPS
+HCL  NH3L HCL    41.0      109.50   ! ethanolamine
+NH3L CTL2 CTL2   67.7      110.00   ! ethanolamine
+NH3L CTL2 HAL2   45.0      107.50   35.00   2.0836 ! ethanolamine
+CTL1 CTL1 CTL1   53.350    111.00    8.00   2.561  ! alkane, 3/92
+NH3L CTL1 CCL    43.7      110.00   ! for POPS
+NH3L CTL1 CTL2   67.7      110.00   ! for POPS
+NH3L CTL1 HBL    51.5      107.50   ! for POPS
+CTL1 CTL1 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CTL1 CTL1 CTL3   53.350    108.50    8.00   2.561  ! alkane, 3/92
+CTL1 CTL2 CTL1   58.350    113.50   11.16   2.561  ! glycerol
+CTL1 CTL2 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CTL1 CTL2 CTL3   58.350    113.50   11.16   2.561  ! glycerol
+CTL2 CTL1 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CTL2 CTL1 CTL3   58.350    113.50   11.16   2.561  ! glycerol
+CTL2 CTL2 CTL2   58.350    113.60   11.16   2.561  ! alkane, 3/92
+CTL2 CTL2 CTL3   58.000    115.00    8.00   2.561  ! alkane, 3/92
+CTL3 CTL1 CTL3   58.350    113.50   11.16   2.561  ! glycerol
+HOL  OHL  CTL1   57.500    106.00   ! glycerol
+HOL  OHL  CTL2   57.500    106.00   ! glycerol
+HOL  OHL  CTL3   57.500    106.00   ! glycerol
+OHL  CTL1 CTL1   75.700    110.10   ! glycerol, PIP
+OHL  CTL1 CTL2   75.700    110.10   ! glycerol
+OHL  CTL2 CTL1   75.700    110.10   ! glycerol
+OHL  CTL2 CTL2   75.700    110.10   ! glycerol
+OHL  CTL2 CTL3   75.700    110.10   ! glycerol
+OHL  CTL1 HAL1   45.900    108.89   ! glycerol
+OHL  CTL2 HAL2   45.900    108.89   ! glycerol
+OHL  CTL3 HAL3   45.900    108.89   ! glycerol
+O2L  SL   O2L   130.0      109.47  35.0    2.45 ! methylsulfate
+O2L  SL   OSL    85.0       98.0                ! methylsulfate
+CTL2 OSL  SL     15.0      109.0   27.00   1.90 ! methylsulfate
+CTL3 OSL  SL     15.0      109.0   27.00   1.90 ! methylsulfate
+CEL1 CEL1 CTL2   48.00     123.50   ! from 2-butene, yin,adm jr., 12/95
+CEL1 CEL1 CTL3   48.00     123.50   ! 2-butene, yin,adm jr., 12/95
+CEL2 CEL1 CTL2   48.00     126.00   ! 1-butene; from propene, yin,adm jr., 12/95
+CEL2 CEL1 CTL3   47.00     125.20   ! propene, yin,adm jr., 12/95
+HEL1 CEL1 CEL1   52.00     119.50   ! 2-butene, yin,adm jr., 12/95
+HEL1 CEL1 CEL2   42.00     118.00   ! propene, yin,adm jr., 12/95
+HEL1 CEL1 CTL2   40.00     116.00   ! 1-butene; from propene, yin,adm jr., 12/95
+HEL1 CEL1 CTL3   22.00     117.00   ! propene, yin,adm jr., 12/95
+HEL2 CEL2 CEL1   45.00     120.50   ! propene, yin,adm jr., 12/95
+HEL2 CEL2 CEL2   55.50     120.50   ! ethene, yin,adm jr., 12/95
+HEL2 CEL2 HEL2   19.00     119.00   ! propene, yin,adm jr., 12/95
+CEL1 CTL2 CTL2   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95
+CEL1 CTL2 CTL3   32.00     112.20   ! 1-butene; from propene, yin,adm jr., 12/95
+HAL2 CTL2 CEL1   45.00     111.50   ! 1-butene; from propene, yin,adm jr., 12/95
+HAL3 CTL3 CEL1   42.00     111.50   ! 2-butene, yin,adm jr., 12/95
+CEL1 CTL2 CEL1   30.0      114.0    ! 1,4-dipentene, adm jr., 2/00
+ 
+DIHEDRALS
+!ethylene
+X  CEL1 CGT2 HGT2	5.2000  2   180.00 ! LIPID propene, yin,adm jr., 12/95
+!cyclopropane
+CTL2   CTL2   CCP1 HCP1   0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CTL2   CCP1 CCP2 0.0000  2   180.00 ! propane ring, MacKerell
+HCP2   CCP2 CCP1 CTL2   0.1950  3     0.00 ! propane ring, MacKerell
+CCP1 CCP2 CCP1 CTL2   0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CCP1 CCP1 CCP2 0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CCP1 CCP1 HCP1   0.1500  3     0.00 ! propane ring, MacKerell
+CTL2   CCP1 CCP1 CTL2   0.1500  3     0.00 ! propane ring, MacKerell
+HAL2   CTL2   CCP1 CCP2 0.1950  3     0.00 ! propane ring, MacKerell
+HAL2   CTL2   CCP1 CCP1 0.1500  3     0.00 ! propane ring, MacKerell
+HAL2   CTL2   CCP1 HCP1   0.1500  3     0.00 ! propane ring, MacKerell
+! Take from C36 Gen FF for Ring on small molecule studies
+CCP1 CCP2 CCP1 CTL3   0.1500  3     0.00 ! CARBOCY carbocyclic sugars, taken from CCP1 CCP2 CCP1 CG321, genFF
+HCP2   CCP2 CCP1 CTL3   0.1950  3     0.00 ! CARBOCY carbocyclic sugars, taken from HCP2 CCP2 CCP1 CG321, genFF
+HAL3   CTL3   CCP1 CCP1 0.1500  3   180.00 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08
+HAL3   CTL3   CCP1 HCP1   0.1600  3     0.00 ! alkane, 4/98, yin and mackerell, tf2m viv, taken from HGA3 CG331 CG3C51 HCP1, genFF
+HAL3   CTL3   CCP1 CCP2 0.1500  3   180.00 ! BAM1, bile acid steroidal C-D ring, cacha, 02/08, taken from HGA3 CG331 CCP1 CG3C51, genFF
+! For Propane Ring added by K.R.P. 07/10
+X    CCP1 CCP1 X        0.4500  1   180.00 ! 2-butene, adm jr., 4/04 from C36 GenFF
+X    CCP1 CCP1 X        8.5000  2   180.00 !from C36 GenFF
+CCP1 CCP1 CTL2 CTL2     1.71  1    159.6 !ring, KRP
+CCP1 CCP1 CTL2 CTL2     0.37  2    165.1 !ring, KRP
+CCP1 CCP1 CTL2 CTL2     0.58  3     47.6 !ring, KRP
+CCP1 CTL2 CTL2 CTL2     0.16  1    180.0 ! ring, KRP
+CCP1 CTL2 CTL2 CTL2     0.01  2    180.0 ! ring, KRP
+CCP1 CTL2 CTL2 CTL2     0.17  3    180.0 ! ring, KRP
+CCP1 CCP1 CCP2 HCP2     0.1500  3     0.00 ! CARBOCY carbocyclic sugars
+HCP1 CCP1 CCP1 HCP2     0.1500  3     0.00 ! CARBOCY carbocyclic sugars 
+CCP1 CCP2 CCP1 HCP1     0.1500  3     0.00 ! CARBOCY carbocyclic sugars
+HCP1 CCP1 CCP2 HCP2     0.1500  3     0.00 ! CARBOCY carbocyclic sugars
+!sterols
+CRL1 CRL1 CTL1 CTL2     0.000   3     0.00 ! 6/10, jbk
+CRL1 CTL1 CTL2 CTL3     0.1218  3   180.00 ! 6/10, jbk
+CRL1 CTL1 CTL2 CTL3     0.2175  2   180.00 ! 6/10, jbk
+CRL1 CTL1 CTL2 CTL3     0.2398  1   180.00 ! 6/10, jbk
+CRL1 CTL1 CTL2 CTL2     0.1218  3   180.00 ! 6/10, jbk
+CRL1 CTL1 CTL2 CTL2     0.2175  2   180.00 ! 6/10, jbk
+CRL1 CTL1 CTL2 CTL2     0.2398  1   180.00 ! 6/10, jbk
+CRL1 CRL2 CEL1 CRL1     0.30    3   180.0  ! torR1
+CTL1 CRL2 CEL1 CRL1     0.30    3   180.0  ! torR1
+CRL1 CTL2 CEL1 CRL1     0.30    3   180.0  ! torR1
+CRL1 CRL2 CEL1 CTL1     0.30    3   180.0  ! torR1
+CTL1 CTL2 CEL1 CRL1     0.30    3   180.0  ! torR1
+CTL1 CRL2 CEL1 CTL1     0.30    3   180.0  ! torR1
+CRL1 CTL2 CEL1 CTL1     0.30    3   180.0  ! torR1
+X    CRL1 OHL  X        0.14    3     0.00 ! glycerol
+X    CRL2 OHL  X        0.14    3     0.00 ! glycerol
+CRL2 CEL1 CRL1 CRL1     0.00    3   180.0  ! bR12
+CTL2 CEL1 CRL1 CRL1     0.00    3   180.0  ! bR12
+CRL2 CEL1 CTL1 CRL1     0.00    3   180.0  ! bR12
+CRL2 CEL1 CRL1 CTL1     0.00    3   180.0  ! bR12
+CTL2 CEL1 CTL1 CRL1     0.00    3   180.0  ! bR12
+CTL2 CEL1 CRL1 CTL1     0.00    3   180.0  ! bR12
+CRL2 CEL1 CTL1 CTL1     0.00    3   180.0  ! bR12
+CTL2 CEL1 CRL1 CTL3     0.00    3   180.0  ! bR12
+CRL2 CEL1 CTL1 CTL3     0.00    3   180.0  ! bR12
+CRL2 CEL1 CRL1 CRL2     0.30    3   180.0  ! torR1
+CRL2 CEL1 CRL1 CTL2     0.30    3   180.0  ! torR1
+CRL2 CEL1 CTL1 CRL2     0.30    3   180.0  ! torR1
+CTL2 CEL1 CRL1 CRL2     0.30    3   180.0  ! torR1
+CRL2 CEL1 CTL1 CTL2     0.30    3   180.0  ! torR1
+CTL2 CEL1 CRL1 CTL2     0.30    3   180.0  ! torR1
+CTL2 CEL1 CTL1 CRL2     0.30    3   180.0  ! torR1
+CEL1 CEL1 CRL2 HGA2     0.3000  3   180.00 !2-butene, adm jr., 4/04
+CEL1 CEL1 CRL2 HAL2     0.3000  3   180.00 !2-butene, adm jr., 4/04
+CEL1 CEL1 CTL2 HGA2     0.3000  3   180.00 !2-butene, adm jr., 4/04
+CEL1 CEL1 CRL2 CRL1     0.5000  1   180.0  ! torR2, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CRL2 CRL1     1.3000  3   180.0  !
+CEL1 CEL1 CTL2 CRL1     0.5000  1   180.0  ! torR2, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CTL2 CRL1     1.3000  3   180.0  !
+CEL1 CEL1 CRL2 CTL1     0.5000  1   180.0  ! torR2, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CRL2 CTL1     1.3000  3   180.0  !
+CEL1 CEL1 CRL1 CRL2     0.5000  1   180.0  ! bR12, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CRL1 CRL2     1.3000  3   180.0  !
+CEL1 CEL1 CTL1 CRL2     0.5000  1   180.0  ! bR12, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CTL1 CRL2     1.3000  3   180.0  !
+CEL1 CEL1 CRL1 CTL2     0.5000  1   180.0  ! bR12, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CRL1 CTL2     1.3000  3   180.0  !
+CEL1 CEL1 CRL1 CTL3     0.5000  1   180.0  ! bR13, rCH3, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CRL1 CTL3     1.3000  3   180.0  !
+CEL1 CEL1 CRL2 CTL3     0.9000  1   180.00 !2-pentene and 3-heptene
+CEL1 CEL1 CRL2 CTL3     0.2000  2   180.00 !2-pentene and 3-heptene
+CEL1 CRL2 CRL2 CTL3     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CRL2 CTL3     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CRL2 CTL3     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CTL3     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CTL3     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CTL3     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CTL3     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CTL3     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CTL3     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CEL1 CRL2 CEL1     1.000   1   180.00 !2,5-diheptane
+CEL1 CEL1 CRL2 CEL1     0.100   2     0.00 !2,5-diheptane
+CEL1 CEL1 CRL2 CEL1     0.300   3   180.00 !2,5-diheptane
+CEL1 CEL1 CRL2 CEL1     0.200   4     0.00 !2,5-diheptane
+CEL1 CEL1 CRL1 CRL1     0.5000  1   180.0  ! torR2, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CRL1 CRL1     1.3000  3   180.0  !
+CEL1 CEL1 CTL1 CRL1     0.5000  1   180.0  ! torR2, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CTL1 CRL1     1.3000  3   180.0  !
+CEL1 CEL1 CRL1 CTL1     0.5000  1   180.0  ! torR2, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CRL1 CTL1     1.3000  3   180.0  !
+CEL1 CEL1 CRL2 CRL2     0.9100  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CRL2 CRL2     0.1800  2    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CRL2 CRL2     0.1700  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CRL2 CTL2     0.9100  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CRL2 CTL2     0.1800  2    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CRL2 CTL2     0.1700  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CTL2 CRL2     0.9100  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CTL2 CRL2     0.1800  2    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CEL1 CTL2 CRL2     0.1700  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda, 6/18)
+CEL1 CRL2 CRL2 CRL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CRL2 CRL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CRL2 CRL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CTL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CTL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CTL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CTL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CTL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CTL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CTL2 CRL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CTL2 CRL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CTL2 CRL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CRL2 CTL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CRL2 CTL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CRL2 CTL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CRL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CRL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CRL2 CTL2 CRL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CRL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CRL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+CEL1 CTL2 CRL2 CRL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09 (from jbklauda)
+X    CRL1 CTL1 X        0.200   3     0.00 ! alkane, 3/92
+X    CRL1 CRL1 X        0.200   3     0.00 ! alkane, 3/92
+X    CRL1 CTL2 X        0.200   3     0.00 ! alkane, 3/92
+X    CRL1 CRL2 X        0.200   3     0.00 ! alkane, 3/92
+X    CTL1 CRL2 X        0.200   3     0.00 ! alkane, 3/92
+X    CRL1 CTL3 X        0.200   3     0.00 ! alkane, 3/92
+X    CTL2 CRL2 X        0.1900  3     0.00 ! alkane, 4/98, yin and mackerell
+X    CRL2 CRL2 X        0.1900  3     0.00 ! alkane, 4/98, yin and mackerell
+X    CRL2 CTL3 X        0.1600  3     0.00 ! alkane, 4/98, yin and mackerell
+CRL2 CEL1 CRL1 CTL3     0.00    3   180.0  ! bR12
+X    CRL1 NH3L X        0.1000  3     0.00 ! for POPS
+HEL1 CEL1 CRL2 CRL1     0.00    3     0.0  ! wC9H, HEL1 CEL1 CTL2 CTL2
+HEL1 CEL1 CTL2 CRL1     0.00    3     0.0  ! wC9H, HEL1 CEL1 CTL2 CTL2
+HEL1 CEL1 CRL2 CTL1     0.00    3     0.0  ! wC9H, HEL1 CEL1 CTL2 CTL2
+HEL1 CEL1 CRL2 CTL2     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+HEL1 CEL1 CTL2 CRL2     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+HEL1 CEL1 CRL2 CTL3     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+HEL1 CEL1 CRL2 HGA2     0.0000  3     0.00 ! butene, adm jr., 2/00 update
+HEL1 CEL1 CTL2 HGA2     0.0000  3     0.00 ! butene, adm jr., 2/00 update
+HEL1 CEL1 CRL2 HAL2     0.0000  3     0.00 ! butene, adm jr., 2/00 update
+CEL1 CRL2 CEL1 HEL1     0.000   2     0.00 !1,4-dipentene
+CEL1 CRL2 CEL1 HEL1     0.000   3     0.00 !1,4-dipentene
+CRL2 CEL1 CEL2 HEL2     5.2000  2   180.00 ! propene, yin,adm jr., 12/95
+CEL2 CEL1 CRL2 CRL2     0.5000  1   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CRL2 CRL2     1.3000  3   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CTL2 CRL2     0.5000  1   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CTL2 CRL2     1.3000  3   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CRL2 CTL2     0.5000  1   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CRL2 CTL2     1.3000  3   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CRL2 CTL3     0.5000  1   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CRL2 CTL3     1.3000  3   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CRL2 HGA2     0.1200  3     0.00 ! 1-butene, yin,adm jr., 12/95
+CEL2 CEL1 CTL2 HGA2     0.1200  3     0.00 ! 1-butene, yin,adm jr., 12/95
+CEL2 CEL1 CRL2 HAL2     0.1200  3     0.00 ! 1-butene, yin,adm jr., 12/95
+CEL2 CEL1 CRL2 CEL1     1.200   1   180.00 !1,4-dipentene
+CEL2 CEL1 CRL2 CEL1     0.400   2   180.00 !1,4-dipentene
+CEL2 CEL1 CRL2 CEL1     1.300   3   180.00 !1,4-dipentene
+HGA2 CRL2 CEL1 CRL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+HAL2 CRL2 CEL1 CRL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+HGA2 CTL2 CEL1 CRL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+HGA2 CRL2 CEL1 CTL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+HGA2 CTL2 CEL1 CTL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+HAL2 CRL2 CEL1 CTL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+HAL2 CTL2 CEL1 CRL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+HEL1 CEL1 CRL2 CRL2     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+!Dihedrals appended for ergosterol (bjr)
+CEL1 CEL1 CTL1 HAL1     0.3000  3   180.00 ! From 2-butene
+CEL1 CEL1 CRL1 HGA1     0.3000  3   180.00 ! From CEL1 CEL1 CRL2 HGA2
+X CEL1 CTL1 X           0.000   3   180.00 ! from br12
+HAL2 CTL2 CEL1 CTL1     0.0300  3     0.0  ! CH2 wag and twist, from CEL1 CEL1 CTL2 HAL2
+CEL1 CEL1 CTL2 CTL1     0.5000  1   180.0  ! torR2, CEL1 CEL1 CTL2 CTL2
+CEL1 CEL1 CTL2 CTL1     1.3000  3   180.0  !
+CTL1 CTL2 CEL1 CTL1     0.30    3   180.0  ! torR1
+X CEL1 CRL1 X           0.000   3   180.00 ! from br12
+!sphingolipids
+NH2  CT1  C    O        0.0000  1     0.00
+O    C    CP1  CP2      0.4000  1   180.00 ! ALLOW PEP PRO
+O    C    CP1  CP2      0.6000  2     0.00 ! ALLOW PEP PRO
+O    C    CP1  HB1      0.4000  1     0.00 ! ALLOW PEP PRO
+O    C    CP1  HB1      0.6000  2     0.00 ! ALLOW PEP PRO
+O    C    CP1  N       -0.3000  4     0.00 ! ALLOW PEP PRO
+O    C    CT1  CT1      1.4000  1     0.00 !   ALLOW PEP
+O    C    CT1  CT2      1.4000  1     0.00 !   ALLOW PEP
+O    C    CT1  CT3      1.4000  1     0.00 !   ALLOW PEP
+O    C    CT1  HB1      0.0000  1     0.00 !   ALLOW PEP
+O    C    CT1  NH1      0.0000  1     0.00 !   ALLOW PEP
+O    C    CT1  NH3      0.0000  1     0.00 ! ALLOW PEP PRO
+O    C    CT2  CT2      1.4000  1     0.00 !   ALLOW PEP
+                ! from O    C    CT1  CT2, for lactams, adm jr.
+O    C    CT2  HA2      0.0000  3   180.00 ! ALLOW POL
+O    C    CT2  HB2      0.0000  1     0.00 !   ALLOW PEP
+O    C    CT2  NH1      0.0000  1     0.00 !   ALLOW PEP
+O    C    CT2  NH3      0.0000  1     0.00 ! ALLOW PEP PRO
+O    C    CT3  HA3      0.0000  3   180.00 ! ALLOW POL
+O    C    N    CP1      2.7500  2   180.00 ! ALLOW PRO
+O    C    N    CP1      0.3000  4     0.00 ! ALLOW PRO
+O    C    N    CP3      2.7500  2   180.00 ! ALLOW PRO
+O    C    N    CP3      0.3000  4     0.00 ! ALLOW PRO
+O    C    NH1  CT1      2.5000  2   180.00 !  ALLOW PEP
+O    C    NH1  CT2      2.5000  2   180.00 !  ALLOW PEP
+O    C    NH1  CT3      2.5000  2   180.00 !  ALLOW PEP
+O    C    NH1  H        2.5000  2   180.00 !  ALLOW PEP
+CT2A CT1  C    O        1.4000  1     0.00 ! from O    C    CT1  CT2
+CTL3 CTL1 CEL3 CEL3     0.9000  1   180.00 ! lip36; 2-pentene and 3-heptene; CEL1 CEL1 CTL2 CTL3
+CEL3 CEL3 CTL2 CTL3     0.9100  1   180.00 ! lip36; 2-hexene, adm jr., 11/09
+CEL3 CEL3 CTL2 CTL3     0.1800  2   180.00 !
+CEL3 CEL3 CTL2 CTL3     0.1700  3   180.00 ! ""
+CEL3 CEL3 CTL2 CTL2     0.9100  1   180.00 ! lip36; 2-hexene, adm jr., 11/09
+CEL3 CEL3 CTL2 CTL2     0.1800  2   180.00 !
+CEL3 CEL3 CTL2 CTL2     0.1700  3   180.00 ! ""
+CTL1 CEL3 CEL3 CTL2     0.4500  1   180.00 ! lip36; 2-butene, adm jr., 4/04; X CEL1 CEL1 X
+CTL1 CEL3 CEL3 CTL2     8.5000  2   180.00 ! lip36; 2-butene, adm jr., 4/04; X CEL1 CEL1 X
+CTO1 CEL3 CEL3 CTL2     0.1500  1     0.00 ! prot27; 2-butene, adm jr., 2/00 update; X CEL1 CEL1 X
+CTO1 CEL3 CEL3 CTL2     8.5000  2   180.00 ! prot27; 2-butene, adm jr., 2/00 update; X CEL1 CEL1 X
+CTL1 CTL1 CEL3 CEL3     0.6000  1   180.00 ! lip36; 2-hexene; CEL1 CEL1 CTL2 CTL2
+!CCCO
+O    C    CTL2 CTL3     1.400   1     0.00 ! prot22; lactams, adm jr; O C CT2 CT2/O C CT1 CT3
+O    C    CTL2 CTL2     1.400   1     0.00 ! prot22; lactams, adm jr; O C CT2 CT2/O C CT1 CT3
+OHL  CTL1 CEL3 CEL3     0.600   1   180.00 ! lip36; 2-hexene; CEL3 CEL3 CTL2 CTL2
+OSL  CTO1 CEL3 CEL3     1.280   1    180.0 ! torsfit MP2/ccpVTZ, cer1 model, erh 8/09
+OSL  CTO1 CEL3 CEL3     0.560   2    180.0 ! ""  analogy fot TACSPH, rmv nov 2009
+OSL  CTO1 CEL3 CEL3     0.860   3      0.0 ! ""
+CTL2 CTL1 CTO1 OHL      0.200   3     0.00 ! lip36; alkane, 3/92, X CTL1 CTL1 X
+CTO1 CTL1 CTL2 OSL      0.390   1   180.00 ! torsfit MP2/ccpVTZ, sph model, erh 8/09; transferred from cer4
+CTO1 CTL1 CTL2 OSL      0.510   2   180.00 ! ""
+CTO1 CTL1 CTL2 OSL      0.870   3   180.00 ! ""
+CTL2 CTL1 CTO1 OSL      0.390   1   180.00 ! torsfit MP2/ccpVTZ, sph model, erh 8/09; transferred from cer4 
+CTL2 CTL1 CTO1 OSL      0.510   2   180.00 ! ""       analogy for TACSPH, rmv nov 2009
+CTL2 CTL1 CTO1 OSL      0.870   3   180.00 ! ""
+!HCOH
+HAL1 CTO1 OHL  HOL      0.140   3    0.00  ! lip36; glycerol, X CTL1 OHL  X
+!COCC
+CL   OSL  CTO1 CTL1     0.000   4     0.00 ! glycerol, beta1 6/07; from lip36 for TACSPH, rmv nov 2009
+CL   OSL  CTO1 CTL1     0.150   3   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTO1 CTL1     1.453   2   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTO1 CTL1     0.837   1   180.00 ! glycerol, beta1 6/07
+CEL3 CTO1 OSL  CL       0.220   1     0.00 ! og OMeTHP compounds 2 and 3; rmv nov 2009
+CEL3 CTO1 OSL  CL       0.280   2   180.00 ! "  MCSA fit
+CEL3 CTO1 OSL  CL       0.890   3     0.00 ! "  MP2/cc-pVTZ//MP2/6-31G*
+!COCH
+HAL1 CTO1 OSL  CL       0.00    3     0.00 ! lip36, X CT1 OSL X; TACCSPH, rmv nov 2009
+!CCCH
+HEL1 CEL3 CTL1 CTL3     0.1200  3     0.00 ! prot22; for butene, yin/adm jr., 12/95; HE1 CE1 CT2 CT3
+HEL1 CEL3 CTO1 CTL3     0.1200  3     0.00 ! prot22; for butene, yin/adm jr., 12/95; HE1 CE1 CT2 CT3
+HEL1 CEL3 CTL2 CTL2     0.1200  3     0.00 ! prot22; for butene, yin/adm jr., 12/95; HE1 CE1 CT2 CT3
+HAL1 CTL1 CEL3 CEL3     0.0300  3     0.00 ! prot22;for butene, yin/adm jr., 12/95; CE1 CE1 CT3 HA
+HAL1 CTO1 CEL3 CEL3     0.0300  3     0.00 ! prot22;for butene, yin/adm jr., 12/95; CE1 CE1 CT3 HA
+CTL1 CTL1 CEL3 HEL1     0.1200  3     0.00 ! lip36; butene, yin, adm. jr; CTL2 CTL2 CEL1 HEL1
+HAL1 CTL3 CTO1 CEL3     0.2000  3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL3 X
+CTL2 CTL1 CTO1 HAL1     0.200   3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL3 X
+CTL1 CTO1 CEL3 HEL1     0.1200  3     0.00 ! lip36  butene, yin, adm. jr; CTL2 CTL2 CEL1 HEL1
+HAL1 CTL1 CTO1 CEL3     0.200   3     0.00 ! lip36; alkane, 3/92: X CTL1 CTL3 X
+CTO1 CEL3 CEL3 HEL1     0.1500  1   180.00 ! lip36; 2-butene, adm jr., 2/00 update; X CEL1 CEL1 X
+CTO1 CEL3 CEL3 HEL1     8.5000  2   180.00 ! lip36; 2-butene, adm jr., 2/00 update; X CEL1 CEL1 X
+CEL3 CEL3 CTL2 HAL2     0.3000  3   180.00 ! lip36; 2-butene, adm jr., 4/04; CEL1 CEL1 CTL2 HAL2
+HEL1 CEL3 CEL3 CTL2     0.1500  1   180.00 ! lip36; 2-butene, adm jr., 2/00 update; X CEL1 CEL1 X
+HEL1 CEL3 CEL3 CTL2     8.5000  2   180.00 ! lip36; 2-butene, adm jr., 2/00 update; X CEL1 CEL1 X
+HEL1 CEL3 CTL2 CTL3     0.1200  3     0.00 ! lip36; butene, yin,adm jr., 12/95; HEL1 CEL1 CTL2 CTL3
+!HCCH
+HEL1 CEL3 CTL1 HAL1     0.000   3     0.00 ! prot22; butene, adm jr., 2/00 update; HE1 CE1 CT2 HA
+HEL1 CEL3 CTO1 HAL1     0.000   3     0.00 ! prot22; butene, adm jr., 2/00 update; HE1 CE1 CT2 HA
+HAL3 CTL3 CTO1 HAL1     0.200   3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL3 X
+HAL1 CTL1 CTO1 HAL1     0.200   3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL1 X
+HEL1 CEL3 CEL3 HEL1     1.000   2   180.00 ! lip36; 2-butene, adm jr., 8/98 update; HEL1 CEL1 CEL1 HEL1
+HEL1 CEL3 CTL2 HAL2     0.000   3     0.00 ! lip36; butene, adm jr., 2/00 update; HEL1 CEL1 CTL2 HAL2
+!OCCH
+OHL  CTL1 CEL3 HEL1     0.120   3   180.00 ! lip36; butene, yin, adm jr., 12/95; HEL1 CEL1 CTL1 CTL3
+OHL  CTO1 CEL3 HEL1     0.120   3   180.00 ! lip36; butene, yin, adm jr., 12/95; HEL1 CEL1 CTL1 CTL3
+OSL  CTO1 CEL3 HEL1     0.120   3   180.00 ! lip36; butene, yin, adm jr., 12/95; HEL1 CEL1 CTL1 CTL3 rmv nov 2009
+O    C    CTL2 HAL2     0.000   3   180.00 ! prot22; adm jr., 8/13/90 acetamide geometry and vibrations; O C CT2 HA
+O    C    CTL3 HAL3     0.000   3   180.00 ! prot22; adm jr., 8/13/90 acetamide geometry and vibrations; O C CT3 HA
+HAL3 CTL3 CTO1 OHL      0.200   3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL3 X
+HAL1 CTL1 CTO1 OHL      0.200   3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL1 X
+HAL1 CTL1 CTO1 OSL      0.200   3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL1 X; rmv nov 2009
+!NCCC
+NHL  CTL1 CTL1 CTL3     0.260   1   180.00 ! torsfit MP2/ccpVTZ, cer3 model, erh 8/09
+NHL  CTL1 CTL1 CTL3     0.390   2   180.00 ! ""
+NHL  CTL1 CTL1 CTL3     0.120   3   180.00 ! ""
+!NCCH
+NHL  C    CTL2 HAL2     0.000   3     0.00 ! prot22; LK for autogenerate dihe, sp2-methyl, no dihedral potential; NH1 C CT2 HA
+NHL  C    CTL3 HAL3     0.000   3     0.00 ! prot22; LK for autogenerate dihe, sp2-methyl, no dihedral potential; NH1 C CT3 HA
+NHL  CTL1 CTO1 HAL1     0.200   3     0.00 ! lip36; alkane, 3/92; X CTL1 CTL1 X
+!HNCH
+HAL3 CTL3 NHL  H        0.000   3     0.00 ! prot22; LK for autogenerate dihe, sp2-methyl, no dihedral potential;  HA CT3 NH1 H
+HAL1 CTL1 NHL  H        0.000   1     0.00 ! prot22; Alanine Dipeptide ab initio calc's (LK); HB CT1 NH1 H
+!OCNH HNCC for NMA/CERN cis/trans barrier
+H    NHL  C    O        0.530   1     0.00 ! fit to cern QM profile, jbk 10/12
+H    NHL  C    O        1.270   2   180.00 ! fit to cern QM profile, jbk 10/12
+H    NHL  C    O        0.140   3     0.00 ! fit to cern QM profile, jbk 10/12
+H    NHL  C    O        0.780   4     0.00 ! fit to cern QM profile, jbk 10/12
+H    NHL  C    CTL2     2.500   2   180.00 ! prot22;,Gives appropriate NMA cis/trans barrier. (LK); H NH1 C CT2
+H    NHL  CTL1 CTL2     0.000   1     0.00 ! prot22; Alanine Dipeptide ab initio calc's (LK); H NH1 CT1 CT2
+H    NHL  CTL1 CTL1     0.000   1     0.00 ! prot22; Alanine Dipeptide ab initio calc's (LK); H NH1 CT1 CT1
+H    NHL  C    CTL3     2.500   2   180.00 ! prot22; Gives appropriate NMA cis/trans barrier. (LK); H NH1 C CT3
+H    NHL  CTL1 CTL3     2.500   2   180.00 ! prot22;
+H    NHL  CTL1 CTO1     0.000   1     0.00 ! prot22; Alanine Dipeptide ab initio calc's (LK); H NH1 CT1 CT1
+!OCNC
+O    C    NHL  CTL3     2.500   2   180.00 ! prot22; Gives appropriate NMA cis/trans barrier. (LK); O C NH1 CT3
+O    C    NHL  CTL1     2.500   2   180.00 ! prot22; Gives appropriate NMA cis/trans barrier. (LK); O  C NH1 CT1
+!CCNC
+CTL1 NHL  C    CTL2     0.000   1     0.00 ! set to zero in fits
+CTL1 NHL  C    CTL3     0.000   1     0.00 ! set to zero in fits
+! torsion 4 and OH torsion
+CTL2 C    NHL  CTL3     1.600   1     0.00 ! prot22; from CT2  C    NH1  CT2, adm jr. 10/21/96; CT2 C NH1 CT3
+CTL3 C    NHL  CTL3     1.600   1     0.00 ! prot22; from CT2  C    NH1  CT2, adm jr. 10/21/96; CT2 C NH1 CT3
+CTL1 CTL1 NHL  C        0.000   1     0.00 ! set to zero in fit
+CTL2 CTL1 NHL  C        0.000   1     0.00 ! set to zero in fit
+CTL3 CTL1 NHL  C        0.000   1     0.00 ! set to zero in fit
+C    NHL  CTL1 CTO1     4.080   1     0.00 ! torsion fit to cer6 qm, jbk 10/12
+C    NHL  CTL1 CTO1     1.560   2   180.00 ! torsion fit to cer6 qm, jbk 10/12
+C    NHL  CTL1 CTO1     1.800   3     0.00 ! torsion fit to cer6 qm, jbk 10/12
+CTL1 CTO1 OHL  HOL      5.000   1   180.00 ! torsion fit to cer6 qm, jbk 10/12
+CTL1 CTO1 OHL  HOL      0.220   2     0.00 ! torsion fit to cer6 qm, jbk 10/12
+CTL1 CTO1 OHL  HOL      1.110   3   180.00 ! torsion fit to cer6 qm, jbk 10/12
+HOL  OHL  CTL1 CEL3     1.330   1     0.00 ! prot22; 2-propanol OH hf/6-31g* torsional surface, adm jr., 3/2/93; H OH1 CT1 CT1
+HOL  OHL  CTO1 CEL3     1.330   1     0.00 ! prot22; 2-propanol OH hf/6-31g* torsional surface, adm jr., 3/2/93; H OH1 CT1 CT1
+HOL  OHL  CTO1 CTL3     0.000   3     0.00 ! torsion fit to cer6 qm, jbk 9/12
+!HCNC
+HAL3 CTL3 NHL  C        0.000   3     0.00 ! prot22; LK for autogenerate dihe, sp2-methyl, no dihedral potential; HA CT3 NH1 C
+HAL1 CTL1 NHL  C        0.000   1     0.00 ! prot22; Alanine Dipeptide ab initio calc's (LK); HB CT1 NH1 C
+!NCCO
+NHL  CTL1 CTL2 OSL      1.630   1   180.00 ! torsfit MP2/ccpVTZ, cer3 model, erh 8/09; transferred
+NHL  CTL1 CTL2 OSL      0.490   2     0.00 ! ""
+NHL  CTL1 CTL2 OSL      0.570   3     0.00 ! ""
+NHL  CTL1 CTO1 OSL      1.630   1   180.00 ! torsfit MP2/ccpVTZ, cer3 model, erh 8/09; transferred
+NHL  CTL1 CTO1 OSL      0.490   2     0.00 ! ""         analogy for TACSPH, rmv nov 2009
+NHL  CTL1 CTO1 OSL      0.570   3     0.00 ! ""
+!OPOC
+OSL  PL   OSL  CTL2     1.200   1   180.00 ! lip36; phosphate, new NA, 4/98, adm jr.
+OSL  PL   OSL  CTL2     0.100   2   180.00 ! lip36; phosphate, new NA, 4/98, adm jr.
+OSL  PL   OSL  CTL2     0.100   3   180.00 ! lip36; phosphate, new NA, 4/98, adm jr.
+!torsion1
+CEL3 CTO1 CTL1 NHL      0.940   1     0.00 ! torfit to cer4 qm, jbk 5/13
+CEL3 CTO1 CTL1 NHL      0.880   2   180.00 ! torfit to cer4 qm, jbk 5/13
+CEL3 CTO1 CTL1 NHL      2.090   3     0.00 ! torfit to cer4 qm, jbk 5/13
+NHL  CTL1 CTO1 OHL      0.420   1     0.00 ! torfit to cer4 qm, jbk 5/13
+NHL  CTL1 CTO1 OHL      1.530   2   180.00 ! torfit to cer4 qm, jbk 5/13
+NHL  CTL1 CTO1 OHL      1.580   3   180.00 ! torfit to cer4 qm, jbk 5/13
+CEL3 CTO1 CTL1 CTL2     0.000   1     0.00 ! torfit to cer4 qm, jbk 10/12
+!torsion2
+CEL3 CEL3 CTO1 CTL1     0.860   1     0.00 ! torfit to cer4 qm w/adj, jbk 5/13
+CEL3 CEL3 CTO1 CTL1     1.910   2     0.00 ! torfit to cer4 qm w/adj, jbk 5/13
+CEL3 CEL3 CTO1 CTL1     1.520   3   180.00 ! torfit to cer4 qm w/adj, jbk 5/13
+CEL3 CEL3 CTO1 OHL      1.380   1   180.00 ! torfit to cer4 qm w/adj, jbk 5/13
+CEL3 CEL3 CTO1 OHL      0.580   2     0.00 ! torfit to cer4 qm w/adj, jbk 5/13
+CEL3 CEL3 CTO1 OHL      1.030   3     0.00 ! torfit to cer4 qm w/adj, jbk 5/13
+!torsion3
+NHL  CTL1 CTL2 OSLP     1.370   1     0.00 ! torfit to cer3 qm, jbk 5/13
+NHL  CTL1 CTL2 OSLP     0.340   2     0.00 ! torfit to cer3 qm, jbk 5/13
+NHL  CTL1 CTL2 OSLP     0.200   3   180.00 ! torfit to cer3 qm, jbk 5/13
+NHL  CTL1 CTL2 OSLP     0.020   4   180.00 ! torfit to cer3 qm, jbk 5/13
+NHL  CTL1 CTL2 OSLP     0.140   5     0.00 ! torfit to cer3 qm, jbk 5/13
+NHL  CTL1 CTL2 OSLP     0.060   6     0.00 ! torfit to cer3 qm, jbk 5/13
+CTL1 CTL1 CTL2 OSLP     0.000   1     0.00 ! torfit to cer3 qm, jbk 5/13
+!torsion5
+CTL3 CTL2 C    NHL      1.990   1     0.00 ! torfit to cer2 qm, jbk 10/12
+CTL3 CTL2 C    NHL      0.640   2   180.00 ! torfit to cer2 qm, jbk 10/12
+CTL3 CTL2 C    NHL      0.280   3   180.00 ! torfit to cer2 qm, jbk 10/12
+CTL2 CTL2 C    NHL      1.990   1     0.00 ! torfit to cer2 qm, jbk 10/12
+CTL2 CTL2 C    NHL      0.640   2   180.00 ! torfit to cer2 qm, jbk 10/12
+CTL2 CTL2 C    NHL      0.280   3   180.00 ! torfit to cer2 qm, jbk 10/12
+X    CTL1 CTO1 X        0.200   3     0.00 ! alkane, 3/92
+X    CTO1 CTL3 X        0.200   3     0.00 ! alkane, 3/92
+!Added by STN for CER24, 3/13
+NHL  CTL1 CTO2 OHL      0.550   1     0.00 ! jbk; NHL CTL1 CTO1 OHL
+NHL  CTL1 CTO2 OHL      1.630   2   180.00 ! jbk; NHL CTL1 CTO1 OHL
+NHL  CTL1 CTO2 OHL      1.430   3   180.00 ! jbk; NHL CTL1 CTO1 OHL
+C    NHL  CTL1 CTO2     4.080   1     0.00 ! jbk; C   NHL CTL1 CTO1
+C    NHL  CTL1 CTO2     1.560   2   180.00 ! jbk; C   NHL CTL1 CTO1
+C    NHL  CTL1 CTO2     1.800   3     0.00 ! jbk; C   NHL CTL1 CTO1
+X    CTL1 CTO2 X        0.200   3     0.00 ! alkane, 3/92; X CTL1 CTL2 X
+X    CTO2 OHL  X        0.140   3     0.00 ! glycerol; X CTL2 OHL X
+CTO2 CTL1 CTO1 OHL      0.200   3     0.00 ! lip36; alkane, 3/92, X CTL1 CTL1 X
+H    NHL  CTL1 CTO2     0.000   1     0.00 ! prot22; Alanine Dipeptide ab initio calc's (LK); H NH1 CT1 CT2
+CEL3 CTO1 CTL1 CTO2     0.000   1     0.00 ! torfit to cer4 qm, jbk 10/12
+!inositol
+CC3161  CC3161  CC3161  OG311    0.20  3    0.0 !from carb ff: CC3161-CC3161-CC3161-OC311; par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3161  CC3162   0.19  3  180.0 ! og/sng cyclohexane
+CC3161  CC3161  CC3261  CC3062   0.19  3  180.0 ! og/sng cyclohexane
+CC3161  CC3161  CC3161  CC3163   0.19  3  180.0 ! og/sng cyclohexane
+CC3161  CC3161  CC3161  CC3263   0.19  3  180.0 ! og/sng cyclohexane
+CC3261  CC3161  CC3161  CC3163   0.19  3  180.0 ! og/sng cyclohexane
+CC3161  CC3161  CC3163  CC321    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3163  CC331    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3163  CC2O2    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3261  CC3062  CC2O2    0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC3161  CC3161  CC3163  CC312    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3163  CC312   CC312    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3161  CC3161   2.31  3  180.0 ! erh fit inositol RIMP2/cc-pVTZ//MP2/631gd C1-C2-C3-C4
+CC3162  CC3163  CC3161  CC3161   0.19  3  180.0 ! og/sng cyclohexane
+CC3161  CC3161  CC3162  OC3C61   0.31  3  180.0 ! og/sng thp
+CC3161  CC3261  CC3062  OC3C61   0.31  3  180.0 ! og/sng thp
+CC3161  CC3161  CC3163  OC3C61   0.31  3  180.0 ! og/sng thp
+CC3161  CC3161  CC3263  OC3C61   0.31  3  180.0 ! og/sng thp
+CC3161  CC3161  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3162  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3163  CC312   OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3163  CC321   OC311    0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC3161  CC3261  CC3062  OC311    0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC3162  CC3161  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3062  CC3261  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC3163  CC3161  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3263  CC3161  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC321   CC3163  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC331   CC3163  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC331   CC3163  CC3161  OC301    0.20  3    0.0 ! CC331   CC3163  CC3161  OC311, pram 
+CC2O2   CC3163  CC3161  OC311    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC2O2   CC3163  CC3161  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC321   CC3163  CC3161  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3161  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3162  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3161  CC3162  OC302    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3162  CC3161  CC3161  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3163  CC3161  CC3161  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3163  CC2O2   OC2D2    0.05  6 180.00 ! par22 X CT1 CC X
+CC3161  CC3163  CC321   OC301    1.10  1  180.0 ! og compounds 11 and 12
+CC3161  CC3163  CC321   OC301    0.07  2  180.0 ! "  MCSA fit
+CC3161  CC3163  CC321   OC301    0.15  3    0.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+NC2D1   CC3161  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+NC2D1   CC3161  CC3161  CC3261   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC312   CC3163  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3161  CC3162  OC3C61  CC3163   0.20  3    0.0 ! og/sng thp
+CC3161  CC3162  OC3C61  CC3263   0.20  3    0.0 ! og/sng thp
+CC3161  CC3163  OC3C61  CC3162   0.20  3    0.0 ! og/sng thp
+CC3161  CC3163  OC3C61  CC3062   0.20  3    0.0 ! og/sng thp
+CC3161  CC3263  OC3C61  CC3162   0.20  3    0.0 ! og/sng thp
+CC3161  CC3162  OC301   CC331    0.22  1    0.0 ! og OMeTHP compounds 2 and 3
+CC3161  CC3162  OC301   CC331    0.28  2  180.0 ! "  MCSA fit
+CC3161  CC3162  OC301   CC331    0.89  3    0.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+CC3161  CC3162  OC301   CC321    0.22  1    0.0 ! og OMeTHP compounds 2 and 3
+CC3161  CC3162  OC301   CC321    0.28  2  180.0 ! "  MCSA fit
+CC3161  CC3162  OC301   CC321    0.89  3    0.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+CC3161  CC3162  OC302   CC3162   0.73  1    0.0 ! og THP-1-O-1-THP
+CC3161  CC3162  OC302   CC3162   0.61  2  180.0 ! "  MCSA fit
+CC3161  CC3162  OC302   CC3162   0.00  3  180.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+CC3161  CC3162  OC301   CC3161   0.41  1  180.0 ! og THP-1-O-2-CYHX
+CC3161  CC3162  OC301   CC3161   0.66  2  180.0 ! "  MCSA fit
+CC3161  CC3162  OC301   CC3161   1.60  3    0.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+CC3162  CC3161  OC301   CC3162   0.13  1  180.0 ! og THP-1-O-2-CYHX
+CC3162  CC3161  OC301   CC3162   0.25  2  180.0 ! "  MCSA fit
+CC3162  CC3161  OC301   CC3162   0.06  3  180.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+CC3161  CC3161  OC301   CC3162   0.13  1  180.0 ! og THP-1-O-2-CYHX
+CC3161  CC3161  OC301   CC3162   0.25  2  180.0 ! "  MCSA fit
+CC3161  CC3161  OC301   CC3162   0.06  3  180.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+CC3163  CC3161  OC301   CC3162   0.13  1  180.0 ! og THP-1-O-2-CYHX
+CC3163  CC3161  OC301   CC3162   0.25  2  180.0 ! "  MCSA fit
+CC3163  CC3161  OC301   CC3162   0.06  3  180.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+OC311   CC3161  CC3161  OC311    2.65  1  180.0 ! og ethylene glycol combo
+OC311   CC3161  CC3161  OC311    0.00  2    0.0 ! "
+OC311   CC3161  CC3161  OC311    0.13  3  180.0 ! "
+OG311   CC3161  CC3161  OG311    2.65  1  180.0 ! og ethylene glycol combo
+OG311   CC3161  CC3161  OG311    0.00  2    0.0 ! "
+OG311   CC3161  CC3161  OG311    0.13  3  180.0 ! "
+OC311   CC3162  CC3161  OC311    2.65  1  180.0 ! og ethylene glycol combo
+OC311   CC3162  CC3161  OC311    0.00  2    0.0 ! "
+OC311   CC3162  CC3161  OC311    0.13  3  180.0 ! "
+OC301   CC3162  CC3161  OC311    2.65  1  180.0 ! og ethylene glycol combo
+OC301   CC3162  CC3161  OC311    0.00  2    0.0 ! "
+OC301   CC3162  CC3161  OC311    0.13  3  180.0 ! "
+OC302   CC3162  CC3161  OC311    2.65  1  180.0 ! og ethylene glycol combo
+OC302   CC3162  CC3161  OC311    0.00  2    0.0 ! "
+OC302   CC3162  CC3161  OC311    0.13  3  180.0 ! "
+OC301   CC3161  CC3161  OC311    2.65  1  180.0 ! og ethylene glycol combo
+OC301   CC3161  CC3161  OC311    0.00  2    0.0 ! "
+OC301   CC3161  CC3161  OC311    0.13  3  180.0 ! "
+OC301   CC3161  CC3162  OC311    2.65  1  180.0 ! og ethylene glycol combo
+OC301   CC3161  CC3162  OC311    0.00  2    0.0 ! "
+OC301   CC3161  CC3162  OC311    0.13  3  180.0 ! "
+OC301   CC3161  CC3162  OC301    0.59  1  180.0 ! par35 OC30A CC32A CC32A OC30A
+OC301   CC3161  CC3162  OC301    1.16  2    0.0 ! " og/rmv RESMOR and FABYOW10
+OC301   CC3161  CC3162  OC3C61   2.75  1  180.0 ! from
+OC301   CC3161  CC3162  OC3C61   0.26  2  180.0 ! " OC311 CC3161 CC3162 OC3C61
+OC301   CC3161  CC3162  OC3C61   0.10  3    0.0 ! "
+OC301   CC3161  CC3163  OC3C61   1.36  1  180.0 ! from
+OC301   CC3161  CC3163  OC3C61   0.16  2    0.0 ! " OC311 CC3161 CC3163 OC3C61
+OC301   CC3161  CC3163  OC3C61   1.01  3    0.0 ! "
+HCP1    OC311   CC3161  HCA1     0.18  3    0.0 ! og methanol
+HCA1    CC3161  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3161  CC3161  OG311    0.14  3    0.0 ! og ethanol
+HCA1    CC3161  CC3162  OC311    0.14  3    0.0 ! og ethanol
+HCA2    CC3261  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3162  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3163  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA2    CC3263  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3161  CC3163  OC3C61   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3263  OC3C61   0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC3161  CC3162  OC3C61   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3162  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3162  OC302    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC301   CC3161  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC301   CC3161  CC3162  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC301   CC3161  CC3163  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3162  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3163  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC301   CC3162  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC311   CC3162  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC301   CC3161  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC311   CC3161  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC3C61  CC3162  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC3C61  CC3163  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC2D1   CC2O1   NC2D1   CC3161   2.50  2  180.0 ! par22 O C NH1 CT1
+CC3161  NC2D1   CC2O1   CC331    1.60  1    0.0 ! par22 CT1 NH1 C CT3
+CC3161  NC2D1   CC2O1   CC331    2.50  2  180.0 ! "
+CC2O1   NC2D1   CC3161  CC3162   0.50  1  180.0 ! og fit to IPAA
+CC2O1   NC2D1   CC3161  CC3161   0.50  1  180.0 ! og fit to IPAA
+CC2O1   NC2D1   CC3161  CC3163   0.50  1  180.0 ! og fit to IPAA
+HCA1    CC3161  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3162  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3263  HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA2    CC3261  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC3161  OC301   CC3162  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC3162  OC301   CC3161  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+HCA1    CC3161  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3162  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3163   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3261   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3263   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  CC312    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC312   CC3163  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3162   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3163  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA2    CC3263  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC3161  CC3163  CC321    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  CC331    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  CC2O2    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3261  CC3062   0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA2    CC321   CC3163  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA2    CC3261  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA3    CC331   CC3163  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL3 X
+HCP1    NC2D1   CC3161  CC3161   0.00  1    0.0 ! par22 H NH1 CT1 CT1
+HCP1    NC2D1   CC3161  CC3162   0.00  1    0.0 ! par22 H NH1 CT1 CT1
+HCP1    NC2D1   CC3161  CC3163   0.00  1    0.0 ! par22 H NH1 CT1 CT1
+HCP1    NC2D1   CC3161  HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 H
+CC2O1   NC2D1   CC3161  HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 C
+CC3161  OC301   CC3162  OC3C61   0.05  1  180.0 ! og THP-1-O-2-CYHX
+CC3161  OC301   CC3162  OC3C61   0.91  2    0.0 ! "  MCSA fit
+CC3161  OC301   CC3162  OC3C61   1.27  3  180.0 ! "  MP2/cc-pVTZ//MP2/6-31G*
+CC3161  CC3162  OC311   HCP1     0.29  1    0.0
+CC3161  CC3162  OC311   HCP1     0.62  2    0.0
+CC3161  CC3162  OC311   HCP1     0.05  3    0.0
+CC3162  CC3161  OC311   HCP1     0.29  1    0.0
+CC3162  CC3161  OC311   HCP1     0.62  2    0.0
+CC3162  CC3161  OC311   HCP1     0.05  3    0.0
+CC3161  CC3161  OC311   HCP1     0.29  1    0.0
+CC3161  CC3161  OC311   HCP1     0.62  2    0.0
+CC3161  CC3161  OC311   HCP1     0.05  3    0.0
+CC3161  CC3161  OG311   HCP1     0.29  1    0.0
+CC3161  CC3161  OG311   HCP1     0.62  2    0.0
+CC3161  CC3161  OG311   HCP1     0.05  3    0.0
+CC3163  CC3161  OC311   HCP1     0.29  1    0.0
+CC3163  CC3161  OC311   HCP1     0.62  2    0.0
+CC3163  CC3161  OC311   HCP1     0.05  3    0.0
+OC311   CC3161  CC3162  OC3C61   2.75  1  180.0
+OC311   CC3161  CC3162  OC3C61   0.26  2  180.0
+OC311   CC3161  CC3162  OC3C61   0.10  3    0.0
+OC311   CC3161  CC3163  OC3C61   1.36  1  180.0
+OC311   CC3161  CC3163  OC3C61   0.16  2    0.0
+OC311   CC3161  CC3163  OC3C61   1.01  3    0.0
+CC3261  CC3062  OC311   HCP1     0.29  1    0.0 ! from CC3161 CC3162 OC311 HCP1
+CC3261  CC3161  OC311   HCP1     0.29  1    0.0 ! from CC3161 CC3161 OC311 HCP1
+CC3261  CC3161  OC311   HCP1     0.62  2    0.0 !  "
+CC3261  CC3161  OC311   HCP1     0.05  3    0.0 !  "
+CC3263  CC3161  OC311   HCP1     0.29  1    0.0
+CC3263  CC3161  OC311   HCP1     0.62  2    0.0
+CC3263  CC3161  OC311   HCP1     0.05  3    0.0
+OC311   CC3161  CC3263  OC3C61   1.36  1  180.0
+OC311   CC3161  CC3263  OC3C61   0.16  2    0.0
+OC311   CC3161  CC3263  OC3C61   1.01  3    0.0
+CC3161  CC3161  OC301   CC3062   0.13  1  180.0 !from CC3161 CC3161 OC301 CC3162
+CC3161  CC3161  OC301   CC3062   0.25  2  180.0 ! "
+CC3161  CC3161  OC301   CC3062   0.06  3  180.0 ! "
+CC3161  OC301   CC3062  OC3C61   0.05  1  180.0 !from CC3161 OC301 CC3162 OC3C61
+CC3161  OC301   CC3062  OC3C61   0.91  2    0.0 ! "
+CC3161  OC301   CC3062  OC3C61   1.27  3  180.0 ! "
+CC3261  CC3062  OC301   CC3161   0.41  1  180.0 !from CC3161 CC3162 OC301 CC3161
+CC3261  CC3062  OC301   CC3161   0.66  2  180.0 ! "
+CC3261  CC3062  OC301   CC3161   1.60  3    0.0 ! "
+CC3161  OC301   CC3062  CC2O2    0.284 3    0.0 !from CC3161 OC301 CC3162 HCA1
+CC3062  OC301   CC3161  HCA1     0.284 3    0.0 !from CC3162 OC301 CC3161 HCA1
+HCA2    CC3261  CC3062  OC301    0.20  3    0.0 !from HCA1 CC3161 CC3162 OC301
+CC3161  CC3261  CC3062  OC301    0.20  3    0.0 !from CC3161 CC3161 CC3162 OC301
+OC301   CC3161  CC3161  OC301    0.59  1  180.0 !from OC301 CC3161 CC3162 OC301
+OC301   CC3161  CC3161  OC301    1.16  2    0.0 ! " 
+CC3263  CC3161  OC301   CC3162   0.13  1  180.0 ! from CC3163  CC3161  OC301   CC3162
+CC3263  CC3161  OC301   CC3162   0.25  2  180.0 !                 "
+CC3263  CC3161  OC301   CC3162   0.06  3  180.0 !                 "
+OC301   CC3161  CC3263  HCA2     0.20  3    0.0 ! from OC301   CC3161  CC3163  HCA1
+OC301   CC3161  CC3263  OC3C61   1.36  1  180.0 ! from OC301   CC3161  CC3163  OC3C61
+OC301   CC3161  CC3263  OC3C61   0.16  2    0.0 !                 " 
+OC301   CC3161  CC3263  OC3C61   1.01  3    0.0 !                 "
+OC311   CC3152  CC3251  HCA2     0.14  3    0.0 ! ethanol, par_carb HCA2 CC3263 CC3161 OC311
+OC311   CC3051  CC3251  HCA2     0.14  3    0.0 ! ethanol, par_carb HCA2 CC3263 CC3161 OC311
+OC311   CC3051  CC321   HCA2     0.14  3    0.0 ! ethanol, par_carb HCA2 CC3263 CC3161 OC311; erh 3/08
+OC311   CC3151  CC3251  HCA2     0.14  3    0.0 ! ethanol, par_carb HCA2 CC3263 CC3161 OC311
+OC311   CC3151  CC3153  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3163 CC3161 OC311
+OC311   CC3151  CC3152  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3162 CC3161 OC311
+OC311   CC3151  CC3151  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3161 CC3161 OC311
+OC311   CC3152  CC3151  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3161 CC3162 OC311
+OC311   CC3051  CC3151  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3161 CC3162 OC311
+HCP1    OC311   CC3151  HCA1     0.18  3    0.0 ! methanol par_carb HCP1 OC311 CC3161 HCA1
+CC3161   CC3162    OC30P     PC       0.02   3    180.0
+CC3161   CC3161    OC30P     PC       0.02   3    180.0
+HCA1     CC3161    OC30P     PC       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+HCA1     CC3161    CC3162    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3162    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3163    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3161    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+CC3161   CC3163    CC321     OC30P    0.43   3      0.0
+CC3161   CC3161    CC3162    OC30P    1.76   1      0.0
+CC3161   CC3161    CC3162    OC30P    2.56   2      0.0
+CC3161   CC3161    CC3162    OC30P    0.01   3      0.0
+CC3161   CC3161    CC3161    OC30P    1.76   1      0.0
+CC3161   CC3161    CC3161    OC30P    2.56   2      0.0
+CC3161   CC3161    CC3161    OC30P    0.01   3      0.0
+CC3162   CC3161    CC3161    OC30P    1.76   1      0.0
+CC3162   CC3161    CC3161    OC30P    2.56   2      0.0
+CC3162   CC3161    CC3161    OC30P    0.01   3      0.0
+CC3163   CC3161    CC3161    OC30P    1.76   1      0.0
+CC3163   CC3161    CC3161    OC30P    2.56   2      0.0
+CC3163   CC3161    CC3161    OC30P    0.01   3      0.0
+OC30P    CC3161    CC3161    OC311     2.50  1    180.0  
+OC30P    CC3161    CC3161    OC311     2.00  2      0.0
+OC30P    CC3161    CC3161    OC311     2.50  3      0.0
+OC30P    CC3161    CC3161    OG311     2.50  1    180.0  
+OC30P    CC3161    CC3161    OG311     2.00  2      0.0
+OC30P    CC3161    CC3161    OG311     2.50  3      0.0
+OC30P    CC311D    CC3161    OC311     2.50  1    180.0
+OC30P    CC311D    CC3161    OC311     2.00  2      0.0
+OC30P    CC311D    CC3161    OC311     2.50  3      0.0
+OC30P    CC3162    CC3161    OC311     2.50  1    180.0
+OC30P    CC3162    CC3161    OC311     2.00  2      0.0
+OC30P    CC3162    CC3161    OC311     2.50  3      0.0
+OC30P    CC3161    CC3162    OC301     2.50  1    180.0
+OC30P    CC3161    CC3162    OC301     2.00  2      0.0
+OC30P    CC3161    CC3162    OC301     2.50  3      0.0
+OC30P    CC3161    CC3161    OC301     2.50  1    180.0
+OC30P    CC3161    CC3161    OC301     2.00  2      0.0
+OC30P    CC3161    CC3161    OC301     2.50  3      0.0
+OC30P    CC3161    CC3161    OC30P    1.27   3      0.0
+OC3C61   CC3162    CC3161    OC30P    0.61   3      0.0
+OC3C61   CC3163    CC3161    OC30P    0.61   3      0.0
+CC3161   OC30P     PC        OC2DP    0.33   3      0.0
+CC3161   OC30P     PC        OC312    1.45   2      0.0  !CC311D   OC30P     PC        OC312    1.45   2      0.0
+CC3162    CC3161  OC30P     SC       0.21    3     0.0
+CC3163    CC3161  OC30P     SC       0.21    3     0.0
+CC3161    CC3161  OC30P     SC       0.21    3     0.0
+HCA1      CC3161  OC30P     SC       0.00    3     0.00 ! methylsulfate
+CC3161    OC30P       SC    OC2DP    0.17    3     0.0
+CC321     CC3163  CC3161    OC30P    0.20    3     0.0 ! par27 X CTL1 CTL1 X
+CC3051  OC302   CC3162  CC3161   0.18  1  180.0 !  pram model compound 1 (raman et al)
+CC3051  OC302   CC3162  CC3161   0.45  2  180.0 !   " MCSA fit
+CC3051  OC302   CC3162  CC3161   0.75  3    0.0 !   " MP2/cc-pVTZ//MP2/6-31G*
+CC3161  CC3162  OC303   CC3151   0.05  1  180.0 !  pram model compound 3 (raman et al)
+CC3161  CC3162  OC303   CC3151   0.38  2  180.0 !   " MCSA fit
+CC3161  CC3162  OC303   CC3151   0.36  3    0.0 !   " MP2/cc-pVTZ//MP2/6-31G*
+OC303   CC3162  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC303   CC3162  CC3161  OC311    2.65  1  180.0 ! OC301   CC3162  CC3161  OC311
+OC303   CC3162  CC3161  OC311    0.00  2    0.0 !     "
+OC303   CC3162  CC3161  OC311    0.13  3  180.0 !     "
+CC3161  CC3161  CC3162  OC303    0.20  3    0.0 ! CC3161  CC3161  CC3162  OC301
+CC3152  OC301   CC3161  CC3162   0.12  1  180.0 !  pram model compound 4 (raman et al)
+CC3152  OC301   CC3161  CC3162   0.03  2  180.0 !   " MCSA fit
+CC3152  OC301   CC3161  CC3162   0.14  3    0.0 !   " MP2/cc-pVTZ//MP2/6-31G*
+CC3152  OC301   CC3161  CC3161   0.12  1  180.0 !  pram model compound 4 (raman et al)
+CC3152  OC301   CC3161  CC3161   0.03  2  180.0 !   " MCSA fit
+CC3152  OC301   CC3161  CC3161   0.14  3    0.0 !   " MP2/cc-pVTZ//MP2/6-31G*
+CC3161  OC301   CC3152  OC3C51   0.52  1  180.0 !  pram model compound 4 (raman et al)
+CC3161  OC301   CC3152  OC3C51   1.50  2    0.0 !   " MCSA fit
+CC3161  OC301   CC3152  OC3C51   0.98  3    0.0 !   " MP2/cc-pVTZ//MP2/6-31G*
+CC3161  OC301   CC3152  CC3151   1.19  1  180.0 !  pram model compound 4 (raman et al)
+CC3161  OC301   CC3152  CC3151   0.16  2  180.0 !   " MCSA fit
+CC3161  OC301   CC3152  CC3151   0.49  3  180.0 !   " MP2/cc-pVTZ//MP2/6-31G*
+CC3161  OC301   CC3152  HCA1     0.284 3    0.0 ! OMe-THF  HCA1C2  CC312C  OC301   CC331
+HCA1    CC3161  OC301   CC3152   0.284 3    0.0 ! CC311D  OC301   CC311C  HCA1
+CC3263  CC3161  CC3161  OC301    0.20  3    0.0 ! CC3263  CC3161  CC3161  OC311
+CC2O3   CC312   CC312   HCA1     0.10  3    0.0 ! erh ketone RIMP2/cc-pVTZ//MP2/6-31G(d)
+CC322   CC2O3   CC312   HCA1     0.10  3    0.0 ! erh ketone RIMP2/cc-pVTZ//MP2/6-31G(d)
+OC2D3   CC2O3   CC312   HCA1     0.00  3    0.0 ! erh ketone RIMP2/cc-pVTZ//MP2/6-31G(d)
+CC2O4   CC312   CC312   HCA1     0.20  3    0.0 ! aldehyde par22 X CT1 CT1 X
+OC2D4   CC2O4   CC312   HCA1     0.00  6  180.0 ! aldehdye par22 X CT1 CD  X
+CC321D  OC3C61  CC311C  CC321    0.284 3    0.0 ! from CC321C OC3C61 CC311D HCA1
+HCP1    OC311   CC3161  HCA1     0.18  3    0.0 ! og methanol
+HCP1    OG311   CC3161  HCA1     0.18  3    0.0 ! og methanol
+HCP1    OC311   CC3162  HCA1     0.18  3    0.0 ! og methanol
+HCP1    OC311   CC312   HCA1     0.18  3    0.0 ! og methanol
+HCA1    CC311   OC311M  HCP1     0.18  3    0.0 ! og methanol
+HCA1    CC3161  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3161  CC3162  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3162  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3163  CC3161  OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3163  CC321   OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3163  CC312   OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC3161  CC3163  OC3C61   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3263  OC3C61   0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC3161  CC3162  OC3C61   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3162  OC301    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3162  OC302    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC312   CC3163  OC3C61   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC311   CC2O2   OC2D2    0.05  6  180.0 ! par22 X CT1  CC   X
+HCA1    CC3163  CC2O2   OC2D2    0.05  6  180.0 ! par22 X CT1  CC   X
+HCA1    CC312   CC322   OC311    0.14  3    0.0 ! og ethanol
+HCA1    CC312   CC312   OC311    0.14  3    0.0 ! og ethanol
+OC3C61  CC321C  CC311C  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC3C61  CC321D  CC311C  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+OC301   CC321   CC311C  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+OC301   CC321   CC3163  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+OC301   CC3161  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC301   CC3161  CC3162  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC301   CC3161  CC3163  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3162  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3163  CC3161  NC2D1    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3162  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3263  HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA2    CC3261  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC3163  CC321   HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC3163  CC312   HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC311C  CC321C  HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC311C  CC321D  HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC311C  CC321   HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC311D  CC321C  HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC311   CC331   HCA3     0.20  3    0.0 ! par27 X CTL1 CTL3 X
+HCA1    CC3163  CC331   HCA3     0.20  3    0.0 ! par27 X CTL1 CTL3 X
+HCA1    CC312   CC322   HCA2     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCA1    CC312   CC312   HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC312   CC2O4   HCR1     0.00  6  180.0 ! par22 X CT3  CD X
+HCA1    CC3162  OC3C61  CC3163   0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+HCA1    CC3162  OC3C61  CC3263   0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A;erh transferred by analogy
+HCA1    CC3163  OC3C61  CC3162   0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+HCA1    CC3163  OC3C61  CC3062   0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+HCA1    CC311   OC301   CC331    0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC331   OC301   CC311D  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC331   OC301   CC3162  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC321   OC301   CC3162  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC321C  OC3C61  CC311D  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC321D  OC3C61  CC311C  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC311C  OC301   CC311D  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC3161  OC301   CC3162  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC311D  OC302   CC311D  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC3162  OC302   CC3162  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC311D  OC301   CC311C  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+CC3162  OC301   CC3161  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+HCA1    CC3161  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3162  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3163   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3261   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3263   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  CC312    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC312   CC312   CC322    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC312   CC3163  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3161  CC3162   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3163  CC3161  CC3161   0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3163  CC312   CC312    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  CC321    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  CC331    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3163  CC2O2    0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1    CC3161  CC3261  CC3062   0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC312   CC312   CC312   HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC3163  CC312   CC312   HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+CC321C  CC321C  CC311C  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC321C  CC321C  CC311D  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+CC321D  CC321C  CC311C  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL2 X
+HCP1    NC2D1   CC3161  HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 H
+HCP1    NC2D1   CC311   HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 H
+CC2O1   NC2D1   CC3161  HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 C
+CC2O1   NC2D1   CC311   HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 C
+CC3161  OC301   CC3062  CC2O2    0.284 3    0.0 !from CC3161 OC301 CC3162 HCA1
+CC3062  OC301   CC3161  HCA1     0.284 3    0.0 !from CC3162 OC301 CC3161 HCA1
+HCA2    CC3261  CC3062  OC301    0.20  3    0.0 !from HCA1 CC3161 CC3162 OC301
+OC301   CC3161  CC3263  HCA2     0.20  3    0.0 ! from OC301   CC3161  CC3163  HCA1
+OC3C51  CC3152  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+OC3C51  CC3051  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+OC3C51  CC3153  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+OC311   CC3151  CC3153  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3163 CC3161 OC311
+OC311   CC3151  CC3152  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3162 CC3161 OC311
+OC311   CC3151  CC3151  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3161 CC3161 OC311
+OC311   CC3152  CC3151  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3161 CC3162 OC311
+OC311   CC3051  CC3151  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3161 CC3162 OC311
+OC311   CC321   CC3153  HCA1     0.14  3    0.0 ! ethanol, par_carb HCA1 CC3163 CC321  OC311
+CC3152  CC3251  CC3151  HCA1     0.20  3    0.0 ! par22 X CT2 CT1 X
+CC3051  CC3251  CC3151  HCA1     0.20  3    0.0 ! par22 X CT2 CT1 X
+CC3151  CC3251  CC3152  HCA1     0.20  3    0.0 ! par22 X CT2 CT1 X
+CC3151  CC3151  CC3152  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+CC3151  CC3151  CC3153  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+CC3153  CC3151  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+CC3152  CC3151  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+CC3051  CC3151  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+CC321   CC3153  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+CC321   CC3152  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X erh3/08
+CC321   CC3051  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X erh3/08
+CC3251  CC3151  CC3153  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+CC3152  OC3C51  CC3153  HCA1     0.30  3    0.0 ! THF par_carb HCA2C2 CC322C OC3C5M CC322C
+CC3051  OC3C51  CC3153  HCA1     0.30  3    0.0 ! THF par_carb HCA2C2 CC322C OC3C5M CC322C
+CC3153  OC3C51  CC3152  HCA1     0.30  3    0.0 ! THF par_carb HCA2C2 CC322C OC3C5M CC322C
+HCA1    CC3152  CC3251  HCA2     0.20  3    0.0 ! par22 X CT1 CT2 X
+HCA2    CC3251  CC3151  HCA1     0.20  3    0.0 ! par22 X CT2 CT1 X
+HCA1    CC3151  CC3153  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+HCA1    CC3151  CC3152  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+HCA1    CC3151  CC3151  HCA1     0.20  3    0.0 ! par22 X CT1 CT1 X
+HCA1    CC3153  CC321   HCA2     0.20  3    0.0 ! par22 X CT1 CT2 X
+HCP1    OC311   CC3152  HCA1     0.18  3    0.0 ! methanol par_carb HCP1 OC311 CC3162 HCA1
+HCP1    OC311   CC3151  HCA1     0.18  3    0.0 ! methanol par_carb HCP1 OC311 CC3161 HCA1
+HCA1    CC3152  OC301   CC331    0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+OC301   CC3152  CC3151  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+HCA1     CC311D    OC30P     PC       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+HCA1     CC3161    OC30P     PC       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+HCA1     CC3162    OC30P     PC       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+HCA1     CC311D    CC311D    HCA1     0.20   3      0.0 ! par27 X CTL1 CTL2 X
+HCA2     CC321D    CC311D    HCA1     0.20   3      0.0 ! par27 X CTL1 CTL2 X
+OC3C61   CC311D    CC311D    HCA1     0.20   3      0.0 ! par27 X CTL1 CTL1 X
+OC3C61   CC321D    CC311D    HCA1     0.20   3      0.0 ! par27 X CTL1 CTL2 X
+CC321C   CC311D    CC311D    HCA1     0.20   3      0.0 ! par27 X CTL1 CTL2 X
+HCA1     CC3161    CC3162    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3162    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3163    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3161    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC311D    CC311D    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC311C    CC321     OC30P    0.00   6   180.00
+HCA1     CC3163    CC321     OC30P    0.00   6   180.00
+HCA1      CC311D  OC30P     SC       0.00    3     0.00 ! methylsulfate
+HCA1      CC3161  OC30P     SC       0.00    3     0.00 ! methylsulfate
+CC321   OC301   CC311D  HCA1     0.284 3    0.0 ! OMeTHP CC331   OC301   CC311D  HCA1
+OC301   CC321   CC331   HCA3     0.20  3    0.0 ! OC301   CC321   CC3163  HCA1
+HCA1    CC312D  OC301   CC331    0.284 3    0.0 ! OMe-THF  HCA1C2  CC312C  OC301   CC331
+CC312D  OC302  CC311D  HCA1      0.284 3    0.0 ! CC311D  OC302   CC311D  HCA1
+HCA1    CC312D  OC3C5M  CC322C    0.30  3   0.0 ! THF w/me   HCA1C2 CC312C OC3C5M CC322C 
+HCA1    CC312D  CC322C  HCA2C2    0.20  3   0.0 ! THF w/me   HCA1C2 CC312C CC322C HCA2C2
+CC322C  CC322C  CC312D  HCA1      0.20  3   0.0 ! THF w/me   CC322C CC322C CC312C HCA1C2
+HCA1    CC312D  OC302   CC311D    0.284 3   0.0 ! OMe-THF    HCA1C2  CC312C  OC301   CC331
+HCA1    CC312C  OC3C5M  CC322C   0.30  3    0.0 ! THF w/me  HCA1C2 CC312C OC3C5M CC322C
+CC322C  CC322C  CC312C  HCA1     0.20  3    0.0 ! THF w/me  CC322C CC322C CC312C HCA1C2
+HCA2C2  CC322C  CC312C  HCA1     0.20  3    0.0 ! THF w/me  HCA1C2 CC312C CC322C HCA2C2
+HCA1    CC312C  CC321   HCA2     0.20  3    0.0 ! THF w/me  HCA1C2 CC312C CC331  HCA3
+HCA1    CC312C  CC321   OC301    0.20  3    0.0 ! OC301   CC321   CC3163  HCA1
+HCA1    CC312C  OC303   CC331    0.284 3    0.0 ! THF w/me  HCA1C2  CC312C  OC301   CC331
+OC3C5M  CC322C  CC312C  HCA1     0.20  3    0.0 ! THF OC3C5M  CC312C  CC322C  HCA2C2
+HCA1    CC312C  OC303   CC311D   0.284 3    0.0 ! OMe-THF    HCA1C2  CC312C  OC301   CC331
+CC312C  OC303   CC311D  HCA1     0.284 3    0.0 ! CC311D  OC302   CC311D  HCA1
+HCA1    CC312D  OC301   CC311C   0.284 3    0.0 ! OMe-THF  HCA1C2  CC312C  OC301   CC331
+CC312D  OC301   CC311C  HCA1     0.284 3    0.0 ! CC311D  OC301   CC311C  HCA1
+OC302   CC3051  CC3151  HCA1     0.14  3    0.0 ! OC311   CC3051  CC3151  HCA1
+CC3051  OC302   CC3162  HCA1     0.284 3    0.0 ! CC3162  OC302   CC3162  HCA1 
+CC3162  OC303   CC3151  HCA1     0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A
+HCA1    CC3162  OC303   CC3151   0.284 3    0.0 ! par35 HCA2 CC32A OC30A CC32A 
+OC303   CC3162  CC3161  HCA1     0.20  3    0.0 ! par27 X CTL1 CTL1 X
+OC303   CC3151  CC3151  HCA1     0.14  3    0.0 ! OC311   CC3151  CC3151  HCA1
+OC303   CC3151  CC3153  HCA1     0.14  3    0.0 ! OC311   CC3151  CC3153  HCA1
+OC301   CC3051  CC3151  HCA1     0.14  3    0.0 ! OC311   CC3051  CC3151  HCA1
+OC301   CC321   CC3153  HCA1     0.14  3    0.0 ! OC311   CC321   CC3153  HCA1
+HCA1    CC3152  OC301   CC321    0.284 3    0.0 ! HCA1    CC3152  OC301   CC331  
+CC3161  OC301   CC3152  HCA1     0.284 3    0.0 ! OMe-THF  HCA1C2  CC312C  OC301   CC331
+HCA1    CC3161  OC301   CC3152   0.284 3    0.0 ! CC311D  OC301   CC311C  HCA1
+CC2O3   CC312   OC311   HCP1     0.35  1    0.0 ! erh ketone, n=6 polyol
+CC2O3   CC312   OC311   HCP1     0.37  2    0.0 ! " RIMP2/cc-pVTZ//MP2/631gd
+CC2O3   CC312   OC311   HCP1     0.19  3  180.0 ! " C-C-O-H
+CC2O3   CC322   OC311   HCP1     0.35  1    0.0 ! erh ketone, n=6 polyol
+CC2O3   CC322   OC311   HCP1     0.37  2    0.0 ! " RIMP2/cc-pVTZ//MP2/631gd
+CC2O3   CC322   OC311   HCP1     0.19  3  180.0 ! " C-C-O-H
+HCP1    OC311   CC312   CC2O4    0.35  1    0.0 ! erh aldehyde, n=6 polyol
+HCP1    OC311   CC312   CC2O4    0.37  2    0.0 ! " RIMP2/cc-pVTZ//MP2/631gd
+HCP1    OC311   CC312   CC2O4    0.19  3  180.0 ! " C-C-O-H
+HCP1    OC311   CC3161  HCA1     0.18  3    0.0 ! og methanol
+HCP1    OC311   CC3162  HCA1     0.18  3    0.0 ! og methanol
+HCP1    OC311   CC321   HCA2     0.18  3    0.0 ! og methanol
+HCP1    OC311   CC322   HCA2     0.18  3    0.0 ! og methanol
+HCP1    OC311   CC312   HCA1     0.18  3    0.0 ! og methanol
+HCA3    CC331   OC311M  HCP1     0.18  3    0.0 ! og methanol
+HCA2    CC321   OC311M  HCP1     0.18  3    0.0 ! og methanol
+HCA1    CC311   OC311M  HCP1     0.18  3    0.0 ! og methanol
+HCP1    NC2D1   CC3161  CC3161   0.00  1    0.0 ! par22 H NH1 CT1 CT1
+HCP1    NC2D1   CC3161  CC3162   0.00  1    0.0 ! par22 H NH1 CT1 CT1
+HCP1    NC2D1   CC3161  CC3163   0.00  1    0.0 ! par22 H NH1 CT1 CT1
+HCP1    NC2D1   CC311   CC331    0.00  1   0.00 ! par22 H NH1 CT1 CT3
+HCP1    NC2D1   CC2O1   CC331    2.50  2  180.0 ! par22 H NH1 C   CT3
+HCP1    NC2D1   CC3161  HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 H
+HCP1    NC2D1   CC311   HCA1     0.00  1    0.0 ! par22 HB CT1 NH1 H
+HCP1    NC2D1   CC331   HCA3     0.00  3    0.0 ! par22 HA CT3 NH1 H
+HCP1    NC2D1   CC2O1   OC2D1    2.50  2  180.0 ! par22 O C NH1 H
+CC312   CC322   OC311   HCP1     0.35  1    0.0 ! erh n=6 polyol
+CC312   CC322   OC311   HCP1     0.37  2    0.0 ! " RIMP2/cc-pVTZ//MP2/631gd
+CC312   CC322   OC311   HCP1     0.19  3  180.0 ! " C2-C1-O1-HO1
+CC322   CC312   OC311   HCP1     0.35  1    0.0 ! erh n=6 polyol
+CC322   CC312   OC311   HCP1     0.37  2    0.0 ! " RIMP2/cc-pVTZ//MP2/631gd
+CC322   CC312   OC311   HCP1     0.19  3  180.0 ! " C1-C2-O2-HO2
+CC312   CC312   OC311   HCP1     0.35  1    0.0 ! erh n=6 polyol
+CC312   CC312   OC311   HCP1     0.37  2    0.0 ! " RIMP2/cc-pVTZ//MP2/631gd
+CC312   CC312   OC311   HCP1     0.19  3  180.0 ! " C2-C3-O3-HO3
+CC2O2   CC301   OC311   HCP1     0.82  3  180.0 ! og amol mp2/ccpvtz
+CC2O2   CC3062  OC311   HCP1     0.82  3  180.0 ! from CC2O2 CC301 OC311 HCP1
+HCP1    OC311   CC301   CC331    0.24  3    0.0 ! og ethanol
+HCP1    OC311   CC301   CC331    0.14  2    0.0 !  "
+HCP1    OC311   CC301   CC331    1.13  1    0.0 !  "
+HCP1    OC311M  CC321   CC331    0.24  3    0.0 ! og ethanol
+HCP1    OC311M  CC321   CC331    0.14  2    0.0 !  "
+HCP1    OC311M  CC321   CC331    1.13  1    0.0 !  "
+HCP1    OC311M  CC311   CC331    0.24  3    0.0 ! og ethanol
+HCP1    OC311M  CC311   CC331    0.14  2    0.0 !  "
+HCP1    OC311M  CC311   CC331    1.13  1    0.0 !  "
+HCP1    OC311   CC301   OC301    1.55  1    0.0 !from HCP1 OC311 CC3162 OC3C61
+HCP1    OC311   CC301   OC301    1.17  2    0.0 !  "
+HCP1    OC311   CC301   OC301    1.07  3    0.0 !  "
+CC3163  CC321   OC311   HCP1     0.29  1    0.0
+CC3163  CC321   OC311   HCP1     0.62  2    0.0
+CC3163  CC321   OC311   HCP1     0.05  3    0.0
+CC3161  CC3162  OC311   HCP1     0.29  1    0.0
+CC3161  CC3162  OC311   HCP1     0.62  2    0.0
+CC3161  CC3162  OC311   HCP1     0.05  3    0.0
+HCP1    OC311   CC3162  OC3C61   1.55  1    0.0
+HCP1    OC311   CC3162  OC3C61   1.17  2    0.0
+HCP1    OC311   CC3162  OC3C61   1.07  3    0.0
+CC3162  CC3161  OC311   HCP1     0.29  1    0.0
+CC3162  CC3161  OC311   HCP1     0.62  2    0.0
+CC3162  CC3161  OC311   HCP1     0.05  3    0.0
+CC3161  CC3161  OC311   HCP1     0.29  1    0.0
+CC3161  CC3161  OC311   HCP1     0.62  2    0.0
+CC3161  CC3161  OC311   HCP1     0.05  3    0.0
+CC3163  CC3161  OC311   HCP1     0.29  1    0.0
+CC3163  CC3161  OC311   HCP1     0.62  2    0.0
+CC3163  CC3161  OC311   HCP1     0.05  3    0.0
+HCP1    OC311   CC3062  OC3C61   1.55  1    0.0 ! from HCP1 OC311 CC3162 OC3C61
+HCP1    OC311   CC3062  OC3C61   1.17  2    0.0 !  "
+HCP1    OC311   CC3062  OC3C61   1.07  3    0.0 !  "
+CC3261  CC3062  OC311   HCP1     0.29  1    0.0 ! from CC3161 CC3162 OC311 HCP1
+CC3261  CC3062  OC311   HCP1     0.62  2    0.0 !  "
+CC3261  CC3062  OC311   HCP1     0.05  3    0.0 !  "
+CC3163  CC312   OC311   HCP1     0.29  1    0.0 ! from CC3163 CC321 OC311 HCP1
+CC3163  CC312   OC311   HCP1     0.62  2    0.0 !  "
+CC3163  CC312   OC311   HCP1     0.05  3    0.0 !  
+CC3261  CC3161  OC311   HCP1     0.29  1    0.0 ! from CC3161 CC3161 OC311 HCP1
+CC3261  CC3161  OC311   HCP1     0.62  2    0.0 !  "
+CC3261  CC3161  OC311   HCP1     0.05  3    0.0 !  "
+CC3263  CC3161  OC311   HCP1     0.29  1    0.0
+CC3263  CC3161  OC311   HCP1     0.62  2    0.0
+CC3263  CC3161  OC311   HCP1     0.05  3    0.0
+OC3C51  CC3152  OC311   HCP1     1.17  1    0.0 ! erh aldopentose monosac
+OC3C51  CC3152  OC311   HCP1     0.85  2    0.0 ! " MCSA fit
+OC3C51  CC3152  OC311   HCP1     0.37  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+OC3C51  CC3051  OC311   HCP1     0.90  1    0.0 ! erh ketopentose monosac
+OC3C51  CC3051  OC311   HCP1     1.14  2    0.0 ! " MCSA fit
+OC3C51  CC3051  OC311   HCP1     0.11  3  180.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3251  CC3152  OC311   HCP1     0.59  1    0.0 ! erh deoxy aldopentose monosac
+CC3251  CC3152  OC311   HCP1     0.38  2    0.0 ! " MCSA fit
+CC3251  CC3152  OC311   HCP1     0.13  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3251  CC3051  OC311   HCP1     0.59  1    0.0 ! erh deoxy aldopentose monosac
+CC3251  CC3051  OC311   HCP1     0.38  2    0.0 ! " transferred
+CC3251  CC3051  OC311   HCP1     0.13  3    0.0 ! "
+CC321   CC3051  OC311   HCP1     0.40  1  180.0 ! erh ketopentose monosac
+CC321   CC3051  OC311   HCP1     0.48  2    0.0 ! " MCSA fit
+CC321   CC3051  OC311   HCP1     0.19  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3151  CC3152  OC311   HCP1     0.29  1    0.0 ! erh aldopentose monosac
+CC3151  CC3152  OC311   HCP1     0.55  2    0.0 ! " MCSA fit
+CC3151  CC3152  OC311   HCP1     0.08  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3151  CC3051  OC311   HCP1     0.40  1  180.0 ! erh ketopentose monosac
+CC3151  CC3051  OC311   HCP1     0.48  2    0.0 ! " MCSA fit
+CC3151  CC3051  OC311   HCP1     0.19  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3151  CC3151  OC311   HCP1     0.29  1    0.0 ! erh aldopentose monosac
+CC3151  CC3151  OC311   HCP1     0.55  2    0.0 ! " MCSA fit
+CC3151  CC3151  OC311   HCP1     0.08  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3152  CC3151  OC311   HCP1     0.29  1    0.0 ! erh aldopentose monosac
+CC3152  CC3151  OC311   HCP1     0.55  2    0.0 ! " MCSA fit
+CC3152  CC3151  OC311   HCP1     0.08  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3051  CC3151  OC311   HCP1     0.40  1  180.0 ! erh ketopentose monosac
+CC3051  CC3151  OC311   HCP1     0.48  2    0.0 ! " MCSA fit
+CC3051  CC3151  OC311   HCP1     0.19  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3251  CC3151  OC311   HCP1     0.59  1    0.0 ! erh deoxy aldopentose monosac
+CC3251  CC3151  OC311   HCP1     0.38  2    0.0 ! " MCSA fit
+CC3251  CC3151  OC311   HCP1     0.13  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3153  CC3151  OC311   HCP1     0.29  1    0.0 ! erh aldopentose monosac
+CC3153  CC3151  OC311   HCP1     0.55  2    0.0 ! " MCSA fit
+CC3153  CC3151  OC311   HCP1     0.08  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3153  CC321   OC311   HCP1     0.12  1    0.0 ! erh aldopentose monosac
+CC3153  CC321   OC311   HCP1     0.42  2    0.0 ! " MCSA fit
+CC3153  CC321   OC311   HCP1     0.29  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+CC3051  CC321   OC311   HCP1     0.40  1  180.0 ! erh ketopentose monosac
+CC3051  CC321   OC311   HCP1     0.48  2    0.0 ! " MCSA fit
+CC3051  CC321   OC311   HCP1     0.19  3    0.0 ! " MP2/cc-pVTZ//MP2/6-31G*
+HCP1    OC311   CC3152  HCA1     0.18  3    0.0 ! methanol par_carb HCP1 OC311 CC3162 HCA1
+HCP1    OC311   CC3151  HCA1     0.18  3    0.0 ! methanol par_carb HCP1 OC311 CC3161 HCA1
+OC312    PC        OC312     HCP1     0.30   3      0.00 ! terminal phosphate
+OC30P    PC        OC312     HCP1     0.30   3      0.00 ! terminal phosphate
+OC2DP    PC        OC312     HCP1     0.30   3      0.00 ! terminal phosphate
+CC321   CC3051  OC302   CC3162   0.40  1  180.0 ! CC321   CC3051  OC311   HCP1 Fructose
+CC321   OC301   CC3051  CC321    0.40  1  180.0 ! CC321   CC3051  OC311   HCP1, ketopentose monosac
+CC321D   CC311D    OC30P     PC       0.02   3    180.0
+CC3161   CC3162    OC30P     PC       0.02   3    180.0
+CC3161   CC3161    OC30P     PC       0.02   3    180.0
+CC321C   CC311D    OC30P     PC       0.02   3    180.0
+CC311D   CC311D    OC30P     PC       0.02   3    180.0
+HCA1     CC311D    OC30P     PC       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+HCA1     CC3161    OC30P     PC       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+HCA1     CC3162    OC30P     PC       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+OC3C61   CC311D    OC30P     PC       0.38   2      0.0
+OC3C61   CC311D    OC30P     PC       0.41   3    180.0
+OC3C61   CC3162    OC30P     PC       0.38   2      0.0
+OC3C61   CC3162    OC30P     PC       0.41   3    180.0
+HCA1     CC3161    CC3162    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3162    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3163    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC3161    CC3161    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC311D    CC311D    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA2     CC321C    CC311D    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA2     CC321D    CC311D    OC30P    0.20   3      0.0  ! par27 X CTL1 CTL2 X
+HCA1     CC311C    CC321     OC30P    0.00   6   180.00
+HCA1     CC3163    CC321     OC30P    0.00   6   180.00
+CC321C   CC311C    CC321     OC30P    0.43   3      0.0
+CC3161   CC3163    CC321     OC30P    0.43   3      0.0
+CC3161   CC3161    CC3162    OC30P    1.76   1      0.0
+CC3161   CC3161    CC3162    OC30P    2.56   2      0.0
+CC3161   CC3161    CC3162    OC30P    0.01   3      0.0
+CC321C   CC321C    CC311D    OC30P    1.76   1      0.0
+CC321C   CC321C    CC311D    OC30P    2.56   2      0.0
+CC321C   CC321C    CC311D    OC30P    0.01   3      0.0
+CC3161   CC3161    CC3161    OC30P    1.76   1      0.0
+CC3161   CC3161    CC3161    OC30P    2.56   2      0.0
+CC3161   CC3161    CC3161    OC30P    0.01   3      0.0
+CC3162   CC3161    CC3161    OC30P    1.76   1      0.0
+CC3162   CC3161    CC3161    OC30P    2.56   2      0.0
+CC3162   CC3161    CC3161    OC30P    0.01   3      0.0
+CC3163   CC3161    CC3161    OC30P    1.76   1      0.0
+CC3163   CC3161    CC3161    OC30P    2.56   2      0.0
+CC3163   CC3161    CC3161    OC30P    0.01   3      0.0
+CC321C   CC311D    CC311D    OC30P    1.76   1      0.0
+CC321C   CC311D    CC311D    OC30P    2.56   2      0.0
+CC321C   CC311D    CC311D    OC30P    0.01   3      0.0
+CC321C   OC3C61    CC311D    OC30P    2.44   3    180.0
+CC3163   OC3C61    CC3162    OC30P    2.44   3    180.0
+OC30P    CC3161    CC3161    OC311     2.50  1    180.0  
+OC30P    CC3161    CC3161    OC311     2.00  2      0.0
+OC30P    CC3161    CC3161    OC311     2.50  3      0.0
+OC30P    CC311D    CC3161    OC311     2.50  1    180.0
+OC30P    CC311D    CC3161    OC311     2.00  2      0.0
+OC30P    CC311D    CC3161    OC311     2.50  3      0.0
+OC30P    CC3162    CC3161    OC311     2.50  1    180.0
+OC30P    CC3162    CC3161    OC311     2.00  2      0.0
+OC30P    CC3162    CC3161    OC311     2.50  3      0.0
+OC30P    CC3161    CC3162    OC301     2.50  1    180.0
+OC30P    CC3161    CC3162    OC301     2.00  2      0.0
+OC30P    CC3161    CC3162    OC301     2.50  3      0.0
+OC30P    CC3161    CC3161    OC301     2.50  1    180.0
+OC30P    CC3161    CC3161    OC301     2.00  2      0.0
+OC30P    CC3161    CC3161    OC301     2.50  3      0.0
+OC30P    CC3161    CC3161    OC30P    1.27   3      0.0
+OC30P    CC311D    CC311D    OC30P    1.27   3      0.0
+OC3C61   CC311D    CC311D    OC30P    0.61   3      0.0 
+OC3C61   CC321D    CC311D    OC30P    0.61   3      0.0
+OC3C61   CC3162    CC3161    OC30P    0.61   3      0.0
+OC3C61   CC3163    CC3161    OC30P    0.61   3      0.0
+OC3C61   CC311C    CC321     OC30P    0.06   1      0.0
+OC3C61   CC311C    CC321     OC30P    0.78   2      0.0
+OC3C61   CC311C    CC321     OC30P    0.74   3    180.0
+OC3C61   CC3163    CC321     OC30P    0.06   1      0.0
+OC3C61   CC3163    CC321     OC30P    0.78   2      0.0
+OC3C61   CC3163    CC321     OC30P    0.74   3    180.0
+CC3161   OC30P     PC        OC2DP    0.33   3      0.0
+CC3162   OC30P     PC        OC2DP    0.33   3      0.0
+CC311D   OC30P     PC        OC2DP    0.33   3      0.0
+CC311D   OC30P     PC        OC312    1.45   2      0.0
+CC3162   OC30P     PC        OC312    1.45   2      0.0
+CC321C    CC311D  OC30P     SC       0.21    3     0.0
+CC3162    CC3161  OC30P     SC       0.21    3     0.0
+CC3163    CC3161  OC30P     SC       0.21    3     0.0
+CC3161    CC3161  OC30P     SC       0.21    3     0.0
+HCA1      CC311D  OC30P     SC       0.00    3     0.00 ! methylsulfate
+HCA1      CC3161  OC30P     SC       0.00    3     0.00 ! methylsulfate
+HCA2      CC321   OC30P     SC       0.284   3     0.0  !
+OC3C61    CC311D  OC30P     SC       0.76    1     0.0
+OC3C61    CC311D  OC30P     SC       0.68    2     0.0
+OC3C61    CC311D  OC30P     SC       0.26    3   180.0
+CC311C    CC321   OC30P     SC       1.41    1   180.0
+CC311C    CC321   OC30P     SC       0.40    2     0.0
+CC311C    CC321   OC30P     SC       0.21    3   180.0
+CC3163    CC321   OC30P     SC       1.41    1   180.0
+CC3163    CC321   OC30P     SC       0.40    2     0.0
+CC3163    CC321   OC30P     SC       0.21    3   180.0
+CC3161    OC30P       SC    OC2DP    0.17    3     0.0
+CC311D    OC30P       SC    OC2DP    0.17    3     0.0
+CC321     OC30P       SC    OC2DP    0.17    3     0.0
+CC321     CC3163  CC3161    OC30P    0.20    3     0.0 ! par27 X CTL1 CTL1 X
+CG2D2  CG2D1  CG321  OG311      1.9000  1   180.00 ! RETINOL PROL
+CG2D2  CG2D1  CG321  OG311      0.4000  2   180.00 ! RETINOL PROL
+CG2D2  CG2D1  CG321  OG311      0.6000  3   180.00 ! RETINOL PROL
+HGA4   CG2D1  CG321  OG311      0.2000  3     0.00 ! RETINOL PROL
+CG2DC1 CG2DC1 CG321  OG311      1.9000  1   180.00 ! RETINOL PROL
+CG2DC1 CG2DC1 CG321  OG311      0.4000  2   180.00 ! RETINOL PROL
+CG2DC1 CG2DC1 CG321  OG311      0.6000  3   180.00 ! RETINOL PROL
+HGA4   CG2DC1 CG321  OG311      0.2000  3     0.00 ! RETINOL PROL
+CG2DC2 CG2DC2 CG321  OG311      1.9000  1   180.00 ! RETINOL PROL
+CG2DC2 CG2DC2 CG321  OG311      0.4000  2   180.00 ! RETINOL PROL
+CG2DC2 CG2DC2 CG321  OG311      0.6000  3   180.00 ! RETINOL PROL
+HGA4   CG2DC2 CG321  OG311      0.2000  3     0.00 ! RETINOL PROL
+OG311  CG2O2  CG2R61 CG2R61     1.0250  2   180.00 ! ZOIC, benzoic acid, jal
+OG311  CG2O2  CG311  CG321      0.0500  6   180.00 ! drug design project, xxwy
+OG311  CG2O2  CG311  NG2R53     0.0000  1     0.00 ! drug design project, xxwy
+OG311  CG2O2  CG311  HGA1       0.0500  6   180.00 ! drug design project, xxwy
+OG311  CG2O2  CG321  CG311      0.0000  6   180.00 ! 576P, standard param [0.05 also acceptable]
+OG311  CG2O2  CG321  NG321      0.0000  6   180.00 ! PROT adm jr. 3/19/92, from lipid methyl acetate
+OG311  CG2O2  CG321  HGA2       0.0000  6   180.00 ! PROT adm jr. 3/19/92, from lipid methyl acetate
+OG311  CG2O2  CG331  HGA3       0.0000  6   180.00 ! PROT adm jr. 3/19/92, from lipid methyl acetate
+CG2R61 CG2O2  OG311  HGP1       0.9750  1   180.00 ! ZOIC, benzoic acid, jal
+CG2R61 CG2O2  OG311  HGP1       2.7000  2   180.00 ! ZOIC, benzoic acid, jal
+CG2R61 CG2O2  OG311  HGP1       0.0500  3   180.00 ! ZOIC, benzoic acid, jal
+CG2R61 CG2O2  OG311  HGP1       0.2500  6   180.00 ! ZOIC, benzoic acid, jal
+CG311  CG2O2  OG311  HGP1       2.0500  2   180.00 ! drug design project, xxwy
+CG321  CG2O2  OG311  HGP1       2.0500  2   180.00 ! PROT adm jr, 10/17/90, acetic Acid C-Oh rotation barrier
+CG331  CG2O2  OG311  HGP1       2.0500  2   180.00 ! PROT adm jr, 10/17/90, acetic Acid C-Oh rotation barrier
+OG2D1  CG2O2  OG311  HGP1       2.0500  2   180.00 ! PROT adm jr, 10/17/90, acetic Acid C-Oh rotation barrier
+HGR52  CG2O2  OG311  HGP1       3.4500  2   180.00 ! FORH, formic acid, xxwy
+OG2D2  CG2O3  CG301  OG311      1.1100  2   180.00 ! AMOL, alpha-methoxy-lactic acid, og
+CG2R61 CG2O5  CG311  OG311      0.0000  2   180.00 ! BIPHENYL ANALOGS unmodified, peml
+OG2D3  CG2O5  CG311  OG311      0.0000  2     0.00 ! reverted to BIPHENYL ANALOGS unmodified, peml
+CG2R61 CG2R61 CG2R61 OG311      3.1000  2   180.00 ! PYRIDINE phenol, yin
+CG311  CG2R61 CG2R61 OG311      2.4000  2   180.00 ! FBIB, Fatty Binding Inhibitior B, cacha Kenno: 4.2 -> 2.4
+CG331  CG2R61 CG2R61 OG311      2.4000  2   180.00 ! FBIA, Fatty Binding Inhibitior B, cacha Kenno: 4.2 -> 2.4
+NG2R60 CG2R61 CG2R61 OG311      1.0000  2   180.00 ! PYRIDINE 3-hydroxypyridine Kenno: 0.0 (unlikely) -> 1.0 from 3-methylpyridine, yin
+NG2S1  CG2R61 CG2R61 OG311      2.4000  2   180.00 ! 2AMF, 2-acetamide phenol, cacha Kenno: 4.2 -> 2.4
+OG311  CG2R61 CG2R61 HGR61      2.4000  2   180.00 ! PROT JES 8/25/89 phenol Kenno: 4.2 -> 2.4
+OG311  CG2R61 CG2R61 HGR62      2.4000  2   180.00 ! PROT JES 8/25/89 phenol Kenno: 4.2 -> 2.4
+OG311  CG2R61 CG2R64 NG2R60     3.1000  2   180.00 ! 2A3HPD, cacha
+OG311  CG2R61 CG2R64 NG2S1      2.4000  2   180.00 ! 2A3HPD, cacha
+CG2R61 CG2R61 CG321  OG311      0.0000  2     0.00 ! 3CAP, carbinol-pyridine (PYRIDINE pyr-CH2OH), yin
+CG2R61 CG2R61 OG311  HGP1       0.9900  2   180.00 ! PROT phenol OH rot bar, 3.37 kcal/mole, adm jr. 3/7/92
+CG2R64 CG2R61 OG311  HGP1       0.9900  2   180.00 ! 2A3HPD, from PROT phenol, cacha
+OG311  CG301  CG331  HGA3       0.1400  3     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+OG311  CG301  OG301  CG331      0.4100  1   180.00 ! AMOL, alpha-methoxy-lactic acid, og
+OG311  CG301  OG301  CG331      0.8900  2     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+OG311  CG301  OG301  CG331      0.0500  3     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+CG2O3  CG301  OG311  HGP1       0.8200  3   180.00 ! AMOL, alpha-methoxy-lactic acid, og
+CG331  CG301  OG311  HGP1       1.1300  1     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+CG331  CG301  OG311  HGP1       0.1400  2     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+CG331  CG301  OG311  HGP1       0.2400  3     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+OG301  CG301  OG311  HGP1       1.5500  1     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+OG301  CG301  OG311  HGP1       1.1700  2     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+OG301  CG301  OG311  HGP1       1.0700  3     0.00 ! AMOL, alpha-methoxy-lactic acid, og
+FGA3   CG302  CG321  OG311      0.2500  3     0.00 ! TFE, Trifluoroethanol
+CG2O1  CG311  CG311  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+CG2O3  CG311  CG311  OG311      0.2000  3     0.00 ! PROT C-terminal AA - standard parameter
+CG311  CG311  CG311  OG311      0.1400  3     0.00 ! PROT, hydroxyl wild card
+CG3RC1 CG311  CG311  OG311      0.6000  1     0.00 ! CARBOCY carbocyclic sugars
+CG3RC1 CG311  CG311  OG311      0.7000  3     0.00 ! CARBOCY carbocyclic sugars
+NG2S1  CG311  CG311  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG311  CG311  HGA1       0.1950  3     0.00 ! NA, sugar
+CG2O1  CG311  CG321  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+CG2O3  CG311  CG321  OG311      0.2000  3     0.00 ! PROT C-terminal AA - standard parameter
+CG321  CG311  CG321  OG311      0.2000  3   180.00 ! CARBOCY carbocyclic sugars
+NG2S1  CG311  CG321  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG311  CG321  CG2D1      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG311  CG321  CG311      2.0000  3   180.00 ! NA, sugar
+OG311  CG311  CG321  CG311      0.4000  5     0.00 ! NA, sugar
+OG311  CG311  CG321  CG311      0.8000  6     0.00 ! NA, sugar
+OG311  CG311  CG321  CG321      0.5000  1   180.00 ! NA elevates energy at 0 (c3'endo), adm
+OG311  CG311  CG321  CG321      0.7000  2     0.00 ! NA elevates energy at 0 (c3'endo), adm
+OG311  CG311  CG321  CG321      0.4000  3     0.00 ! NA abasic nucleoside
+OG311  CG311  CG321  CG321      0.4000  5     0.00 ! NA abasic nucleoside
+OG311  CG311  CG321  CG331      0.1400  3     0.00 ! 2BOH, 2-butanol, kevo for gsk/ibm
+OG311  CG311  CG321  OG303      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG311  CG321  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG311  CG321  HGA2       0.1950  3   180.00 ! NA, sugar
+HGA1   CG311  CG321  OG311      0.1950  3     0.00 ! NA, sugar
+OG311  CG311  CG324  NG3P1      0.1950  3     0.00 ! FLAVOP PIP1,2,3
+OG311  CG311  CG324  HGA2       0.1950  3     0.00 ! FLAVOP PIP1,2,3
+OG311  CG311  CG331  HGA3       0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG311  CG3RC1 CG331      0.1580  3     0.00 ! CA, Cholic Acid, cacha, 02/08
+OG311  CG311  CG3RC1 CG3C51     0.1580  3     0.00 ! CA, Cholic Acid, cacha, 02/08
+OG311  CG311  CG3RC1 CG3RC1     0.4500  2     0.00 ! CARBOCY carbocyclic sugars
+CG2O5  CG311  OG311  HGP1       0.3500  1     0.00 ! BIPHENYL re-initialized from CC2O3 CC312 OC311 HCP1 ! erh ketone, n=6 polyol
+CG2O5  CG311  OG311  HGP1       0.3700  2     0.00 ! BIPHENYL re-initialized from CC2O3 CC312 OC311 HCP1 ! erh ketone, n=6 polyol
+CG2O5  CG311  OG311  HGP1       0.0100  3   180.00 ! BIPHENYL re-initialized from CC2O3 CC312 OC311 HCP1 ! erh ketone, n=6 polyol with compensation for HCA1  CC311 OC311M HCP1 0.18 --> HGA1 CG311 OG311 HGP1 0.00 kevo ==> re-evaluate?
+CG311  CG311  OG311  HGP1       1.3300  1     0.00 ! PROT PRO2, 2-propanol OH hf/torsional surface, adm jr., 3/2/93
+CG311  CG311  OG311  HGP1       0.1800  2     0.00 ! PROT PRO2, 2-propanol OH hf/torsional surface, adm jr., 3/2/93
+CG311  CG311  OG311  HGP1       0.4600  3     0.00 ! PROT PRO2, 2-propanol OH hf/torsional surface, adm jr., 3/2/93 ! compensated for X CG311 OG311 X 0.14 --> HGA1 CG311 OG311 HGP1 0.00 kevo ==> re-optimize?
+CG321  CG311  OG311  HGP1       0.3000  1     0.00 ! CARBOCY carbocyclic sugars
+CG321  CG311  OG311  HGP1       0.3000  3     0.00 ! CHOLEST cholesterol
+CG324  CG311  OG311  HGP1       0.5000  1     0.00 ! FLAVOP PIP3
+CG324  CG311  OG311  HGP1       0.7000  2     0.00 ! FLAVOP PIP3
+CG331  CG311  OG311  HGP1       1.3300  1     0.00 ! PROT PRO2, 2-propanol OH hf/torsional surface, adm jr., 3/2/93
+CG331  CG311  OG311  HGP1       0.1800  2     0.00 ! PROT PRO2, 2-propanol OH hf/torsional surface, adm jr., 3/2/93
+CG331  CG311  OG311  HGP1       0.4600  3     0.00 ! PROT PRO2, 2-propanol OH hf/torsional surface, adm jr., 3/2/93 ! compensated for X CG311 OG311 X 0.14 --> HGA1 CG311 OG311 HGP1 0.00 kevo ==> re-optimize?
+CG3RC1 CG311  OG311  HGP1       1.5000  1     0.00 ! CARBOCY carbocyclic sugars
+CG3RC1 CG311  OG311  HGP1       0.3000  2   180.00 ! CARBOCY carbocyclic sugars
+CG3RC1 CG311  OG311  HGP1       0.5000  3     0.00 ! CARBOCY carbocyclic sugars
+OG312  CG311  OG311  HGP1       0.2800  3     0.00 ! PROT EMB  11/21/89 methanol vib fit ! compensated for X CG311 OG311 X 0.14 --> HGA1 CG311 OG311 HGP1 0.00 kevo ==> re-optimize?
+HGA1   CG311  OG311  HGP1       0.0000  3     0.00 ! NA backbone. PRO2 not properly optimized in new carbohydrate FF ==> unmodified.
+CG2R61 CG312  PG1    OG311      0.1000  2     0.00 ! BDFP, BDFD, Difuorobenzylphosphonate
+CG2R61 CG312  PG1    OG311      0.4000  3     0.00 ! BDFP, BDFD, Difuorobenzylphosphonate
+FGA2   CG312  PG1    OG311      0.1000  3     0.00 ! BDFP, BDFD, Difuorobenzylphosphonate
+CG2O1  CG314  CG321  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+CG2O3  CG314  CG321  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+NG3P3  CG314  CG321  OG311      0.2000  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+HGA1   CG314  CG321  OG311      0.1950  3     0.00 ! PROT N-terminal AA - standard parameter collided with NA, sugar
+CG321  CG321  CG321  OG311      0.1950  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+CG331  CG321  CG321  OG311      0.1950  3     0.00 ! PROH, n-propanol, kevo for gsk/ibm
+OG311  CG321  CG321  HGA2       0.1950  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG321  CG324  NG3P0      4.3000  1   180.00 ! LIPID choline, 12/92
+OG311  CG321  CG324  NG3P0     -0.4000  3   180.00 ! LIPID choline, 12/92
+OG311  CG321  CG324  NG3P3      0.7000  1   180.00 ! LIPID ethanolamine
+OG311  CG321  CG324  HGA2       0.1950  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG321  CG324  HGP5       0.1950  3     0.00 ! PROT alkane update, adm jr., 3/2/92
+OG311  CG321  CG331  HGA3       0.1600  3     0.00 ! PROT rotation barrier in Ethane (SF)
+OG311  CG321  CG3C51 CG3C51     2.5000  1   180.00 ! NA, sugar
+OG311  CG321  CG3C51 CG3C51     0.4000  2     0.00 ! NA, sugar
+OG311  CG321  CG3C51 CG3C51     0.8000  3   180.00 ! NA, sugar
+OG311  CG321  CG3C51 CG3C51     0.2000  4   180.00 ! NA, sugar
+OG311  CG321  CG3C51 CG3C52     0.2000  3   180.00 ! CARBOCY carbocyclic sugars
+OG311  CG321  CG3C51 OG3C51     3.4000  1   180.00 ! NA, sugar
+OG311  CG321  CG3C51 HGA1       0.1950  3     0.00 ! NA, sugar
+CG2D1  CG321  OG311  HGP1       1.3000  1     0.00 ! RETINOL PROL
+CG2D1  CG321  OG311  HGP1       0.7000  2     0.00 ! RETINOL PROL
+CG2D1  CG321  OG311  HGP1       0.1400  3     0.00 ! RETINOL PROL; Kenno: empirically corrected for HGA2 CG321 OG311 HGP1 from Team sugar ==> re-evaluate.
+CG2DC1 CG321  OG311  HGP1       1.3000  1     0.00 ! RETINOL PROL
+CG2DC1 CG321  OG311  HGP1       0.7000  2     0.00 ! RETINOL PROL
+CG2DC1 CG321  OG311  HGP1       0.1400  3     0.00 ! RETINOL PROL; Kenno: empirically corrected for HGA2 CG321 OG311 HGP1 from Team sugar ==> re-evaluate.
+CG2DC2 CG321  OG311  HGP1       1.3000  1     0.00 ! RETINOL PROL
+CG2DC2 CG321  OG311  HGP1       0.7000  2     0.00 ! RETINOL PROL
+CG2DC2 CG321  OG311  HGP1       0.1400  3     0.00 ! RETINOL PROL; Kenno: empirically corrected for HGA2 CG321 OG311 HGP1 from Team sugar ==> re-evaluate.
+CG2R61 CG321  OG311  HGP1       2.1000  1     0.00 ! 3ALP, nicotinaldehyde (PYRIDINE pyr-CH2OH), yin
+CG2R61 CG321  OG311  HGP1       1.4000  2     0.00 ! 3ALP, nicotinaldehyde (PYRIDINE pyr-CH2OH), yin
+CG2R61 CG321  OG311  HGP1       0.7400  3     0.00 ! 3ALP, nicotinaldehyde (PYRIDINE pyr-CH2OH), yin; Kenno: empirically corrected for HGA2 CG321 OG311 HGP1 from Team sugar ==> re-evaluate.
+CG302  CG321  OG311  HGP1       0.4000  1     0.00 ! TFE, Trifluoroethanol
+CG302  CG321  OG311  HGP1       0.9000  2     0.00 ! TFE, Trifluoroethanol
+CG302  CG321  OG311  HGP1       0.3400  3     0.00 ! TFE, Trifluoroethanol; Kenno: empirically corrected for HGA2 CG321 OG311 HGP1 from Team sugar ==> re-evaluate.
+CG302  CG321  OG311  HGP1       0.1200  4     0.00 ! TFE, Trifluoroethanol
+CG311  CG321  OG311  HGP1       1.1300  1     0.00 ! og ethanol
+CG311  CG321  OG311  HGP1       0.1400  2     0.00 ! og ethanol
+CG311  CG321  OG311  HGP1       0.2400  3     0.00 ! og ethanol
+CG314  CG321  OG311  HGP1       1.1300  1     0.00 ! og ethanol
+CG314  CG321  OG311  HGP1       0.1400  2     0.00 ! og ethanol
+CG314  CG321  OG311  HGP1       0.2400  3     0.00 ! og ethanol
+CG321  CG321  OG311  HGP1       1.1300  1     0.00 ! og ethanol
+CG321  CG321  OG311  HGP1       0.1400  2     0.00 ! og ethanol
+CG321  CG321  OG311  HGP1       0.2400  3     0.00 ! og ethanol
+CG324  CG321  OG311  HGP1       1.1300  1     0.00 ! ETAM, ethanolamine (transferred from og ethanol)
+CG324  CG321  OG311  HGP1       0.1400  2     0.00 ! ETAM, ethanolamine (transferred from og ethanol)
+CG324  CG321  OG311  HGP1       0.2400  3     0.00 ! ETAM, ethanolamine (transferred from og ethanol)
+CG331  CG321  OG311  HGP1       1.1300  1     0.00 ! og ethanol
+CG331  CG321  OG311  HGP1       0.1400  2     0.00 ! og ethanol
+CG331  CG321  OG311  HGP1       0.2400  3     0.00 ! og ethanol
+CG3C51 CG321  OG311  HGP1       1.1300  1     0.00 ! og ethanol
+CG3C51 CG321  OG311  HGP1       0.1400  2     0.00 ! og ethanol
+CG3C51 CG321  OG311  HGP1       0.2400  3     0.00 ! og ethanol
+HGA2   CG321  OG311  HGP1       0.1800  3     0.00 ! og methanol
+CG2R61 CG321  PG1    OG311      1.6500  1   180.00 ! BDFP, BDFD, Benzylphosphonate
+CG2R61 CG321  PG1    OG311      0.5000  2     0.00 ! BDFP, BDFD, Benzylphosphonate
+HGA2   CG321  PG1    OG311      0.1000  3     0.00 ! BDFP, BDFD, Benzylphosphonate
+HGA3   CG331  OG311  HGP1       0.1800  3     0.00 ! og methanol
+HGP5   CG334  NG3P0  OG311      0.1000  3     0.00 ! TMAOP, Hydroxy(trimethyl)Ammonium, xxwy
+CG321  CG3C51 CG3C51 OG311      0.1400  3     0.00 ! PROT, hydroxyl wild card
+CG331  CG3C51 CG3C51 OG311      0.1400  3     0.00 ! PROT, hydroxyl wild card
+CG3C51 CG3C51 CG3C51 OG311      0.2000  3     0.00 ! par22, X   CT1 CT2 X; erh 3/08
+CG3C52 CG3C51 CG3C51 OG311      0.2000  3     0.00 ! par22, X   CT1 CT2 X; erh 3/08
+CG3C53 CG3C51 CG3C51 OG311      0.1400  3     0.00 ! PROT, hydroxyl wild card
+CG3RC1 CG3C51 CG3C51 OG311      0.6000  1     0.00 ! CARBOCY carbocyclic sugars
+CG3RC1 CG3C51 CG3C51 OG311      0.7000  3     0.00 ! CARBOCY carbocyclic sugars
+NG2R51 CG3C51 CG3C51 OG311      0.0000  3     0.00 ! NA Guanine and uracil
+NG2R61 CG3C51 CG3C51 OG311      0.0000  3     0.00 ! NA Adenine and cytosine
+NG301  CG3C51 CG3C51 OG311      0.0000  3     0.00 ! NADH, NDPH; Kenno: reverted to "Adenine and cytosine" from par_all27_na.prm
+OG303  CG3C51 CG3C51 OG311      0.0000  3     0.00 ! NA bkb
+OG311  CG3C51 CG3C51 OG311      0.0000  3     0.00 ! NA bkb
+OG311  CG3C51 CG3C51 OG3C51     0.2000  3     0.00 ! NA, sugar
+OG311  CG3C51 CG3C51 OG3C51     0.6000  4   180.00 ! NA, sugar
+OG311  CG3C51 CG3C51 OG3C51     0.3000  5     0.00 ! NA, sugar
+OG311  CG3C51 CG3C51 OG3C51     0.5000  6     0.00 ! NA, sugar
+OG311  CG3C51 CG3C51 HGA1       0.1950  3     0.00 ! NA, sugar
+OG311  CG3C51 CG3C52 CG3C51     2.0000  3   180.00 ! NA, sugar
+OG311  CG3C51 CG3C52 CG3C51     0.4000  5     0.00 ! NA, sugar
+OG311  CG3C51 CG3C52 CG3C51     0.8000  6     0.00 ! NA, sugar
+OG311  CG3C51 CG3C52 CG3C52     0.5000  1   180.00 ! NA elevates energy at 0 (c3'endo), adm
+OG311  CG3C51 CG3C52 CG3C52     0.7000  2     0.00 ! NA elevates energy at 0 (c3'endo), adm
+OG311  CG3C51 CG3C52 CG3C52     0.4000  3     0.00 ! NA abasic nucleoside
+OG311  CG3C51 CG3C52 CG3C52     0.4000  5     0.00 ! NA abasic nucleoside
+OG311  CG3C51 CG3C52 CG3RC1     1.9000  2     0.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3C52 OG3C51     0.2000  3     0.00 ! NA, sugar
+OG311  CG3C51 CG3C52 OG3C51     0.6000  4   180.00 ! NA, sugar
+OG311  CG3C51 CG3C52 OG3C51     0.3000  5     0.00 ! NA, sugar
+OG311  CG3C51 CG3C52 OG3C51     0.5000  6     0.00 ! NA, sugar
+OG311  CG3C51 CG3C52 HGA2       0.1950  3   180.00 ! NA, sugar
+OG311  CG3C51 CG3C53 NG2R61     0.0000  3     0.00 ! NA Adenine and cytosine
+OG311  CG3C51 CG3C53 OG3C51     0.2000  3     0.00 ! NA, sugar
+OG311  CG3C51 CG3C53 OG3C51     0.6000  4   180.00 ! NA, sugar
+OG311  CG3C51 CG3C53 OG3C51     0.3000  5     0.00 ! NA, sugar
+OG311  CG3C51 CG3C53 OG3C51     0.5000  6     0.00 ! NA, sugar
+OG311  CG3C51 CG3C53 HGA1       0.1950  3     0.00 ! NA, sugar
+OG311  CG3C51 CG3RC1 CG321      0.4500  2     0.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3RC1 CG321      0.8000  3   180.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3RC1 CG321      0.2000  4     0.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3RC1 CG3C31     0.4500  2     0.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3RC1 CG3C31     0.8000  3   180.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3RC1 CG3C31     0.2000  4     0.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3RC1 CG3C52     0.4500  2     0.00 ! RSRF, 4,6-dioxabicyclo[3.3.0]octan-8-ol; from CARBOCY; xxwy
+OG311  CG3C51 CG3RC1 CG3RC1     0.4500  2     0.00 ! CARBOCY carbocyclic sugars
+OG311  CG3C51 CG3RC1 HGA1       0.1500  3     0.00 ! RSRF, 4,6-dioxabicyclo[3.3.0]octan-8-ol; from CARBOCY; xxwy
+CG3C51 CG3C51 OG311  HGP1       0.2900  1     0.00 ! Team sugar, CC3151 CC3152 OC311 HCP1
+CG3C51 CG3C51 OG311  HGP1       0.6200  2     0.00 ! Team sugar, CC3151 CC3152 OC311 HCP1
+CG3C51 CG3C51 OG311  HGP1       0.0500  3     0.00 ! Team sugar, CC3151 CC3152 OC311 HCP1
+CG3C52 CG3C51 OG311  HGP1       0.2900  1     0.00 ! Team sugar, CC3251 CC3152 OC311 HCP1
+CG3C52 CG3C51 OG311  HGP1       0.6200  2     0.00 ! Team sugar, CC3251 CC3152 OC311 HCP1
+CG3C52 CG3C51 OG311  HGP1       0.0500  3     0.00 ! Team sugar, CC3251 CC3152 OC311 HCP1
+CG3C53 CG3C51 OG311  HGP1       0.2900  1     0.00 ! Team sugar, CC3151 CC3152 OC311 HCP1
+CG3C53 CG3C51 OG311  HGP1       0.6200  2     0.00 ! Team sugar, CC3151 CC3152 OC311 HCP1
+CG3C53 CG3C51 OG311  HGP1       0.0500  3     0.00 ! Team sugar, CC3151 CC3152 OC311 HCP1
+CG3RC1 CG3C51 OG311  HGP1       1.5000  1     0.00 ! CARBOCY carbocyclic sugars
+CG3RC1 CG3C51 OG311  HGP1       0.3000  2   180.00 ! CARBOCY carbocyclic sugars
+CG3RC1 CG3C51 OG311  HGP1       0.3200  3     0.00 ! CARBOCY carbocyclic sugars; Kenno: empirically corrected for HGA1 CG3C51 OG311 HGP1 from Team sugar ==> re-evaluate.
+HGA1   CG3C51 OG311  HGP1       0.1800  3     0.00 ! Team sugar, HCP1 OC311 CC3151 HCA1
+CG334  NG3P0  OG311  HGP1       0.2770  3     0.00 ! TMAOP, Hydroxy(trimethyl)Ammonium, xxwy
+CG331  OG303  PG0    OG311      0.9500  2     0.00 ! NA MP_1, adm jr. !Reorganization:MP_0 RE-OPTIMIZE!
+CG331  OG303  PG0    OG311      0.5000  3     0.00 ! NA MP_1, adm jr. !Reorganization:MP_0 RE-OPTIMIZE!
+CG2R61 OG303  PG1    OG311      0.9500  2     0.00 ! PROTNA phenol phosphate, 6/94, adm jr.
+CG2R61 OG303  PG1    OG311      0.5000  3     0.00 ! PROTNA phenol phosphate, 6/94, adm jr.
+CG321  OG303  PG1    OG311      0.9500  2     0.00 ! NA MP_1, adm jr.
+CG321  OG303  PG1    OG311      0.5000  3     0.00 ! NA MP_1, adm jr.
+CG331  OG303  PG1    OG311      0.9500  2     0.00 ! NA MP_1, adm jr. !Reorganization:MP_1
+CG331  OG303  PG1    OG311      0.5000  3     0.00 ! NA MP_1, adm jr. !Reorganization:MP_1
+CG3C51 OG303  PG1    OG311      0.9500  2     0.00 ! NA T3PH, adm jr.
+CG3C51 OG303  PG1    OG311      0.5000  3     0.00 ! NA T3PH, adm jr.
+PG1    OG304  PG1    OG311      0.1000  2     0.00 ! NA ppi2 !Reorganization:PPI2
+PG1    OG304  PG1    OG311      0.0300  3     0.00 ! NA ppi2 !Reorganization:PPI2
+HGP1   OG311  PG0    OG2P1      0.3000  3     0.00 ! NA MP_1, adm jr. !Reorganization:MP_0 RE-OPTIMIZE!
+HGP1   OG311  PG0    OG303      1.6000  1   180.00 ! PROTNA phenol phosphate !Reorganization:MP_0 RE-OPTIMIZE!
+HGP1   OG311  PG0    OG303      0.9000  2     0.00 ! PROTNA phenol phosphate !Reorganization:MP_0 RE-OPTIMIZE!
+HGP1   OG311  PG0    OG311      0.3000  3     0.00 ! NA MP_0, adm jr.
+HGP1   OG311  PG1    CG312      0.2000  1   180.00 ! BDFP, BDFD, Difuorobenzylphosphonate
+HGP1   OG311  PG1    CG312      1.6000  2     0.00 ! BDFP, BDFD, Difuorobenzylphosphonate
+HGP1   OG311  PG1    CG321      0.6000  1   180.00 ! BDFP, BDFD, Benzylphosphonate
+HGP1   OG311  PG1    CG321      1.1000  2     0.00 ! BDFP, BDFD, Benzylphosphonate
+HGP1   OG311  PG1    OG2P1      0.3000  3     0.00 ! NA MP_1, adm jr. !Reorganization:MP_1
+HGP1   OG311  PG1    OG303      1.6000  1   180.00 ! PROTNA phenol phosphate !Reorganization:MP_1
+HGP1   OG311  PG1    OG303      0.9000  2     0.00 ! PROTNA phenol phosphate !Reorganization:MP_1
+HGP1   OG311  PG1    OG304      1.6000  1   180.00 ! PROTNA phenol phosphate !Reorganization:PPI2
+HGP1   OG311  PG1    OG304      0.9000  2     0.00 ! PROTNA phenol phosphate !Reorganization:PPI2
+CC3161   CC3161    OC30P     PL       0.02   3    180.0
+CC3161   OC30P     PL        OC2DP    0.33   3      0.0
+HCA1     CC3161    OC30P     PL       0.284  3      0.0  ! dmp,eps, H-C3'-O3'-P || from the par_all27_na.prm
+CC3161   OC30P     PL        OSLP     1.45   2      0.0  !CC311D OC30P PC OC312
+CC3161   OC30P     PL        O2L      0.33   3      0.0  !CC311D OC30P PC OC2DP
+OC30P   PL      OSLP    CTL2     1.20   1   180.00  !OSLP PL OSLP CTL2 ! phosphate, new NA, 4/98, adm jr.
+OC30P   PL      OSLP    CTL2     0.10   2   180.00  !
+OC30P   PL      OSLP    CTL2     0.10   3   180.00  !
+X    CTL1 OHL  X        0.14    3     0.00 ! glycerol
+X    CTL2 OHL  X        0.14    3     0.00 ! glycerol
+X    CTL3 OHL  X        0.14    3     0.00 ! glycerol
+OCL  CCL  CTL1 NH3L     3.20    2   180.00 ! for POPS
+OBL  CL   CTL2 HAL2     0.00    6   180.00 ! acetic acid
+OBL  CL   CTL3 HAL3     0.00    6   180.00 ! acetic acid
+OSL  CL   CTL2 HAL2     0.00    6   180.00 ! acetic acid
+OSL  CL   CTL3 HAL3     0.00    6   180.00 ! acetic acid
+OSLP CL   CTL2 HAL2     0.00    6   180.00 ! acetic acid
+OSLP CL   CTL3 HAL3     0.00    6   180.00 ! acetic acid
+OBL  CL   OSL  CTL1     0.965   1   180.00 ! methyl acetate
+OBL  CL   OSL  CTL1     3.85    2   180.00 ! methyl acetate
+OBL  CL   OSL  CTL2     0.965   1   180.00 ! methyl acetate
+OBL  CL   OSL  CTL2     3.85    2   180.00 ! methyl acetate
+OBL  CL   OSL  CTL3     0.965   1   180.00 ! methyl acetate
+OBL  CL   OSL  CTL3     3.85    2   180.00 ! methyl acetate
+X    CL   OSL  X        2.05    2   180.00 ! methyl acetate
+X    CTL2 CL   X        0.05    6   180.00 ! methyl acetate
+X    CTL3 CL   X        0.05    6   180.00 ! methyl acetate
+X    CL   OHL  X        2.05    2   180.00 ! acetic acid
+X    CTL1 CCL  X        0.05    6   180.00 ! for POPS
+HAL2 CTL2 CL   OHL      0.00    6   180.00
+HAL3 CTL3 CL   OHL      0.00    6   180.00
+PL   OSLP CTL2 CTL1     0.407   2     0.00 ! Phos-gly, 8/05
+PL   OSLP CTL2 CTL1     0.241   1   180.00 ! Phos-gly, 8/05
+PL   OSLP CTL2 CTL2     0.407   2     0.00 ! Phos-gly, 8/05
+PL   OSLP CTL2 CTL2     0.241   1   180.00 ! Phos-gly, 8/05
+OSL  PL   OSL  CTL1     1.20    1   180.00 ! phosphate, new NA, 4/98, adm jr., PIP
+OSL  PL   OSL  CTL1     0.10    2   180.00 ! phosphate, new NA, 4/98, adm jr., PIP
+OSL  PL   OSL  CTL1     0.10    3   180.00 ! phosphate, new NA, 4/98, adm jr., PIP
+OSLP PL   OSLP CTL1     1.20    1   180.00 ! phosphate, new NA, 4/98, adm jr., PIP
+OSLP PL   OSLP CTL1     0.10    2   180.00 ! phosphate, new NA, 4/98, adm jr., PIP
+OSLP PL   OSLP CTL1     0.10    3   180.00 ! phosphate, new NA, 4/98, adm jr., PIP
+OSLP PL   OSLP CTL2     1.20    1   180.00 ! phosphate, new NA, 4/98, adm jr.
+OSLP PL   OSLP CTL2     0.10    2   180.00 ! phosphate, new NA, 4/98, adm jr.
+OSLP PL   OSLP CTL2     0.10    3   180.00 ! phosphate, new NA, 4/98, adm jr.
+O2L  PL   OSLP CTL2     0.10    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+O2L  PL   OSL  CTL2     0.10    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+OSLP PL   OSLP CTL3     1.20    1   180.00 ! phosphate, new NA, 4/98, adm jr.
+OSLP PL   OSLP CTL3     0.10    2   180.00 ! phosphate, new NA, 4/98, adm jr.
+OSLP PL   OSLP CTL3     0.10    3   180.00 ! phosphate, new NA, 4/98, adm jr.
+O2L  PL   OSLP CTL1     0.10    3     0.00 ! phosphate, new NA, 4/98, adm jr., PIP
+O2L  PL   OSL  CTL1     0.10    3     0.00 ! phosphate, new NA, 4/98, adm jr., PIP
+O2L  PL   OSLP CTL3     0.10    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+O2L  PL   OSL  CTL3     0.10    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+OHL  PL   OSL  CTL1     0.95    2     0.00 ! terminal phosphate, PIP
+OHL  PL   OSL  CTL1     0.50    3     0.00 ! terminal phosphate, PIP
+OHL  PL   OSL  CTL2     0.95    2     0.00 ! terminal phosphate
+OHL  PL   OSL  CTL2     0.50    3     0.00 ! terminal phosphate
+OHL  PL   OSL  CTL3     0.95    2     0.00 ! terminal phosphate
+OHL  PL   OSL  CTL3     0.50    3     0.00 ! terminal phosphate
+OHL  PL   OSLP CTL2     0.95    2     0.00 ! terminal phosphate
+OHL  PL   OSLP CTL2     0.50    3     0.00 ! terminal phosphate
+OHL  PL   OSLP CTL3     0.95    2     0.00 ! terminal phosphate
+OHL  PL   OSLP CTL3     0.50    3     0.00 ! terminal phosphate
+X    OHL  PL   X        0.30    3     0.00 ! terminal phosphate
+X    CTL1 OSL  X        0.00    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+X    CTL2 OSL  X        0.00    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+X    CTL3 OSL  X        0.00    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+X    CTL1 OSLP X        0.00    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+X    CTL2 OSLP X        0.00    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+X    CTL3 OSLP X        0.00    3     0.00 ! phosphate, new NA, 4/98, adm jr.
+CTL1 CTL2 CL   OSL     -0.15    1   180.00 ! methyl propionate, 12/92
+CTL1 CTL2 CL   OSL      0.53    2   180.00 ! methyl propionate, 12/92
+CTL2 CTL2 CL   OSL      0.000   6     0.00 ! glycerol & propl ester, 6/07
+CTL2 CTL2 CL   OSL      0.030   3   180.00 ! glycerol & propl ester, 6/07
+CTL2 CTL2 CL   OSL      0.432   2   180.00 ! glycerol & propl ester, 6/07
+CTL2 CTL2 CL   OSL      0.332   1     0.00 ! glycerol & propl ester, 6/07
+CTL3 CTL2 CL   OSL      0.000   6     0.00 ! glycerol & propl ester, 6/07
+CTL3 CTL2 CL   OSL      0.030   3   180.00 ! glycerol & propl ester, 6/07
+CTL3 CTL2 CL   OSL      0.432   2   180.00 ! glycerol & propl ester, 6/07
+CTL3 CTL2 CL   OSL      0.332   1     0.00 ! glycerol & propl ester, 6/07
+CTL3 CTL2 CTL2 CL       0.000   5   180.00 ! propyl ester, 6/07
+CTL3 CTL2 CTL2 CL       0.317   3   180.00 ! propyl ester, 6/07
+CTL3 CTL2 CTL2 CL       0.557   2     0.00 ! propyl ester, 6/07
+CTL3 CTL2 CTL2 CL       0.753   1     0.00 ! propyl ester, 6/07
+CTL2 CTL2 CTL2 CL       0.000   5   180.00 ! propyl ester, 6/07
+CTL2 CTL2 CTL2 CL       0.317   3   180.00 ! propyl ester, 6/07
+CTL2 CTL2 CTL2 CL       0.557   2     0.00 ! propyl ester, 6/07
+CTL2 CTL2 CTL2 CL       0.753   1     0.00 ! propyl ester, 6/07
+OSL  CTL2 CTL1 OSL     -0.429   4    60.00 ! glycerol, 8/08
+OSL  CTL2 CTL1 OSL      0.614   3     0.00 ! glycerol, 8/08 
+OSL  CTL2 CTL1 OSL     -0.115   2    60.00 ! glycerol, 8/08 
+OSL  CTL2 CTL1 OSL      0.703   1   180.00 ! glycerol, 8/08 
+OSLP CTL2 CTL1 OSL      0.000   4     0.00 ! Fit to QM, theta2, 07/08 jbk
+OSLP CTL2 CTL1 OSL      0.607   3   180.00 ! Fit to QM, theta2, 07/08 jbk
+OSLP CTL2 CTL1 OSL      0.254   2    60.00 ! Fit to QM, theta2, 07/08 jbk
+OSLP CTL2 CTL1 OSL      2.016   1   180.00 ! Fit to QM, theta2, 07/08 jbk
+OSLP CTL2 CTL2 OSL      0.000   4     0.00 ! Fit to QM, theta2, 07/08 jbk
+OSLP CTL2 CTL2 OSL      0.607   3   180.00 ! Fit to QM, theta2, 07/08 jbk
+OSLP CTL2 CTL2 OSL      0.254   2    60.00 ! Fit to QM, theta2, 07/08 jbk
+OSLP CTL2 CTL2 OSL      2.016   1   180.00 ! Fit to QM, theta2, 07/08 jbk
+CTL3 CTL1 CTL2 OSL      0.000   3     0.00 ! glycerol, theta3
+CTL2 CTL1 CTL2 OSL      0.000   3     0.00 ! glycerol, theta3
+CTL3 CTL2 CTL2 OSL      0.000   3     0.00 ! glycerol, theta3
+CTL2 CTL2 CTL2 OSL      0.000   3     0.00 ! glycerol, theta3
+CL   OSL  CTL1 CTL2     0.000   4     0.00 ! glycerol, beta1 6/07
+CL   OSL  CTL1 CTL2     0.150   3   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTL1 CTL2     1.453   2   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTL1 CTL2     0.837   1   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTL1 CTL3     0.000   4     0.00 ! glycerol, beta1 6/07
+CL   OSL  CTL1 CTL3     0.150   3   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTL1 CTL3     1.453   2   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTL1 CTL3     0.837   1   180.00 ! glycerol, beta1 6/07
+CL   OSL  CTL2 CTL1     0.267   3   180.00 ! glycerol, gamma1 6/07 
+CL   OSL  CTL2 CTL1     0.173   2     0.00 ! glycerol, gamma1 6/07 
+CL   OSL  CTL2 CTL1     0.781   1   180.00 ! glycerol, gamma1 6/07
+X    CTL2 NTL  X        0.26    3     0.00 ! tetramethylammonium
+X    CTL5 NTL  X        0.23    3     0.00 ! tetramethylammonium
+X    CTL1 NH3L X        0.10    3     0.00 ! for POPS
+X    CTL2 NH3L X        0.10    3     0.00 ! ethanolamine
+NH3L CTL2 CTL2 OHL      0.7     1   180.00 ! ethanolamine
+NH3L CTL2 CTL2 OSLP     0.7     1   180.00 ! ethanolamine
+NTL  CTL2 CTL2 OHL      4.3     1   180.00 ! choline, 12/92
+NTL  CTL2 CTL2 OHL     -0.4     3   180.00 ! choline, 12/92
+NTL  CTL2 CTL2 OSLP     3.3     1   180.00 ! choline, 12/92
+NTL  CTL2 CTL2 OSLP    -0.4     3   180.00 ! choline, 12/92
+X    CTL1 CTL1 X        0.200   3     0.00 ! alkane, 3/92
+X    CTL1 CTL2 X        0.200   3     0.00 ! alkane, 3/92
+X    CTL1 CTL3 X        0.200   3     0.00 ! alkane, 3/92
+X    CTL2 CTL2 X        0.1900  3     0.00 ! alkane, 4/98, yin and mackerell
+X    CTL2 CTL3 X        0.1600  3     0.00 ! alkane, 4/98, yin and mackerell
+X    CTL3 CTL3 X        0.1525  3     0.00 ! alkane, 4/98, yin and mackerell
+!alkane CCCC dihedrals based on pentane, heptane and hexane vdz/vqz/ccsd(t) QM data
+CTL3 CTL2 CTL2 CTL3     0.060   2     0.00 ! alkane, 7/08, jbk
+CTL3 CTL2 CTL2 CTL3     0.035   5     0.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL3     0.162   2     0.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL3     0.047   3   180.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL3     0.105   4     0.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL3     0.177   5     0.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL2     0.101   2     0.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL2     0.142   3   180.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL2     0.074   4     0.00 ! alkane, 7/08, jbk
+CTL2 CTL2 CTL2 CTL2     0.097   5     0.00 ! alkane, 7/08, jbk
+HAL3 CTL3 OSL  SL       0.00    3     0.00 ! methylsulfate
+CTL2 OSL  SL   O2L      0.00    3     0.00 ! methylsulfate
+CTL3 OSL  SL   O2L      0.00    3     0.00 ! methylsulfate
+HEL1 CEL1 CEL1 HEL1     1.0000  2   180.00 ! 2-butene, adm jr., 8/98 update
+CTL3 CEL1 CEL1 HEL1     1.0000  2   180.00 ! 2-butene, adm jr., 8/98 update
+X    CEL1 CEL1 X        0.4500  1   180.00 ! 2-butene, adm jr., 4/04
+X    CEL1 CEL1 X        8.5000  2   180.00 !
+X    CEL2 CEL2 X        4.9000  2   180.00 ! ethene, yin,adm jr., 12/95
+CTL2 CEL1 CEL2 HEL2     5.2000  2   180.00 ! propene, yin,adm jr., 12/95
+CTL3 CEL1 CEL2 HEL2     5.2000  2   180.00 ! propene, yin,adm jr., 12/95
+HEL1 CEL1 CEL2 HEL2     5.2000  2   180.00 ! propene, yin,adm jr., 12/95
+!alkene update, 2004,2009
+CEL1 CEL1 CTL2 HAL2     0.3000  3   180.00 !2-butene, adm jr., 4/04
+CEL1 CEL1 CTL3 HAL3     0.3000  3   180.00 !2-butene, adm jr., 4/04
+!CEL1 CEL1 CTL2 CTL3     0.9000  1   180.00 !2-pentene and 3-heptene
+!CEL1 CEL1 CTL2 CTL3     0.2000  2   180.00 !2-pentene and 3-heptene
+CEL1 CEL1 CTL2 CTL3     0.9100  1    180.0 !2-hexene, adm jr., 11/09, end fix jbk
+CEL1 CEL1 CTL2 CTL3     0.1800  2    180.0 !2-hexene, adm jr., 11/09
+CEL1 CEL1 CTL2 CTL3     0.1700  3    180.0 !2-hexene, adm jr., 11/09
+CEL1 CEL1 CTL2 CTL2     0.9100  1    180.0 !2-hexene, adm jr., 11/09
+CEL1 CEL1 CTL2 CTL2     0.1800  2    180.0 !2-hexene, adm jr., 11/09
+CEL1 CEL1 CTL2 CTL2     0.1700  3    180.0 !2-hexene, adm jr., 11/09
+CEL1 CTL2 CTL2 CL       0.1400  1    180.0 !2-hexene, adm jr., 11/09, add jbk for DHA
+CEL1 CTL2 CTL2 CL       0.1700  2      0.0 !2-hexene, adm jr., 11/09, add jbk for DHA
+CEL1 CTL2 CTL2 CL       0.0500  3    180.0 !2-hexene, adm jr., 11/09, add jbk for DHA
+CEL1 CTL2 CTL2 CTL2     0.1400  1    180.0 !2-hexene, adm jr., 11/09
+CEL1 CTL2 CTL2 CTL2     0.1700  2      0.0 !2-hexene, adm jr., 11/09
+CEL1 CTL2 CTL2 CTL2     0.0500  3    180.0 !2-hexene, adm jr., 11/09
+CEL1 CTL2 CTL2 CTL3     0.1400  1    180.0 !2-hexene, adm jr., 11/09
+CEL1 CTL2 CTL2 CTL3     0.1700  2      0.0 !2-hexene, adm jr., 11/09
+CEL1 CTL2 CTL2 CTL3     0.0500  3    180.0 !2-hexene, adm jr., 11/09
+CEL2 CEL1 CTL2 CTL2     0.5000  1   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CTL2 CTL2     1.3000  3   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CTL2 CTL3     0.5000  1   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CTL2 CTL3     1.3000  3   180.00 ! 1-butene, adm jr., 2/00 update
+CEL2 CEL1 CTL2 HAL2     0.1200  3     0.00 ! 1-butene, yin,adm jr., 12/95
+CEL2 CEL1 CTL3 HAL3     0.0500  3   180.00 ! propene, yin,adm jr., 12/95
+HEL1 CEL1 CTL2 CTL2     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+HEL1 CEL1 CTL2 CTL3     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+HEL1 CEL1 CTL2 HAL2     0.0000  3     0.00 ! butene, adm jr., 2/00 update
+HEL1 CEL1 CTL3 HAL3     0.0000  3     0.00 ! butene, adm jr., 2/00 update
+! 1,4-dipentene, adm jr., 2/00
+CEL2 CEL1 CTL2 CEL1     1.200   1   180.00 !1,4-dipentene
+CEL2 CEL1 CTL2 CEL1     0.400   2   180.00 !1,4-dipentene
+CEL2 CEL1 CTL2 CEL1     1.300   3   180.00 !1,4-dipentene
+CEL1 CTL2 CEL1 HEL1     0.000   2     0.00 !1,4-dipentene
+CEL1 CTL2 CEL1 HEL1     0.000   3     0.00 !1,4-dipentene
+! 2,5-diheptene, jbk., 9/2010
+! for CIS double bonds in polyunsaturated lipids (default)
+CEL1 CEL1 CTL2 CEL1     0.850   1   180.00 !2,5-diheptane
+CEL1 CEL1 CTL2 CEL1     0.300   2   180.00 !2,5-diheptane
+CEL1 CEL1 CTL2 CEL1     0.260   3     0.00 !2,5-diheptane
+CEL1 CEL1 CTL2 CEL1     0.096   4     0.00 !2,5-diheptane
+! for TRANS double bonds in polyunsaturated lipids
+! uncomment following 4 lines and comment previous 4 lines to use
+!CEL1 CEL1 CTL2 CEL1     1.200   1   180.00 !2,5-diheptane
+!CEL1 CEL1 CTL2 CEL1     0.200   2   180.00 !2,5-diheptane
+!CEL1 CEL1 CTL2 CEL1     1.200   3   180.00 !2,5-diheptane
+!CEL1 CEL1 CTL2 CEL1     0.100   4   180.00 !2,5-diheptane
+
+IMPROPER
+!sphingolipids
+O    X    X    C     120.0000         0      0.0000 ! ALLOW   PEP POL ARO
+NHL  X   X   H        20.       0     0.00   ! amide, from peptide; rmv nov 2009
+!inositol
+NC2D1   CC2O1   CC3161  HCP1     20.00   0   0.00  ! par22 NH1  X    X    H
+NC2D1   CC2O1   CC3161  HCP1     20.00   0   0.00  ! par22 NH1  X    X    H
+NC2D1   CC2O1   CC3062  HCP1     20.00   0   0.00  ! par22 NH1  X    X    H
+NC2D1   CC2O1   CC331   HCP1     20.00   0   0.00  ! par22 NH1  X    X    H
+NC2D1   CC2O1   CC311   HCP1     20.00   0   0.00  ! par22 NH1  X    X    H
+CG2O2  CG2R61 OG2D1  OG311     53.0000  0     0.00 ! ZOIC, benzoic acid; MOLVIB looks good; jal
+CG2O2  CG311  OG2D1  OG311     65.0000  0     0.00 ! PROT & LIPID WILDCARD; ACEH, acetic acid; xxwy
+CG2O2  CG321  OG2D1  OG311     65.0000  0     0.00 ! PROT & LIPID WILDCARD; ACEH, acetic acid; xxwy
+CG2O2  CG331  OG2D1  OG311     65.0000  0     0.00 ! ACEH, acetic acid, xxwy
+CG2O2  OG2D1  OG311  HGR52     75.0000  0     0.00 ! FORH, formic acid, xxwy
+OBL  X    X    CL         100.00    0     0.00 ! acetic acid
+HEL2 HEL2 CEL2 CEL2         3.00    0     0.00 ! ethene, yin,adm jr., 12/95
+OCL  X    X    CL          96.00    0     0.00 ! acetate
+OCL  X    X    CCL         96.00    0     0.00 ! for POPS
+
+
+NONBONDED nbxmod  5 atom cdiel shift vatom vdistance vswitch -cutnb 14.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5                !adm jr., 5/08/91, suggested cutoff scheme!atom  ignored    epsilon      Rmin/2   ignored   eps,1-4       Rmin/2,1-4
+!
+CGT2   0.0       -0.0640     2.0800 ! alkene, yin,adm jr., 12/95
+HGT2   0.0       -0.0260     1.2600 ! alkene, yin,adm jr., 12/95
+CCP2   0.0       -0.0560     2.0100   0.0 -0.01 1.9 ! cyclopropane JMW (CT2), viv
+CCP1   0.0       -0.0320     2.0000   0.0 -0.01 1.9 ! alkane (CT1), viv
+HCP2     0.0       -0.0350     1.3400 ! alkane, igor, 6/05
+H      0.000000  -0.046000     0.224500 ! ALLOW PEP POL SUL ARO ALC
+O      0.000000  -0.120000     1.700000   0.000000  -0.120000     1.400000 ! ALLOW   PEP POL
+C      0.000000  -0.110000     2.000000 ! ALLOW   PEP POL ARO
+CC3161   0.0  -0.0320  2.000  0.0 -0.01 1.9 ! alkane,isobutane 1/5/05 viv
+HCA1      0.0  -0.0450   1.340  ! alkane,isobutane 1/5/05 igor
+HCP1      0.0  -0.0460   0.2245 ! CHARMM polar H
+OC30P     0.0  -0.1521   1.77
+OG311    0.0       -0.1921     1.7650 ! og MeOH and EtOH 1/06 (was -0.1521 1.7682)
+HOL      0.0       -0.046     0.2245
+HAL1     0.0       -0.022     1.3200 ! alkane, 3/92
+HGA1     0.0       -0.022     1.3200 ! alkane, 3/92
+HAL2     0.0       -0.028     1.3400 ! alkane, yin and mackerell, 4/98
+HGA2     0.0       -0.028     1.3400 ! alkane, yin and mackerell, 4/98
+HAL3     0.0       -0.024     1.3400 ! alkane, yin and mackerell, 4/98
+HBL      0.0       -0.022     1.3200 ! for POPS
+HCL      0.0       -0.046     0.2245 ! ethanolamine
+HL       0.0       -0.046     0.7    ! polar H on NC4+
+HEL1     0.0       -0.031     1.25   ! alkene, yin,adm jr., 12/95
+HEL2     0.0       -0.026     1.26   ! alkene, yin,adm jr., 12/95
+!
+CL       0.0       -0.0700    2.00   ! methyl acetate update             
+CCL      0.0       -0.0700    2.00   ! for POPS
+CTL1     0.0       -0.0200    2.275 0.0 -0.01 1.9 ! alkane, 3/92
+CTL2     0.0       -0.0560    2.010 0.0 -0.01 1.9 ! alkane, 4/98, yin, adm jr.
+CTL3     0.0       -0.0780    2.040 0.0 -0.01 1.9 ! alkane, 4/98, yin, adm jr.
+CTL5     0.0       -0.0800    2.06  0.0 -0.01 1.9 ! old CTL3
+! maintained for tetramethylammonium
+CEL1     0.0       -0.068     2.09   ! alkene, yin,adm jr., 12/95
+CEL2     0.0       -0.064     2.08   ! alkene, yin,adm jr., 12/95
+CRL1     0.0       -0.0360    2.010 0.0 -0.01 1.9 ! CGAFF, jbk add for cholesterol
+CRL2     0.0       -0.0600    2.020 0.0 -0.01 1.9 ! CPEN, cyclopentane, 8/06 viv (jbk add)
+!
+OBL      0.0       -0.12      1.70  0.0 -0.12 1.4
+OCL      0.0       -0.12      1.70
+O2L      0.0       -0.12      1.70
+OC2DP    0.0       -0.12      1.70
+OHL      0.0       -0.1521    1.77
+OC312    0.0       -0.1521    1.77
+OSL      0.0       -0.1000    1.6500 !viv dec06 ether parameter
+OSLP     0.0       -0.1000    1.6500 !viv dec06 ether parameter
+!
+NH3L     0.0       -0.20      1.85  ! ethanolamine
+NTL      0.0       -0.20      1.85  ! as all other nitogens
+!
+SL       0.0       -0.47      2.1   ! methylsulfate
+PL       0.0       -0.585     2.15  ! ADM Jr.
+PC       0.0       -0.585     2.15  ! ADM Jr.
+!
+NHL      0.0       -0.2000    1.850 0.0 -0.20 1.55 ! ALLOW   PEP POL ARO
+            ! This 1,4 vdW allows the C5 dipeptide minimum to exist.(LK) - TAKEN FROM NH1
+CTO1     0.0       -0.0200    2.275 0.0 -0.01 1.9 ! alkane, 3/92
+            ! Transferred from CTL1; lip36
+CEL3     0.0       -0.0680    2.090   ! alkene, yin,adm jr., 12/95
+            ! Transferred from CEL1; lip36! Added my STN for CER24
+CTO2     0.0       -0.0560    2.010 0.0 -0.01 1.9 ! STN, 3/13
+

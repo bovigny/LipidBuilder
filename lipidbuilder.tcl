@@ -10,7 +10,7 @@
 ##   -Thomas Lemmin
 
 
-package provide lipidbuilder 2.1
+package provide lipidbuilder 3.1
 
 
 package require topology_reader
@@ -31,7 +31,7 @@ namespace eval ::lipidBuilder:: {
 
   #define package variables
 
-  variable version 2.1
+  variable version 3.1
   #Default force field parameters:
   variable debug
   variable nsel
@@ -45,7 +45,7 @@ namespace eval ::lipidBuilder:: {
   variable LipidBuilderURL "http://lipidbuilder.epfl.ch/"
   variable LipidBuilderLibraryURL "$LipidBuilderURL/lipidlibrary/index.txt"
   variable LipidBuilderUpdateURL "$LipidBuilderURL/LipidBuilderUpdate_${version}.zip"
-  variable LipidBuilderParameters "par_all36_lipid.prm"
+  variable LipidBuilderParameters "par_all36_lipidBuilder.prm"
   variable tmpsubmenu 0
   variable categories
   variable defaultCategory 0
@@ -92,7 +92,6 @@ proc ::lipidBuilder::lipidbuilder { category head resname tails outdir } {
 	}
 	#Tails
 	set n $A_nbrTails(${category}-${head})
-	puts $tails
 	if {[llength $tails] != $n } {
 		puts "- $n tails have to be defined for $head\n"
 		set error 1;
@@ -525,9 +524,7 @@ proc ::lipidBuilder::checkAndBuild {} {
 		lappend tails "\$tail${i}"
 	}
 	set tails [join $tails " "]
-	puts $tails
 	eval "set tails \[concat $tails\]"
-	puts $tails
 	if {[llength $tails] != $n } {
 		lappend errorMsg "- $n tails have to be defined for $head\n"
         set error 1;
@@ -591,7 +588,12 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
 	variable LipidBuilder
     ::topology_writer::init
     ::topology_reader::init
+    ::smile2topology::init
     ::smile2topology::read_ICparameters "$LipidBuilder/hydrocarbon_topology.dat"
+    ::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/C_linker.dat"
+    #::smile2topology::read_ICparameters "$LipidBuilder/SLipid_hydrocarbon_topology.dat"
+	#::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/SLipid_C_linker.dat"
+
 	::topology_reader::read_topology  $LipidBuilder/topology/lipid_masses.top
 	if {[file exists  $LipidBuilder/topology/${category}/${head}.top]} {
 		::topology_reader::read_topology  $LipidBuilder/topology/${category}/${head}.top
@@ -611,6 +613,8 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
 				if {[::smile2topology::assign_atoms C${index} [lindex $H $index]] == -1} {
 					return -1
 				}
+				::smile2topology::get_connectivity $structure
+				::smile2topology::apply_patch
 				::smile2topology::assign_bonds $structure
 				::smile2topology::set_ICs $structure
 				#link to head group
@@ -636,6 +640,7 @@ proc ::lipidBuilder::createTemplate {category topology head pathOut} {
 	getTemplate $LipidBuilder/heads/${category}/${head}.pdb $resname L1 $pathOut
 	buildTemplate $resname  $topology L1 $pathOut
 	minimizeTemplate $resname  $topology $pathOut
+	computeMinMax $resname $pathOut
 }
 
 proc ::lipidBuilder::buildTemplate {resname topology segname pathOut} {
@@ -671,6 +676,16 @@ proc ::lipidBuilder::getTemplate {head resname segname pathOut} {
         mol delete all
 }
 
+proc ::lipidBuilder::computeMinMax {resname pathOut} {
+	set id [mol new $pathOut/${resname}.psf]
+	mol addfile $pathOut/${resname}.pdb
+	lassign [measure minmax [atomselect top all]] v1 v2
+	set minmax [vecsub $v2 $v1]
+	set f [open ${pathOut}/minmax.dat w]
+	puts $f $minmax
+	close $f
+	mol delete $id
+}
 
 ###########################################################################
 #
