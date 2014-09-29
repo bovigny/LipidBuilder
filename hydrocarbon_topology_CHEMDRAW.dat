@@ -1,6 +1,5 @@
 !List of parameters for acyl chains
 !
-!RESI: defines a heavy atom 
 !
 !KEY: ELEMENT LINKER CONNECTIVITY RING BRANCH BOND
 !	ELEMENT: chemical element (C, N, O, ...)
@@ -14,13 +13,6 @@
 ! &: Improper angle
 ! -: previous atom
 ! +: following atom 
-!HATOM: heavy atom (e.g carbon)
-!ATOM: hydrogens
-!
-!PRES: patch correcting atoms types
-!HATOM
-!ATOM
-!
 !Thomas Lemmin
 !Laboratory for Biomolecular Modeling, EPFL
 !2013
@@ -32,11 +24,17 @@
 !	HATOM C   CTL0 -0.09 
 !ISER
 
-RESI CH1 ! double bond CH1
+RESI CH1 ! double bond CH1 CIS
 	KEY C 0 2 0 0 2:1
 	KEY C 0 2 0 0 1:2
-	KEY C 0 2 0 0 2:-1
 	KEY C 0 2 0 0 -1:2
+	HATOM C CEL1 -0.15 
+	ATOM H1 HEL1 0.15
+	STEREO *:C*+ *:C*- &CH1:C CH1:H1  1.58 110 180 121 1.08
+ISER
+
+RESI CH1 ! double bond CH1 TRANS
+	KEY C 0 2 0 0 2:-1
 	HATOM C CEL1 -0.15 
 	ATOM H1 HEL1 0.15
 	STEREO *:C*+ *:C*- &CH1:C CH1:H1  1.58 110 180 121 1.08
@@ -53,6 +51,24 @@ RESI CH2 ! single bond CH2
 	STEREO CH2:H1 *:C*- &CH2:C CH2:H2 1.10 110 -120 110 1.10
 ISER
 
+RESI CLH2 ! linker CH2
+	KEY C 1 1 0 0 1   
+	HATOM C CTL2 -0.22
+	ATOM H1 HAL2 0.09
+	ATOM H2 HAL2 0.09 
+	!STEREO *:C-- *:C- &CH2:C CH2:H1  1.53 110 120 110 1.10
+	!STEREO CH2:H1 *:C- &CH2:C CH2:H2 1.10 110 120 110 1.10
+ISER
+
+RESI CLH3 ! linker CH3
+	KEY C 0 1 0 0 1   
+	HATOM C CTL3 -0.31	
+	ATOM H1 HAL3 0.09
+	ATOM H2 HAL3 0.09 
+	ATOM H3 HAL3 0.09 
+	!STEREO *:C-- *:C- &CH2:C CH2:H1  1.53 110 120 110 1.10
+	!STEREO CH2:H1 *:C- &CH2:C CH2:H2 1.10 110 120 110 1.10
+ISER
 
 RESI CH3 ! terminal CH3
 	KEY C 0 1 0 0 1
@@ -96,10 +112,9 @@ RESI CRH1 ! cycloprane CH1
 	KEY C 0 3 1 0 1:1:-1
 	HATOM C CCP1 -0.09
 	ATOM H1 HCP1 0.09
+	!STEREO *:C*-- CRH1:C- CRH1:C CRH1:H1 1.53 65 -129 115 1.10
 	STEREO CRH2:C+ *:C*- &CRH1:C CRH1:H1 1.53 115 -145 115 1.10
-	STEREO CRH1:C+ *:C*- &CRH1:C CRH1:H1 1.53 115 145 115 1.10
-	STEREO *:C*+ CRH1:C- &CRH1:C CRH1:H1 1.53 115 145 115 1.10
-	STEREO *:C*+ CRH2:C- &CRH1:C CRH1:H1 1.53 115 -145 115 1.10
+        STEREO CRH1:C+ *:C*- &CRH1:C CRH1:H1 1.53 115 145 115 1.10
 ISER
 
 RESI CBRH1 ! cycloprane CH1 branch
@@ -108,7 +123,6 @@ RESI CBRH1 ! cycloprane CH1 branch
 	ATOM H1 HCP1 0.09
 	STEREO *:C*+ CRH1:C- &CBRH1:C CBRH1:H1 1.53 115 -145 115 1.10
 ISER
-
 
 BOND
 *:C* *:C* 1.52 ! default value C-C
@@ -120,28 +134,30 @@ CH1:C CH1:C 1.35
 ! triple bond
 CH0:C CH0:C 1.20
 !cyclopropane
-CRH1:C CRH1:C 1.51
+CRH1:C CRH1:C 2.56 
 CRH1:C CRH2:C 1.51
 CRH2:C CRH1:C 1.51
 
 ANGLE
 *:C* *:C* *:C* 116
 CH2:C CH2:C CH2:C 116
-*:C* CH1:C CH1:C  124
-CH1:C CH1:C *:C*  124
+*:C* CH1:C CH1:C  147
+CH1:C CH1:C *:C*  147
 *:C* CH0:C CH0:C  180
 CH0:C CH0:C *:C*  180
-*:C* CH1:C CH2:C  120
-CH1:C CH2:C *:C*  120
+*:C* CH1:C CH2:C  116
+CH1:C CH2:C *:C*  116
 *:C* CBH1:C *:C* 110
+
 !cyclopropane
 CRH2:C CRH1:C CRH1:C 60
-CRH1:C CRH2:C CRH1:C 60 
+CRH1:C CRH2:C CRH1:C 60
 CRH1:C CRH1:C CRH2:C 60
-*:C* CRH1:C CRH2:C 117 
+*:C* CRH1:C CRH2:C 117
 *:C* CRH1:C CRH1:C 117
 CRH1:C CRH1:C *:C* 117
-CRH2:C CRH1:C *:C* 117 
+CRH2:C CRH1:C *:C* 117
+
 !branched cyclopropane
 *:C* CRH1:C CBRH1:C 117 
 CBRH1:C CRH1:C *:C* 117 
@@ -149,28 +165,15 @@ CRH1:C  CBRH1:C *:C* 117
 
 DIHEDRAL
 *:C* *:C* *:C* *:C* 180
-*:C* CH1:C CH1:C *:C* 180
-CH1:C CH1:C *:C* *:C* 130
-CH1:C *:C* CH1:C CH1:C 125
-*:C* *:C* CH1:C CH1:C 125
-CH1:C CH1:C *:C* *:C* 125
-*:C* CH2:C CH2:C *:C* 180 
 *:C* CH2:C CBH1:C *:C* 0 120 240
-CH1:C CH1:C CBH1:C *:C* 0 -120 240
-*:C* *:C* CBH1:C *:C* -75.36
-!*:C* CRH1:C CRH2:C CRH1:C -77.30
+CRH2:C CRH1:C *:C* *:C* 0 
+CRH1:C CRH1:C *:C* *:C* 180 
 !cyclopropane
-!*:C* *:C* CRH1:C CRH2:C 120.30 -120.36
+*:C* *:C* CRH1:C CRH2:C 120.30 -120.36
 *:C* CRH1:C CRH1:C *:C* 0 
-*:C* CRH2:C CRH1:C *:C* -107
+*:C* CRH2:C CRH1:C *:C* 134 
+CRH1:C CRH2:C CRH1:C *:C* -134 
 *:C* *:C* CRH1:C CRH1:C 176
 CRH1:C CRH1:C *:C* *:C* 176
 CRH2:C CRH1:C *:C* *:C* -116
 *:C* *:C* CRH1:C CRH2:C 116
-!branched cyclopropane
-*:C* *:C* CRH1:C CBRH1:C 116
-*:C* CRH1:C CRH1:C CBRH1:C -107 
-*:C* CRH1:C CBRH1:C CRH1:C  107 
-*:C* CRH1:C CBRH1:C *:C* 0 
-CRH1:C CRH1:C CBRH1:C *:C* 110
-CRH1:C CBRH1:C CRH1:C *:C* -110

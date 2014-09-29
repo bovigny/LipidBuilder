@@ -624,11 +624,15 @@ proc ::smile2topology::set_ICs {structure} {
 					set iiso [lindex $heavy_atom_key [list $a3 5 end]]
 					lappend iso [expr $iiso/abs($iiso)]
 					#look stereo
-					set_stereo [lindex $key end] [lindex $names end] $hydrogens $stereo
+					#set_stereo [lindex $key end] [lindex $names end] $hydrogens $stereo
 				}
 				#look up IC
+				#Add IC for heavy atoms
 				set_topology $key $names $iso
-
+				#Add IC for hydrogens
+				foreach k $key n $names {
+					set_stereo $k $n $hydrogens $stereo
+				}
 			} 
 		}
 		incr count

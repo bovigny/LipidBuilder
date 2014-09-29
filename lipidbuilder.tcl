@@ -591,6 +591,10 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
     ::smile2topology::init
     ::smile2topology::read_ICparameters "$LipidBuilder/hydrocarbon_topology.dat"
     ::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/C_linker.dat"
+    #For website
+    #::smile2topology::read_ICparameters "$LipidBuilder/hydrocarbon_topology_CHEMDRAW.dat"
+    #::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/C_linker.dat"
+    #For SLipids
     #::smile2topology::read_ICparameters "$LipidBuilder/SLipid_hydrocarbon_topology.dat"
 	#::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/SLipid_C_linker.dat"
 
@@ -658,9 +662,8 @@ proc ::lipidBuilder::minimizeTemplate {resname topology pathOut} {
 	variable LipidBuilderParameters
 	cd $pathOut
 	if {$::tcl_platform(os) == "Linux"  || $::tcl_platform(os) == "Darwin" } {
-		if {[catch "exec ${LipidBuilder}/minimize_${::tcl_platform(os)} --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters}"] } {
-			file rename -force ${resname}_mini.pdb ${resname}.pdb
-		} 
+		exec ${LipidBuilder}/minimize_${::tcl_platform(os)} --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters}
+		file rename -force ${resname}_mini.pdb ${resname}.pdb
 	} else {
 		puts "Invalid OS. The structure has not been minimized,"
 	}
