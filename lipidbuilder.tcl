@@ -663,7 +663,6 @@ proc ::lipidBuilder::minimizeTemplate {resname topology pathOut} {
 	cd $pathOut
 	if {$::tcl_platform(os) == "Linux"  || $::tcl_platform(os) == "Darwin" } {
 		exec ${LipidBuilder}/minimize_${::tcl_platform(os)} --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters} --outfile ${resname}.pdb
-		#file rename -force ${resname}_mini.pdb ${resname}.pdb
 	} else {
 		puts "Invalid OS. The structure has not been minimized,"
 	}
