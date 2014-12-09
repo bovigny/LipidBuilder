@@ -492,7 +492,6 @@ proc ::smile2topology::assign_atoms {prefix_C suffix_H} {
 		set key [join [lreplace $key $::smile2topology::ibond $::smile2topology::ibond [join $bonds ":"]] "="]
 		if {[info exists ICkey_array($key)]} {
 			set resname $ICkey_array($key)
-			puts "$resname $key"
 			lassign $ICresi_array($resname) rkey ratom rstereo 
 			set ratom [lindex $ratom 1]
 			set nameC "${prefix_C}${index}"
