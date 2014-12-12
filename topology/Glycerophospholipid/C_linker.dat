@@ -10,7 +10,7 @@ RESI CLH2 ! linker CH2
 ISER
 
 RESI CLH3 ! linker CH3
-	KEY C 1 1 0 0 1   
+	KEY C 1 0 0 0 1   
 	HATOM C CTL3 -0.31	
 	ATOM H1 HAL3 0.09
 	ATOM H2 HAL3 0.09 
