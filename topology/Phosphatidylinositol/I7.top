@@ -1,0 +1,167 @@
+* Topology for inositol-based lipids
+*
+32 1
+
+MASS 139  HAL1  1.008000 H ! alphatic proton
+MASS 140  HAL2  1.008000 H ! alphatic proton
+MASS 145  CL   12.011000 C ! carbonyl C (acetic acid/methyl acetate)
+MASS 146  CTL1 12.011000 C ! sp3 carbon with 1 H  (-CH1-)
+MASS 147  CTL2 12.011000 C ! carbon of methylene group (-CH2-)
+MASS 155  OBL  15.999400 O ! acetic acid carboxyl oxygen (e. to protein OB)
+MASS 157  OSL  15.999400 O ! ester oxygen
+MASS 158  O2L  15.999400 O ! Nucleic acid =O in phosphate or sulfate
+MASS 160  OSLP 15.999400 O ! Phosphate oxygen, to avoid conflict with methylacetate type O
+MASS 161  PL   30.974000 P ! phosphorus
+MASS 174  CC3161  12.01100  C ! C2, C3, C4 CH bound to OH
+MASS 185  HCA1     1.00800  H ! aliphatic proton, CH
+MASS 188  HCP1     1.00800  H ! polar H
+MASS   221 OC312   15.99940  O ! OH in PO3H (phosphate) || OHL in top_all27_lipid.rtf
+MASS 222  OC30P   15.99940  O ! ester O in PO3H (phosphate) || OSL in top_all27_lipid.rtf
+MASS   223 OC2DP   15.99940  O ! =0 in P03H (phosphate) || O2L in top_all27_lipid.rtf
+MASS   224 PC      30.974000 P ! phosphorus || PL in top_all27_lipid.rtf
+MASS 378  OC311   15.99940  ! hydroxyl oxygen
+
+
+
+RESI I7        -6.00 ! Di-myristoyl-inositol-3-phosphate
+!
+!                                              H6
+GROUP                  !                       |
+ATOM C12  CC3161  0.14 !                       |
+ATOM H2   HCA1    0.09 !               HO6-O6--C16----------C15--O5-HO5
+ATOM O2   OC311  -0.65 !                      /             |\
+ATOM HO2  HCP1    0.42 !                     /              | \  H4
+GROUP                  !                    /               H5 \ |
+ATOM C13  CC3161  0.01 !                   /                    \|
+ATOM H3   HCA1    0.09 !              ----C11  H02               C14--O4-HO4
+ATOM O3   OC30P  -0.62 !              |   |\   |                /
+ATOM P3   PC      1.50 !              |   | \  O2              /
+ATOM OP32 OC312  -0.68 ! ATOM OP33 OC2DP  -0.82 !                    ATOM OP34 OC2DP  -0.82 !                       ATOM H32  HCP1    0.34 !                             
+GROUP                  !              |   H1 \ |              /     
+ATOM C14  CC3161 -0.09 !              |       \|             /
+ATOM H4   HCA1    0.09 !              |    H2--C12----------C13--O3-HO3
+ATOM O4   OC30P  -0.40 !              |                     |
+ATOM P4   PC      1.10 !              |                     |
+ATOM OP42 OC2DP  -0.90 ! ATOM OP43 OC2DP  -0.90 !                     ATOM OP44 OC2DP  -0.90 !                       
+GROUP                  !              |                     H3
+ATOM C15  CC3161 -0.09 ! ATOM H5   HCA1    0.09 !ATOM O5   OC30P  -0.40 ! ATOM P5   PC      1.10 ! ATOM OP52 OC2DP  -0.90 ! ATOM OP53 OC2DP  -0.90 !                     ATOM OP54 OC2DP  -0.90 !                       GROUP                  !              |
+ATOM C16  CC3161  0.14 !              |
+ATOM H6   HCA1    0.09 !              |
+ATOM O6   OC311  -0.65 !              |
+ATOM HO6  HCP1    0.42 !              |
+GROUP                  !             / 
+ATOM C11  CC3161 -0.08 !            |
+ATOM H1   HCA1    0.09 !            |     alpha4
+ATOM P    PL      1.59 !   (-) O13  O12
+ATOM O13  O2L    -0.78 !         \ /      alpha3
+ATOM O14  O2L    -0.78 !          P (+)
+ATOM O11  OSLP   -0.57 !         / \      alpha2
+ATOM O12  OC30P  -0.57 !   (-) O14  O11
+ATOM C1   CTL2   -0.08 !            |     alpha1
+ATOM HA   HAL2    0.09 !       HA---C1---HB
+ATOM HB   HAL2    0.09 !            |     theta1
+GROUP                  !            |
+ATOM C2   CTL1    0.17 !       HS---C2--------------
+ATOM HS   HAL1    0.09 !            | beta1        |
+ATOM O21  OSL    -0.49 !       O22  O21          theta3
+ATOM C21  CL      0.90 !        \\ /  beta2        |
+ATOM O22  OBL    -0.63 !          C21 		   |
+                       !          |   beta3        |
+                       !   P2R---L22---P2S	   |
+                       !          |                |
+GROUP                  !          |  beta4	   |
+ATOM C3   CTL2    0.08 !          |                |
+ATOM HX   HAL2    0.09 !          |           HX---C3---HY
+ATOM HY   HAL2    0.09 !          |                |   gamma1
+ATOM O31  OSL    -0.49 !          |           O32  O31
+ATOM C31  CL      0.90 !          |            \\ /    gamma2
+ATOM O32  OBL    -0.63 !          |              C31
+                       !
+
+! Inositol Head Group
+BOND  C11  H1        C11  C16       C11  C12       C11  O12
+BOND  C12  H2        C12  O2        O2   HO2       C12  C13       C13  H3
+BOND  C13  O3        O3   P3        OP32 P3        OP33 P3        OP34 P3        OP32 H32
+BOND  C13  C14       C14  H4        C14  O4
+BOND  O4   P4        OP42 P4        OP43 P4        OP44 P4        
+BOND  C14  C15       C15  H5        C15  C16       C16  H6
+BOND  C16  O6        O6   HO6       C15  O5
+BOND  O5   P5        OP52 P5        OP53 P5        OP54 P5
+BOND  O12  P         P    O11       P    O13       P    O14       O11  C1
+! Glycerol Backbone
+BOND  C1   HA        C1    HB       C1   C2 
+BOND  C2   HS        C2    C3       C2   O21
+BOND  C3   HX        C3    HY       C3   O31
+! Chain #2
+BOND  O21  C21
+DOUBLE C21  O22
+! Chain #3
+BOND  O31  C31
+DOUBLE  C31  O32
+
+LBOND C21 L22
+LBOND C31 L32
+
+LIMPR C21 O21 L22 O22   C31 O31 L32 O32
+
+!    I    J    K    L           R(IK)   T(IKJ)    PHI   T(JKL)   R(KL)
+! Inositol Head Group
+!
+
+IC  C11  C12   C13   C14    1.5181  110.46   56.87  111.43   1.5287
+IC  C12  C13   C14   C15    1.5138  111.43  -43.19  114.99   1.5269
+IC  C13  C14   C15   C16    1.5287  114.99   38.16  116.20   1.5230
+IC  C14  C15   C16   C11    1.5269  116.20  -44.77  110.65   1.5227
+IC  C15  C16   C11   C12    1.5230  110.65   57.48  109.67   1.5181
+IC  C16  C11   C12   C13    1.5227  109.67  -65.04  110.46   1.5138
+IC  C16  C12   *C11  H1     1.5227  109.67  114.66  106.65   1.1178
+IC  C16  C12   *C11  O12    1.5227  109.67 -131.90  109.82   1.4318
+IC  C11  C13   *C12  H2     1.5181  110.46  117.35  107.43   1.1194
+IC  C11  C13   *C12  O2     1.5181  110.46 -125.85  110.80   1.4293
+IC  C12  C14   *C13  H3     1.5138  111.43  117.88  107.19   1.1163
+IC  C12  C14   *C13  O3     1.5138  111.43 -124.51  112.62   1.4286
+IC  C13  C15   *C14  H4     1.5287  114.99 -115.87  105.68   1.1202
+IC  C13  C15   *C14  O4     1.5287  114.99  128.81  110.03   1.4289
+IC  C14  C16   *C15  H5     1.5269  116.20  115.42  104.85   1.1220
+IC  C14  C16   *C15  O5     1.5269  116.20 -129.96  111.25   1.4291
+IC  C15  C11   *C16  H6     1.5230  110.65 -118.36  109.53   1.1173
+IC  C15  C11   *C16  O6     1.5230  110.65  121.93  111.61   1.4273
+IC  C13  C12   O2    HO2    1.5138  110.80  164.69  108.61   0.9872
+IC  C14  C13   O3    HO3    1.5287  112.62   83.09  104.55   0.9665
+IC  C15  C14   O4    HO4    1.5269  110.03   53.65  105.76   0.9637
+IC  C16  C15   O5    HO5    1.5230  111.25  -37.35  104.36   0.9679
+IC  C11  C16   O6    HO6    1.5227  111.61   66.96  105.23   0.9850
+IC  C12  C11   O12   P      1.5181  109.82   92.66  122.83   1.6352
+IC  C11  O12   P     O11    1.4318  122.83 -174.81  103.00   1.5798
+IC  O11  O12   *P    O13    1.5798  103.00  115.68  107.45   1.4772
+IC  O11  O12   *P    O14    1.5798  103.00 -116.53  107.95   1.4788
+IC  O12  P     O11   C1     1.6352  103.00  178.03  117.95   1.4319
+IC  P    O11   C1    C2     1.5798  117.95  170.93  110.60   1.5497
+IC  C2   O11   *C1   HA     1.5497  110.60 -119.31  111.24   1.1171
+IC  HA   O11   *C1   HB     1.1171  111.24 -120.72  110.03   1.1147
+IC  O11  C1    C2    C3     1.4319  110.60  175.22  110.94   1.5577
+IC  C3   C1    *C2   O21    1.5577  110.94  120.67  108.06   1.4418
+IC  C3   C1    *C2   HS     1.5577  110.94 -118.26  106.49   1.1172
+IC  C1   C2    O21   C21    1.5497  108.06  146.83  114.79   1.3150
+IC C1    C2    C3    O31    1.5497  110.94  172.74  112.47   1.4452
+IC O31   C2    *C3   HX     1.4452  112.47 -118.24  106.38   1.1130
+IC HX    C2    *C3   HY     1.1130  106.38 -115.02  109.30   1.1144
+IC C2    C3    O31   C31    1.5577  112.47   91.21  115.66   1.3288
+
+LIC C2     O21    C21    L22        1.4225  115.60  178.51  108.91   1.5321
+LIC L22    O21    *C21   O22        2.2973  39.12  169.23  127.45   1.2553
+LIC O21    C21    L22    L23        1.2857  108.91  -147.81  112.27   1.5473
+LIC L23    C21    *L22   H2R        2.5570  34.06  -120.49  106.42   1.1097
+LIC H2R    C21    *L22   H2S        2.1307  29.97  -116.91  108.63   1.1075
+LIC C21    L22    L23    L24        1.5321  112.27  102.87  112.62   1.5367
+LIC C3     O31    C31    L32        1.4558  117.57  -170.44  108.26   1.5304
+LIC L32    O31    *C31   O32        2.3546  38.11  175.58  128.85   1.1868
+LIC O31    C31    L32    L33        1.3731  108.26  -164.98  113.83   1.5449
+LIC L33    C31    *L32   H2X        2.5766  33.26  -120.58  106.88   1.1104
+LIC H2X    C31    *L32   H2Y        2.1358  29.83  -116.88  108.06   1.1075
+LIC C31    L32    L33    L34        1.5304  113.83  177.70  111.13   1.5342
+LIC C2     O21    C21    L22        1.4225  115.60  178.51  108.91   1.5321
+
+
+
+

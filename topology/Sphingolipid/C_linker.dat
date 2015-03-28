@@ -1,0 +1,21 @@
+!Linker atoms for Sphingolipid
+!With current parametrization, first pairs of 
+RESI CLH2 ! linker CH2
+	KEY C 1 1 0 0 1   
+	HATOM C CTL2 -0.18
+	ATOM H1 HAL2 0.09
+	ATOM H2 HAL2 0.09 
+	!STEREO *:C-- *:C- &CH2:C CH2:H1  1.53 110 120 110 1.10
+	!STEREO CH2:H1 *:C- &CH2:C CH2:H2 1.10 110 120 110 1.10
+ISER
+
+RESI CLH3 ! linker CH3
+	KEY C 1 0 0 0 1   
+	HATOM C CTL3 -0.27	
+	ATOM H1 HAL3 0.09
+	ATOM H2 HAL3 0.09 
+	ATOM H3 HAL3 0.09 
+	!STEREO *:C-- *:C- &CH2:C CH2:H1  1.53 110 120 110 1.10
+	!STEREO CH2:H1 *:C- &CH2:C CH2:H2 1.10 110 120 110 1.10
+ISER
+

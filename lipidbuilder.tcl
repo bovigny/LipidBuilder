@@ -596,7 +596,7 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
     #::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/C_linker.dat"
     #For SLipids
     #::smile2topology::read_ICparameters "$LipidBuilder/SLipid_hydrocarbon_topology.dat"
-	#::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/SLipid_C_linker.dat"
+    #::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/SLipid_C_linker.dat"
 
 	::topology_reader::read_topology  $LipidBuilder/topology/lipid_masses.top
 	if {[file exists  $LipidBuilder/topology/${category}/${head}.top]} {

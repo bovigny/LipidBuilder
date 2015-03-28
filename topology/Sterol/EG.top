@@ -1,0 +1,179 @@
+* Topology for cholesterol   
+*
+31  1
+
+
+! reference
+! Lim, J.B., Rogaski, B. and Klauda, J.B.. "Update of the Cholesterol Force Field 
+! Parameters in CHARMM" 116: 203-210 (2012).
+!
+
+
+MASS 138  HOL   1.008000 H ! Nucleic acid phosphate hydroxyl proton
+MASS 139  HAL1  1.008000 H ! alphatic proton	
+MASS 140  HAL2  1.008000 H ! alphatic proton
+
+MASS 141  HAL3  1.008000 H ! alphatic proton
+MASS 142  HEL1  1.008000 H ! for alkene; RHC=CR
+MASS 146  CTL1 12.011000 C ! sp3 carbon with 1 H  (-CH1-)
+MASS 147  CTL2 12.011000 C ! carbon of methylene group (-CH2-)
+
+MASS 148  CTL3 12.011000 C ! carbon of methyl group (-CH3)
+
+MASS 159  OHL  15.999400 O ! Nucleic acid phosphate hydroxyl oxygen
+MASS 150  CEL1 12.011000 C ! for alkene; RHC=CR
+MASS 163  CRL1 12.011000 C ! sp3 carbon with 1 H on a ring  (-CH1-) for sterols
+MASS 164  CRL2 12.011000 C ! carbon of methylene group on a ring (-CH2-) for sterols
+MASS   256 HGA1     1.00800  ! alphatic proton, CH
+MASS   257 HGA2     1.00800  ! alphatic proton, CH2
+
+
+
+RESIDUE EG 0.0    ! Ergosterol
+! Based off CHL1, Brent Rogaski (3/12)
+
+GROUP                   !                               |                 
+ATOM C3 CRL1 0.14       !                               |
+ATOM O3 OHL -0.66       !                               |
+ATOM H3' HOL 0.43       !                         H18C  |
+ATOM H3 HGA1 0.09       !                         |     |       H16B
+GROUP                   !                   H18B--C18   |       |
+ATOM C4 CRL2 -0.18      !                        / \    C17-----C16--H16A      
+ATOM H4A HGA2 0.09      !                    H18A   \   |\      |              
+ATOM H4B HGA2 0.09      !                            \  | H17   |              
+GROUP                   !                   H12B      \ |       | H15B         
+ATOM C5 CEL1 0.00       !                      \       \|       |/             
+ATOM C6 CEL1 -0.15      !                 H12A--C12-----C13     C15--H15A      
+ATOM H6 HEL1 0.15       !                      /         \     /               
+GROUP                   !               H11B  /           \   /                
+ATOM C7 CEL1 -0.15      !                  \ /             \ /                 
+ATOM C8 CEL1 0.00       !             H11A--C11             C14--H14           
+ATOM H7 HEL1 0.15       !                    \             /                   
+GROUP                   !             H19C    \           /                    
+ATOM C14 CRL1 -0.09     !              |       \         /                     
+ATOM H14 HGA1 0.09      !        H19A-C19-H19B  C9------C8                     
+GROUP                   !                \     / \      \\                    
+ATOM C15 CRL2 -0.18     !           H1B   \   /   H9     \\                   
+ATOM H15A HGA2 0.09     !           |      \ /            \\                  
+ATOM H15B HGA2 0.09     !      H1A--C1------C10             C7--H7            
+GROUP                   !          /         \             /                  
+ATOM C16 CRL2 -0.18     !   H2A   /           \           /                    
+ATOM H16A HGA2 0.09     !      \ /             \  -----  /                     
+ATOM H16B HGA2 0.09     !       C2              C5------C6                     
+GROUP                   !      / \             /         \                     
+ATOM C17 CRL1 -0.09     !   H2B   \           /           H6                   
+ATOM H17 HGA1 0.09      !          \         /                                 
+GROUP                   !       H3--C3------C4--H4A
+ATOM C13 CRL1 0.00      !           |       |
+GROUP                   !           |       H4B
+ATOM C18 CTL3 -0.27     !           |
+ATOM H18A HAL3 0.09     !      H3'--O3
+ATOM H18B HAL3 0.09     ! 
+ATOM H18C HAL3 0.09     ! 
+GROUP                   ! 
+ATOM C12 CRL2 -0.18     ! 
+ATOM H12A HGA2 0.09     ! 
+ATOM H12B HGA2 0.09     ! 
+GROUP                   ! 
+ATOM C11 CRL2 -0.18     ! 
+ATOM H11A HGA2 0.09     ! 
+ATOM H11B HGA2 0.09     ! 
+GROUP                   ! 
+ATOM C9 CRL1 -0.09      ! 
+ATOM H9 HGA1 0.09       ! 
+GROUP                   ! 
+ATOM C10 CRL1 0.00      ! 
+GROUP                   ! 
+ATOM C19 CTL3 -0.27     ! 
+ATOM H19A HAL3 0.09     ! 
+ATOM H19B HAL3 0.09     ! 
+ATOM H19C HAL3 0.09     ! 
+GROUP                   ! 
+ATOM C1 CRL2 -0.18      ! 
+ATOM H1A HGA2 0.09      ! 
+ATOM H1B HGA2 0.09      ! 
+GROUP                   ! 
+ATOM C2 CRL2 -0.18      ! 
+ATOM H2A HGA2 0.09      ! 
+ATOM H2B HGA2 0.09      ! 
+
+BOND C3 O3 C3 H3 O3 H3'
+BOND C3 C2 C2 H2A C2 H2B
+BOND C2 C1 C1 H1A C1 H1B
+BOND C3 C4 C4 H4A C4 H4B
+BOND C4 C5
+BOND C5 C10
+BOND C10 C1
+BOND C10 C19 C19 H19A C19 H19B C19 H19C
+DOUBLE C5 C6
+BOND C6 H6
+BOND C6 C7 C7 H7
+DOUBLE C7 C8
+BOND C8 C9 C9 H9
+BOND C9 C10
+BOND C8 C14 C14 H14
+BOND C14 C13
+BOND C13 C12 C12 H12A C12 H12B
+BOND C12 C11 C11 H11A C11 H11B
+BOND C11 C9
+BOND C13 C18 C18 H18A C18 H18B C18 H18C
+BOND C14 C15 C15 H15A C15 H15B
+BOND C15 C16 C16 H16A C16 H16B
+BOND C16 C17 C17 H17
+BOND C17 C13
+LBOND C17 L22 
+
+!ICs based on CHARMM optimized structure updated 3-2012 BJR
+IC      C4      C2      *C3     O3      1.5384  111.29  120.53  109.15  1.4152
+IC      O3      C2      *C3     H3      1.4152  109.15  118.43  109.07  1.1161
+IC      C2      C3      O3      H3'     1.534   109.15  -59.53  105.21  0.9594
+IC      C2      C3      C4      C5      1.534   111.29  -55.64  110.68  1.5147
+IC      C5      C3      *C4     H4A     1.5147  110.68  -122.49 107.48  1.114
+IC      H4A     C3      *C4     H4B     1.114   107.48  -115.4  109.39  1.1091
+IC      C3      C4      C5      C10     1.5384  110.68  54.27   115.86  1.5508
+IC      C10     C4      *C5     C6      1.5508  115.86  -176.59 122.84  1.3509
+IC      C4      C5      C6      C7      1.5147  122.84  175.21  124.45  1.3514
+IC      C7      C5      *C6     H6      1.3514  124.45  -178.72 117.51  1.0999
+IC      C5      C6      C7      C8      1.3509  124.45  -2.28   123.72  1.349
+IC      C8      C6      *C7     H7      1.349   123.72  -177.09 118.27  1.0989
+IC      C6      C7      C8      C14     1.3514  123.72  -174.8  125.77  1.5158
+IC      C14     C7      *C8     C9      1.5158  125.77  176.26  121.16  1.534
+IC      C7      C8      C14     C13     1.349   125.77  -127.21 114.84  1.527
+IC      C13     C8      *C14    C15     1.527   114.84  128.62  120.79  1.5474
+IC      C13     C8      *C14    H14     1.527   114.84  -114.65 104.93  1.1181
+IC      C8      C14     C15     C16     1.5158  120.79  -164.56 103.93  1.5364
+IC      C16     C14     *C15    H15A    1.5364  103.93  -121.65 111.8   1.1083
+IC      H15A    C14     *C15    H15B    1.1083  111.8   -121.53 110.09  1.1118
+IC      C14     C15     C16     C17     1.5474  103.93  8.48    106.75  1.5641
+IC      C17     C15     *C16    H16A    1.5641  106.75  -120.41 111.79  1.1095
+IC      H16A    C15     *C16    H16B    1.1095  111.79  -120.41 109.03  1.1113
+IC      C13     C16     *C17    C20     1.5483  105.1   131.23  112.64  1.5382
+IC      C13     C16     *C17    H17     1.5483  105.1   -111.42 106.08  1.1169
+IC      C17     C14     *C13    C12     1.5483  100.83  123.37  107.03  1.5453
+IC      C12     C14     *C13    C18     1.5453  107.03  121.68  110     1.5503
+IC      C14     C13     C18     H18A    1.527   110     64.09   111.53  1.1074
+IC      H18A    C13     *C18    H18B    1.1074  111.53  -120.53 111.19  1.1083
+IC      H18A    C13     *C18    H18C    1.1074  111.53  120     110.03  1.1088
+IC      C14     C13     C12     C11     1.527   107.03  56.14   111.71  1.5474
+IC      C11     C13     *C12    H12A    1.5474  111.71  -120.3  108.81  1.1114
+IC      H12A    C13     *C12    H12B    1.1114  108.81  -118.79 110.91  1.1064
+IC      C9      C12     *C11    H11A    1.5641  114.35  -121.47 108.03  1.1115
+IC      H11A    C12     *C11    H11B    1.1115  108.03  -116.16 107.02  1.1107
+IC      C10     C8      *C9     H9      1.5774  115.61  -115.28 104.59  1.1141
+IC      C9      C5      *C10    C19     1.5774  113.62  -120.34 106.21  1.554
+IC      C19     C5      *C10    C1      1.554   106.21  -117.85 108.65  1.5564
+IC      C5      C10     C19     H19A    1.5508  106.21  63.88   110.62  1.1106
+IC      H19A    C10     *C19    H19B    1.1106  110.62  -120.12 112.1   1.1066
+IC      H19A    C10     *C19    H19C    1.1106  110.62  121.49  111.12  1.1081
+IC      C2      C10     *C1     H1A     1.5411  114.47  -120.26 108.38  1.1136
+IC      C2      C10     *C1     H1B     1.5411  114.47  123.02  108.74  1.1111
+IC      C1      C3      *C2     H2A     1.5411  110.88  -121.14 109.65  1.1104
+IC      H2A     C3      *C2     H2B     1.1104  109.65  -117.79 109.12  1.1121
+
+LIC C13  C16 *C17 L22  1.5401  104.94  132.02  112.36   1.5633
+LIC C16  C17  L22 L23   1.5620  112.36   55.21  110.55   1.5476
+LIC L23  C17 *L22 P2R   1.5349  113.32  -121.87  107.27   1.1157
+LIC P2R  C17 *L22 P2S   1.1089   29.36  118.04  107.52   1.1095
+LIC C17  L22  L23 L24   1.5633  110.55 -174.59  115.12   1.5394
+LIC L24  L22 *L23 P3R  1.5394  115.12  120.23  109.35   1.1116
+LIC P3R  L22  *L23 P3S  1.1116  109.35  117.13  108.75   1.1121

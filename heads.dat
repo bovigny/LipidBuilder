@@ -7,8 +7,11 @@ PG:2:Phosphatidylglycerol:Glycerophospholipid
 PS:2:Phosphatidylserine:Glycerophospholipid 
 CD:4:Cardiolipin Deprotonated:Glycerophospholipid 
 CP:4:Cardiolipin protonated:Glycerophospholipid
-CD:4:Cardiolipin protonated:Booboo
 SM:2:Sphingomyelin:Sphingolipid
+SE:2:SphingoE:Sphingolipid
+SA:2:SphingoA:Sphingolipid
+SG:2:SphingoG:Sphingolipid
+SS:2:SphingoS:Sphingolipid
 CE:2:Ceramide:Sphingolipid
 I0:2:Phosphatidylinositol:Phosphatidylinositol
 I3:2:Phosphatidylinositol-3-P:Phosphatidylinositol

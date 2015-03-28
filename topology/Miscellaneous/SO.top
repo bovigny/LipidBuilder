@@ -1,0 +1,30 @@
+* Topology for cholesterol
+*
+31  1
+
+MASS 157  OSL  15.999400 O ! ester oxygen
+MASS 162  SL   32.060000 S ! Sulfate sulfur
+
+
+RESI SDS         -1.00 ! Dodecylsulphate
+GROUP
+ATOM S    SL      1.33 !           OS2(-1)
+ATOM OS1  OSL    -0.28 !             |
+ATOM OS2  O2L    -0.65 !   (-) OS3--S(+2)--OS4 (-)
+ATOM OS3  O2L    -0.65 !             |
+ATOM OS4  O2L    -0.65 !            OS1
+
+BOND  S   OS1 S   OS2  S   OS3  S  OS4
+LBOND  OS1 L22
+
+IC  OS2    OS1    *S     OS3        1.4521  103.32  119.41  105.53   1.4528
+IC  OS2    OS1    *S     OS4        1.4521  103.32 -119.41  105.54   1.4528
+
+LIC  OS2    S       OS1   L22        1.4521  103.32  179.90  114.12   1.4238
+LIC  S      OS1     L22   L23        1.5670  114.12  179.86  108.48   1.5337
+LIC  L23    OS1    *L22   P2R        1.5337  108.48 -119.30  111.15   1.1167
+LIC  P2R    OS1    *L22   P2S        1.1167  111.15 -121.39  111.13   1.1167
+LIC  OS1    L22     L23   L24        1.4238  108.48 -179.98  112.43   1.5340
+LIC  L24    L22    *L23   P3R        1.5340  112.43 -121.50  108.71   1.1129
+LIC  P3R    L22    *L23   P3S        1.1129  108.71 -117.02  108.70   1.1129
+
