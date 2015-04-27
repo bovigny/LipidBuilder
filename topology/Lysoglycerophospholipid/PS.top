@@ -1,0 +1,136 @@
+*  \\\\\\\ CHARMM36 All-Hydrogen Lipid Topology File ///////
+*  All comments and questions should be submitted to the 
+*  parameter forum at the CHARMM website: www.charmm.org
+*
+36  1
+
+MASS 136  HL    1.008000 H	! polar H (equivalent to protein H)
+MASS 137  HCL   1.008000 H	! charged H for PE (equivalent to protein HC)
+MASS 138  HOL   1.008000 H	! Nucleic acid phosphate hydroxyl proton
+MASS 139  HAL1  1.008000 H	! alphatic proton
+MASS 140  HAL2  1.008000 H	! alphatic proton
+MASS 141  HAL3  1.008000 H	! alphatic proton
+MASS 142  HEL1  1.008000 H	! for alkene; RHC=CR
+MASS 143  HEL2  1.008000 H	! for alkene; H2C=CR. Currently unused.
+MASS 144  HBL   1.008000 H	! POPS SER backbone H
+MASS 145  CL   12.011000 C	! carbonyl C (acetic acid/methyl acetate)
+MASS 146  CTL1 12.011000 C	! sp3 carbon with 1 H  (-CH1-)
+MASS 147  CTL2 12.011000 C	! carbon of methylene group (-CH2-)
+MASS 148  CTL3 12.011000 C	! carbon of methyl group (-CH3)
+MASS 149  CTL5 12.011000 C	! carbon of methyl group (-CH3) for tetramethylammonium
+MASS 150  CEL1 12.011000 C	! for alkene; RHC=CR
+MASS 151  CEL2 12.011000 C	! for alkene; H2C=CR. Currently unused.
+MASS 152  CCL  12.011000 C	! for POPS
+MASS 153  NTL  14.007000 N	! ammonium nitrogen
+MASS 154  NH3L 14.007000 N	! nitrogen phosphatidylethanolamine
+MASS 155  OBL  15.999400 O	! acetic acid carboxyl oxygen (e. to protein OB)
+MASS 156  OCL  15.999400 O	! acetate oxygen
+MASS 157  OSL  15.999400 O	! ester oxygen
+MASS 158  O2L  15.999400 O	! Nucleic acid =O in phosphate or sulfate
+MASS 159  OHL  15.999400 O	! Nucleic acid phosphate hydroxyl oxygen
+MASS 160  OSLP 15.999400 O	! Phosphate oxygen, to avoid conflict with methylacetate type O
+MASS 161  PL   30.974000 P	! phosphorus
+MASS 162  SL   32.060000 S	! Sulfate sulfur
+MASS 163  CRL1 12.011000 C	! sp3 carbon with 1 H on a ring  (-CH1-) for sterols
+MASS 164  CRL2 12.011000 C	! carbon of methylene group on a ring (-CH2-) for sterols
+
+
+RESI PS        -1.00 ! Phosphatidylserine
+!
+!  R1 - CH2        
+!       |                 (-)
+!  R2 - CH                CO2
+!       |     (-)         |    (+)
+!       CH2 - PO4 - CH2 - CH - NH3
+!
+! Polar Head and glycerol backbone
+GROUP                  !
+ATOM N    NH3L  -0.30 !           HN2
+ATOM HN1  HCL    0.33 !            |
+ATOM HN2  HCL    0.33 !            |
+ATOM HN3  HCL    0.33 !            |
+ATOM C12  CTL1   0.21 !  (+) HN1---N---HN3
+ATOM H12A HBL    0.10 !            |
+GROUP                 !            |     O13A (-)
+ATOM C13  CCL    0.34 !            |     ||
+ATOM O13A OCL   -0.67 !     H12A--C12----C13---O13B
+ATOM O13B OCL   -0.67 !            |
+GROUP                 !            |     alpha5
+ATOM C11  CTL2  -0.08 !            |
+ATOM H11A HAL2   0.09 !     H11A--C11---H11B
+ATOM H11B HAL2   0.09 !            |     alpha4
+ATOM P    PL     1.50 !   (-) O13  O12
+ATOM O13  O2L   -0.78 !         \ /      alpha3
+ATOM O14  O2L   -0.78 !          P (+)
+ATOM O12  OSLP  -0.57 !         / \      alpha2
+ATOM O11  OSLP  -0.57 !   (-) O14  O11
+ATOM C1   CTL2  -0.08 !            |     alpha1
+ATOM HA   HAL2   0.09 !       HA---C1---HB
+ATOM HB   HAL2   0.09 !            |     theta1
+GROUP                 !            |
+ATOM C2   CTL2  -0.18 !       HR---C2----HS
+ATOM HS   HAL2   0.09 !            | 
+ATOM HR   HAL2   0.09 !            | 
+GROUP                 !            |
+ATOM C3   CTL2   0.08 !       HX---C3---HY 
+ATOM HX   HAL2   0.09 !            |
+ATOM HY   HAL2   0.09 !            |   gamma1
+ATOM O21  OSL   -0.49 !      O22  O21
+ATOM C21  CL     0.90 !       \\ /    gamma2
+ATOM O22  OBL   -0.63 !        C21
+                      !         |     gamma3
+                      
+! Polar Head
+BOND  N    HN1       N    HN2       N    HN3       N    C12
+BOND  O13B C13       C13  C12
+DOUBLE  C13 O13A
+BOND  C12  H12A      C12  C11       C1   O11
+BOND  C11  H11A      C11  H11B      C11  O12
+BOND  O12  P         P    O11       P    O13       P    O14
+! Glycerol Backbone
+BOND  C1   HA        C1    HB       C1   C2        
+BOND  C2   HS        C2    C3       C2   HR
+BOND  C3   HX        C3    HY      C3   O21
+
+! Chain #3
+BOND  O21  C21
+
+LBOND  C21  L22
+LIMPR C21 O21 L22 O22
+
+!IC table from IC generate, minimized geometry
+IC N     C12   C11   O12    1.4892  109.79  -66.07  111.86   1.4332
+IC N     C12   C13   O13B   1.4892  108.30  177.11  118.01   1.2553
+IC HN1   C12   *N    HN2    1.0293  111.95  119.77  101.90   1.0502
+IC HN1   C12   *N    HN3    1.0293  111.95 -122.92  108.25   1.0597
+IC HN1   N     C12   C11    1.0293  111.95  127.72  109.79   1.5597
+IC C11   N     *C12  C13    1.5597  109.79  122.24  108.30   1.5440
+IC C13   N     *C12  H12A   1.5440  108.30  117.18  109.21   1.0794
+IC O13B  C12   *C13  O13A   1.2553  118.01 -178.54  118.17   1.2648
+IC O12   C12   *C11  H11A   1.4332  111.86 -118.46  107.28   1.1149
+IC H11A  C12   *C11  H11B   1.1149  107.28 -115.37  110.30   1.1160
+IC C12   C11   O12   P      1.5597  111.86   94.99  122.93   1.5835
+IC C11   O12   P     O11    1.4332  122.93 -142.74  101.19   1.5825
+IC O11   O12   *P    O13    1.5825  101.19 -116.49  110.28   1.4734
+IC O11   O12   *P    O14    1.5825  101.19  112.69  106.84   1.4821
+IC O12   P     O11   C1     1.5835  101.19  -39.85  119.07   1.4288
+IC P     O11   C1    C2     1.5825  119.07 -174.92  110.29   1.5511
+IC C2     O11    *C1    HA         1.5345  108.48 -121.51  113.56   1.1178
+IC HA     O11    *C1    HB         1.1178  113.56 -119.54  108.81   1.1133
+IC O11    C1     C2     C3         1.4218  108.48  -69.15  113.12   1.5322
+IC C3     C1     *C2    HS         1.5322  113.12 -121.29  109.24   1.1115
+IC HS     C1     *C2    HR         1.1115  109.24 -117.52  108.27   1.1121
+IC C1     C2     C3     O21        1.5345  113.12  -65.92  107.84   1.4362
+IC O21    C2     *C3    HX         1.4362  107.84 -120.29  109.69   1.1138
+IC HX     C2     *C3    HY         1.1138  109.69 -118.31  108.07   1.1170
+IC C2     C3     O21    C21        1.5322  107.84  166.14  114.22   1.3189
+
+LIC C3     O21    C21    L22        1.4417  115.55  179.52  113.45   1.5288
+LIC L22    O21    *C21   O22        1.5288   35.81  145.65  122.71   1.2177
+LIC O21    C21    L22    L23        1.3222  113.45 -152.65  114.69   1.5451
+LIC L23    C21    *L22   P2R        1.5451   32.37 -121.90  108.06   1.1089
+LIC P2R    C21    *L22   P2S        1.1089   29.36 -117.04  107.52   1.1095
+LIC C21    L22    L23    L24        1.5288  114.69 -179.35  117.56   1.5338
+LIC L24    L22    *L23   P3R        1.5338   31.10 -120.78  109.67   1.1148
+LIC P3R    L22    *L23   P3S        1.1148   28.67 -117.71  109.57   1.1142
+LIC C21    L22    L23    L25        1.5288  114.69 -0.35  117.56   1.5338

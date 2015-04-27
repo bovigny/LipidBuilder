@@ -115,6 +115,8 @@ proc ::topology_writer::set_masses {topo_masses} {
 
 proc ::topology_writer::set_connectivity_IC {lIC IC_linker} {
     variable ICs
+    variable bonds
+    set str_bonds [join $bonds " "]
 	foreach {a ic} $IC_linker {
 		set aa $a
 		set i 1
@@ -131,13 +133,18 @@ proc ::topology_writer::set_connectivity_IC {lIC IC_linker} {
 			set c [join $c ""]
 			set aa [string map [list $l $c] $aa]
 		}
-		#check if linker has been changed
-		if {![string match *L* $aa] && ![string match *P* $aa]} {
-			lappend ICs $aa
-			lappend ICs $ic
-		} else {
-			#puts "Invalid Linker $aa"
-		}
+#		puts [lrange $aa 0 1]
+#		puts [lrange $aa 2 3]
+#		if {[regexp [lrange $aa 0 1] $str_bonds] && [regexp [lrange $aa 2 3] $str_bonds]} {
+			puts "AA: $aa vs $a"
+			#check if linker has been changed
+			if {![string match *L* $aa] && ![string match *P* $aa]} {
+				lappend ICs $aa
+				lappend ICs $ic
+			} else {
+				#puts "Invalid Linker $aa"
+			}
+#		}
 	}
 }
 

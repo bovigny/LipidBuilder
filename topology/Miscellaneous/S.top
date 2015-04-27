@@ -1,0 +1,27 @@
+RESI SDS         -1.00 ! Dodecylsulphate
+GROUP
+ATOM S    SL      1.33 !           OS2(-1)
+ATOM OS1  OSL    -0.28 !             |
+ATOM OS2  O2L    -0.65 !   (-) OS3--S(+2)--OS4 (-)
+ATOM OS3  O2L    -0.65 !             |
+ATOM OS4  O2L    -0.65 !            OS1
+
+BOND  S   OS1 S   OS2  S   OS3  S  OS4 
+
+LBOND  OS1 L2
+
+!IC table from IC generate, minimized geometry
+
+IC  OS2    OS1    *S     OS3        1.4521  103.32  119.41  105.53   1.4528
+IC  OS2    OS1    *S     OS4        1.4521  103.32 -119.41  105.54   1.4528
+LIC  OS4    S      OS1    L2         1.4528  105.54   60.48  114.12   1.4238
+LIC  OS2    S      OS1    L2         1.4521  103.32  179.90  114.12   1.4238
+LIC  S      OS1    L2     C2         1.5670  114.12  179.86  108.48   1.5337
+LIC  C2     OS1    *L2    H2S        1.5337  108.48 -119.30  111.15   1.1167
+LIC  H2S    OS1    *L2    H2R        1.1167  111.15 -121.39  111.13   1.1167
+LIC  OS1    L2     C2     C3         1.4238  108.48 -179.98  112.43   1.5340
+LIC  C3     L2     *C2    H3S        1.5340  112.43 -121.50  108.71   1.1129
+LIC  H3S    L2     *C2    H3R        1.1129  108.71 -117.02  108.70   1.1129
+LIC  L2     C2     C3     C4         1.5337  112.43  179.90  112.76   1.5346
+LIC  C4     C2     *C3    H4R        1.5346  112.76 -121.58  108.61   1.1129
+LIC  H4R    C2     *C3    H4S        1.1129  108.61 -116.82  108.62   1.1129

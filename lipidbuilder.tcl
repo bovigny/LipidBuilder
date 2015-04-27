@@ -622,9 +622,9 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
 				::smile2topology::assign_bonds $structure
 				::smile2topology::set_ICs $structure
 				#link to head group
-				::topology_writer::set_connectivity_IC  [::smile2topology::get_linker] [lindex $::topology_reader::IC_linker 1]
 				::topology_writer::set_connectivity_bonds [::smile2topology::get_linker] [lindex $::topology_reader::bonds_linker 1]
 				::topology_writer::set_improper [::smile2topology::get_linker] [lindex $::topology_reader::limpropertopology 1]
+				::topology_writer::set_connectivity_IC  [::smile2topology::get_linker] [lindex $::topology_reader::IC_linker 1]
 				#load tail topology in writer
 				::topology_writer::concat_top [::smile2topology::get_atoms] [::smile2topology::get_bonds] $::smile2topology::ICs
 				
@@ -662,7 +662,9 @@ proc ::lipidBuilder::minimizeTemplate {resname topology pathOut} {
 	variable LipidBuilderParameters
 	cd $pathOut
 	if {$::tcl_platform(os) == "Linux"  || $::tcl_platform(os) == "Darwin" } {
-		exec ${LipidBuilder}/minimize_${::tcl_platform(os)} --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters} --outfile ${resname}.pdb
+	  if {[catch {exec ${LipidBuilder}/minimize_${::tcl_platform(os)} --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters} --outfile ${resname}.pdb} ] } {
+	  	puts "Warning during minimization... Please check structure"
+	  }
 	} else {
 		puts "Invalid OS. The structure has not been minimized,"
 	}

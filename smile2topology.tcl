@@ -533,13 +533,34 @@ proc ::smile2topology::assign_bonds {structure} {
 	}
 	set bonds [lsort -dictionary -unique $bonds]
 }
-
+#returns a list of all the atoms [carbon and hydrogen] within three atoms of the linker
 proc ::smile2topology::get_linker {} {
+	variable atoms
+	variable bonds
+	set atom [lindex $atoms {0 1}]
+	set latom [lsort -unique [join [lsearch -inline -all -regexp $bonds "$atom C"] " "]]
+	set aa [list]
+	foreach la $latom {
+	  lappend aa [lsort -unique [join [lsearch -inline -all -regexp $bonds "$la C"] " "]]
+	}
+	set latom [lsort -unique [join $aa " "]]
+
+	set atom_topo [list]
+	foreach la $latom {
+		set a [lsearch -inline $atoms *$la*]
+		lappend atom_topo [lindex $a 1 ]
+		foreach h [lindex $a $::smile2topology::ihydrogen] {
+			lappend atom_topo [lindex $h 1]
+		}
+	}
+  return $atom_topo
+}
+
+proc ::smile2topology::get_linker_old {} {
 	variable atoms
 	variable bonds
 	set atom [lindex $atoms {1 1}]
 	set latom [lsort -unique [join [lsearch -inline -all -regexp $bonds "$atom C|C* $atom"] " "]]
-	
 	set atom_topo [list]
 	foreach la $latom {
 		set a [lsearch -inline $atoms *$la*]
@@ -548,7 +569,7 @@ proc ::smile2topology::get_linker {} {
 				lappend atom_topo [lindex $h 1]
 			}
 		}
-		return $atom_topo
+	return $atom_topo
 }
 
 proc ::smile2topology::get_atoms {} {

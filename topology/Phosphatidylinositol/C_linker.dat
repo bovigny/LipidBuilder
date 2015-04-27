@@ -1,5 +1,12 @@
 !Linker atoms for Glycerophospholipid
 
+
+RESI CLH1 ! linker CH1 branched
+	KEY C 1 2 0 1 1:1 
+	HATOM C CTL1 -0.13 
+	ATOM H1 HAL1 0.09
+ISER
+
 RESI CLH2 ! linker CH2
 	KEY C 1 1 0 0 1   
 	HATOM C CTL2 -0.22
