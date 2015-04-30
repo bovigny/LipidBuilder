@@ -589,8 +589,8 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
     ::topology_writer::init
     ::topology_reader::init
     ::smile2topology::init
-    ::smile2topology::read_ICparameters "$LipidBuilder/hydrocarbon_topology.dat"
-    ::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/C_linker.dat"
+    ::smile2topology::read_ICparameters [file join {*}[file split "$LipidBuilder/hydrocarbon_topology.dat"]]
+    ::smile2topology::read_ICparameters [file join {*}[file split "$LipidBuilder/topology/${category}/C_linker.dat"]]
     #For website
     #::smile2topology::read_ICparameters "$LipidBuilder/hydrocarbon_topology_CHEMDRAW.dat"
     #::smile2topology::read_ICparameters "$LipidBuilder/topology/${category}/C_linker.dat"
@@ -632,7 +632,7 @@ proc ::lipidBuilder::createTopology {category head tails resname pathOut} {
        	}
        	
 	::topology_writer::set_masses $::topology_reader::masses
-	::topology_writer::write_topology "$pathOut/${resname}.top" $resname [lindex $::topology_reader::chargeResitopology 1]
+	::topology_writer::write_topology [file join {*}[file split $pathOut/${resname}.top]] $resname [lindex $::topology_reader::chargeResitopology 1]
 }
 
 
@@ -641,28 +641,29 @@ proc ::lipidBuilder::createTemplate {category topology head pathOut} {
 	::topology_reader::init
 	::topology_reader::read_topology $topology
 	set resname [lindex $::topology_reader::atomtopology 0]
-	getTemplate $LipidBuilder/heads/${category}/${head}.pdb $resname L1 $pathOut
-	buildTemplate $resname  $topology L1 $pathOut
-	minimizeTemplate $resname  $topology $pathOut
-	computeMinMax $resname $pathOut
+	getTemplate $LipidBuilder/heads/${category}/${head}.pdb $resname L1 [file join {*}[file split $pathOut]]
+	buildTemplate $resname  $topology L1 [file join {*}[file split $pathOut]]
+	minimizeTemplate $resname  $topology [file join {*}[file split $pathOut]]
+	computeMinMax $resname [file join {*}[file split $pathOut]]
 }
 
 proc ::lipidBuilder::buildTemplate {resname topology segname pathOut} {
+    set pdb [file join {*}[file split $pathOut/${resname}.pdb]] 
 	topology $topology
-        segment $segname  {pdb $pathOut/${resname}.pdb}
-        coordpdb $pathOut/${resname}.pdb
+        segment $segname  {pdb $pdb}
+        coordpdb $pdb
         guesscoord
-        writepdb $pathOut/${resname}.pdb
-        writepsf $pathOut/${resname}.psf
+        writepdb [file join {*}[file split $pathOut/${resname}.pdb]]
+        writepsf [file join {*}[file split $pathOut/${resname}.psf]]
 	psfcontext reset
 }
 
 proc ::lipidBuilder::minimizeTemplate {resname topology pathOut} {
 	variable LipidBuilder
 	variable LipidBuilderParameters
-	cd $pathOut
+	cd [file join {*}[file split $pathOut]]
 	if {$::tcl_platform(os) == "Linux"  || $::tcl_platform(os) == "Darwin" } {
-	  if {[catch {exec ${LipidBuilder}/minimize_${::tcl_platform(os)} --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters} --outfile ${resname}.pdb} ] } {
+	  if {[catch {exec [file join {*}[file split ${LipidBuilder}/minimize_${::tcl_platform(os)}]] --pdb ${resname}.pdb --topfile ${topology} --parfile ${LipidBuilder}/parameters/${LipidBuilderParameters} --outfile ${resname}.pdb} ] } {
 	  	puts "Warning during minimization... Please check structure"
 	  }
 	} else {
@@ -676,16 +677,16 @@ proc ::lipidBuilder::getTemplate {head resname segname pathOut} {
         set h [atomselect top all]
         $h set resname $resname
 	$h set segname $segname
-        $h writepdb $pathOut/${resname}.pdb
+        $h writepdb [file join {*}[file split $pathOut/${resname}.pdb]]
         mol delete all
 }
 
 proc ::lipidBuilder::computeMinMax {resname pathOut} {
-	set id [mol new $pathOut/${resname}.psf]
-	mol addfile $pathOut/${resname}.pdb
+	set id [mol new [file join {*}[file split $pathOut/${resname}.psf]]]
+	mol addfile [file join {*}[file split $pathOut/${resname}.pdb]]
 	lassign [measure minmax [atomselect top all]] v1 v2
 	set minmax [vecsub $v2 $v1]
-	set f [open ${pathOut}/minmax.dat w]
+	set f [open [file join {*}[file split ${pathOut}/minmax.dat]] w]
 	puts $f $minmax
 	close $f
 	mol delete $id

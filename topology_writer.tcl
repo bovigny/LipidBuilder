@@ -136,7 +136,6 @@ proc ::topology_writer::set_connectivity_IC {lIC IC_linker} {
 #		puts [lrange $aa 0 1]
 #		puts [lrange $aa 2 3]
 #		if {[regexp [lrange $aa 0 1] $str_bonds] && [regexp [lrange $aa 2 3] $str_bonds]} {
-			puts "AA: $aa vs $a"
 			#check if linker has been changed
 			if {![string match *L* $aa] && ![string match *P* $aa]} {
 				lappend ICs $aa

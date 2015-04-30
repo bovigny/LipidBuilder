@@ -6,7 +6,7 @@ MASS 157  OSL  15.999400 O ! ester oxygen
 MASS 162  SL   32.060000 S ! Sulfate sulfur
 
 
-RESI SDS         -1.00 ! Dodecylsulphate
+RESI SO         -1.00 ! Dodecylsulphate
 GROUP
 ATOM S    SL      1.33 !           OS2(-1)
 ATOM OS1  OSL    -0.28 !             |

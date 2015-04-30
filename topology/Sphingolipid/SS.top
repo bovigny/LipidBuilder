@@ -57,7 +57,7 @@ ATOM N    NH3L  -0.30  !                  HN2
 ATOM HNA  HCL    0.33  !                   |
 ATOM HNB  HCL    0.33  !                   |
 ATOM HNC  HCL    0.33  !                   |
-ATOM C12  CTL1   0.21  !         (+) HN1---N---HN3
+ATOM C12  CTL1   0.21  !         (+) HNF---N---HN3
 ATOM H12A HBL    0.10  !                   |
 GROUP                  !                   |     O13A (-)
 ATOM C13  CCL    0.34  !                   |     ||
@@ -77,9 +77,9 @@ ATOM O12  OSLP    -0.57!                   |
 ATOM C1   CTL2   -0.08 !                   |
 ATOM HA   HAL2    0.09 !             HA---C1---HB
 ATOM HB   HAL2    0.09 !                   |			      gamma1
-GROUP                  !             HS---C2--------------------N31--HN1
+GROUP                  !             HS---C2--------------------N31--HNF
 ATOM N31  NHL    -0.70 !                   |                     |
-ATOM HN1  H       0.35 !                   |                     |
+ATOM HNF  H       0.35 !                   |                     |
 ATOM C2   CTL1    0.30 !                   |                     |
 ATOM HS   HAL1    0.05 !                   |                     |
 GROUP                  !                   |                     | gamma2
@@ -90,37 +90,17 @@ ATOM HO1  HOL     0.30 !                   |              P2X---L32---H2Y
 GROUP                  !                   |                     |
 ATOM C31  C       0.55 !                   |    	            | gamma4
 ATOM O31  O      -0.60 !                   |              P3X---L33---H3Y
-	 	        !                   |                     | 
-		        !                   |                     | gamma5
-		        !             beta1 |              P4X---L34---H4Y
-		        !            H1R---C21--O21--HO1          |	
-		        !                   |		            |
-		        !             beta2 |		            |
-		        !                  L22---P2R	            |
-		        !	            ||		            |
-                       !  	       beta3||		            |
-		        !	            L23---P3R	            |
-		        !                   |		            |
-		        !              beta4|		            |
-		        !            P4R---L24---P4S	            |
-		        !                   |		            |
-		        !                   |	  	     H5X---L35---H5Y
-		        !                   |		            |
-		        !                   |		            |
-		        !                   |	             H6X---L36---H6Y
-		        !                   |		            |
-		        ! 	      H5R---L25---H5S	
-		        !                   |
-		        !                   |
-		        !            H6R---L26---H6S
-		        !		     |	
+ATOM C3F  CTL2   -0.07 !
+ATOM H3F  HAL2    0.06 !
+ATOM H3G  HAL2    0.06 !
+GROUP                  !
+ATOM C4Q  CEL3   -0.15 !
+ATOM H4Q  HEL1    0.15 !
+GROUP                  !
+ATOM C5Q  CEL3   -0.15 !
+ATOM H5Q  HEL1    0.15 !
 
-!SPHINGOSINE CHAIN
-BOND C21  H1R   C21  O21
-BOND  O21  HO1
-BOND  C21  C2   C2   HS
-BOND  C2   C1   C1   HA    C1   HB
-BOND  C1   O11
+
 !POLAR HEAD
 BOND  N    HNA       N    HNB       N    HNC       N    C12
 BOND  O13B C13       C13  C12
@@ -128,19 +108,26 @@ DOUBLE  C13 O13A
 BOND  C12  H12A      C12  C11       C1   O11
 BOND  C11  H11A      C11  H11B      C11  O12
 BOND  O12  P         P    O11       P    O13       P    O14
-
+!SPHINGOSINE CHAIN
+BOND C21  H1R   C21  O21
+BOND  O21  HO1
+BOND  C21  C2   C2   HS
+BOND  C2   C1   C1   HA    C1   HB
+BOND  C1   O11
 !FATTY ACID CHAIN
-BOND  C2   N31  N31  HN1   N31  C31
-DOUBLE C31  O31 
-IMPR   N31 C31 C2 HN1
+BOND  C2   N31  N31  HNF   N31  C31
 
-!Linker
-LIMPR C31 L32 N31 O31
-LINPR C21 L22 C2  O21
+DOUBLE C31  O31
+BOND C31 C3F C3F H3F C3F H3G
+BOND C21 C4Q C4Q H4Q C4Q C5Q C5Q H5Q
 
-!LBOND
-LBOND  C21  L22
-LBOND  C31  L32
+
+IMPR   C31 C3F N31 O31  N31 C31 C3S HNF
+
+LBOND  C5Q  L22
+
+LBOND  C3F  L32
+
 
 IC N     C12   C11   O12    1.4892  109.79  -66.07  111.86   1.4332
 IC N     C12   C13   O13B   1.4892  108.30  177.11  118.01   1.2553
@@ -166,18 +153,31 @@ IC C1    C2    N31   C31    1.5586  111.52  -70.50  124.85   1.3364
 IC C21   C1    *C2   N31    1.5343  114.25  120.00  111.52   1.4406
 IC C21   C1    *C2   HS     1.5343  114.25 -120.00  105.03   1.1194
 IC O11   C1    C2    C21    1.4327  111.21  175.67  114.25   1.5343 ! assume ok
-IC C31   C2    *N31  HN1    1.3364  124.85 -157.81  113.39   1.0062 ! assume ok
+IC C31   C2    *N31  HNF    1.3364  124.85 -157.81  113.39   1.0062 ! assume ok
 
-LIC C2     C21    L22    L23        1.5343  110.14  -84.24  124.28   1.3444
-LIC C21    L22    L23    L24        1.5009  124.28  179.01  124.77   1.5077
+IC C2     C21    C4Q    C5Q        1.5343  110.14  -84.24  124.28   1.3444
 
-LIC C2     N31    C31    L32        1.4406  124.85 -156.83  114.97   1.4964
-LIC L32    N31    *C31   O31        1.4964  114.97  162.54  122.11   1.2268
-LIC N31    C31    L32    L33        1.3364  114.97    4.30  111.92   1.5432
-LIC C31    L32    L33    L34        1.4964  111.92  180.54  112.84   1.5310
-
-LIC L22    C2     *C21   O21        1.5009  110.14  118.36  109.80   1.4235 ! OH chirality (ch
-LIC L22    C2     *C21   H1R        1.5009  110.14 -121.14  110.10   1.1140 ! OH chirality (ch
+IC C4Q    C2     *C21   O21        1.5009  110.14  118.36  109.80   1.4235 ! OH chirality (ch
+IC C4Q    C2     *C21   H1R        1.5009  110.14 -121.14  110.10   1.1140 ! OH chirality (ch
  
-LIC C1     C2     C21    L22        1.5586  114.25  -70.50  110.14   1.5009 ! assume redundent
-LIC L22    C21    C2     C1         1.5009  110.14  160.94  114.25   1.5586
+
+IC C1     C2     C21    C4Q        1.5586  114.25  -70.50  110.14   1.5009 ! assume redundent
+IC C4Q    C21    C2     C1         1.5009  110.14  160.94  114.25   1.5586
+
+LIC C21    C4Q    C5Q    L22       1.5009  124.28  179.01  124.77   1.5077
+LIC C4Q    C5Q    L22    L23       1.5009  124.28  179.01  124.77   1.5077
+LIC C5Q    L22    L23    L24       1.5009  124.28  179.01  124.77   1.5077
+
+
+
+IC C2     N31    C31    C3F        1.4406  124.85 -156.83  114.97   1.4964
+
+IC C3F    N31    *C31   O31        1.4964  114.97  162.54  122.11   1.2268
+
+LIC N31    C31    C3F    L32       1.3364  114.97    4.30  111.92   1.5432
+
+LIC C31    C3F    L32    L33       1.4964  111.92  180.54  112.84   1.5310
+
+
+LIC C3F    L32    L33    L34       1.4964  111.92  180.54  112.84   1.5310
+

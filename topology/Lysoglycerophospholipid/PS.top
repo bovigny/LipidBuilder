@@ -93,7 +93,7 @@ BOND  C2   HS        C2    C3       C2   HR
 BOND  C3   HX        C3    HY      C3   O21
 
 ! Chain #3
-BOND  O21  C21
+BOND  O21  C21 C21 O22
 
 LBOND  C21  L22
 LIMPR C21 O21 L22 O22

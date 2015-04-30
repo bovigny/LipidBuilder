@@ -46,92 +46,96 @@ MASS 160  OSLP 15.999400 O ! Phosphate oxygen, to avoid conflict with methylacet
 MASS 161  PL   30.974000 P ! phosphorus
 
 
-RESI CE           0.00 !  CERAMIDE by by Sam Tonddast-Navaei (U. Cin/Russel Lab)
+RESI CER2    0.00      !  CERAMIDE by by Sam Tonddast-Navaei (U. Cin/Russel Lab)
                        !
-GROUP                  !               HT
-ATOM O1   OHL    -0.69 !                 \
-ATOM HT   HOL     0.30 !                  O1
-ATOM C1   CTO2    0.49 !                  |
-ATOM HA   HAL2   -0.05 !           HA-----C1----HB
-ATOM HB   HAL2   -0.05 !                  |
-GROUP                  !           HS----C2--------------------N31--HN1
-ATOM N31  NHL    -0.70 !                  |                     |
-ATOM HN1  H       0.35 !                  |                     |
-ATOM C2   CTL1    0.30 !                  |                     |
-ATOM HS   HAL1    0.05 !                  |                    C31=O31 (FATTY ACID CHAIN)
-GROUP                  !                  |                     |
-ATOM C21  CTO1    0.50 !                  |                     |
-ATOM H1R  HAL1   -0.11 !                  |              P2X---L32---P2Y
-ATOM O21  OHL    -0.69 !                  |                     |
-ATOM HO1  HOL     0.30 !                  |                     |
-GROUP                  !FATTY ACID CHAIN  |              P3X---L33---P3Y 
-ATOM C31  C       0.55 !                  |                     |
-ATOM O31  O      -0.60 !                  |                     |
-	 	        !                  |              P4X---L34---P4Y 
-	 	        !                  |                     | 
-	 	        !            beta1 |                     |
-		        !           H1R---C21--O21--HO1          |	
-		        !         	    |		        |
-		        !            beta2 |		        |
-		        !                 L22---P2R	        |
-		        !	            ||		        |
-                       !            beta3 ||		        |
-		        !	           L23---P3R	        |
-		        !                  |		        |
-		        !            beta4 |		        |
-		        !           P4R---L24---P4S	        |
-		        !                  |		        |
-		        !                  |	  	 H5X---L35---H5Y
-		        !                  |		        |
-		        !                  |		        |
-		        !                  |	         H6X---L36---H6Y
-		        !                  |		        |
-		        !           P5R---L25---P5R	
-		        !                  |
-		        !                  |
-		        !           P6R---L26---P6S
-		        !	            |	
+GROUP                  !                HO1
+ATOM O1  OHL -0.69     !                  \
+ATOM HT HOL  0.30     !                   O1
+ATOM C1  CTO2    0.49 !                   |
+ATOM HA  HAL2   -0.05 !             H1S---C1S---H1T
+ATOM HB  HAL2   -0.05 !                   |
+GROUP                  !             HS---C2--------------------N31--HNF
+ATOM N31  NHL    -0.70 !                   |                     |
+ATOM HNF  H       0.35 !                   |                     |
+ATOM C2   CTL1    0.30 !                   |                     |
+ATOM HS   HAL1    0.05 !                   |                     |
+GROUP                  !                   |                     | gamma2
+ATOM C21  CTO1    0.50 !                   |                     C31=O31 (FATTY ACID CHAIN)
+ATOM H1R  HAL1   -0.11 !                   |                     |
+ATOM O21  OHL    -0.69 !                   |                     | gamma3
+ATOM HO1  HOL     0.30 !                   |              P2X---L32---H2Y
+GROUP                  !                   |                     |
+ATOM C31  C       0.55 !                   |    	            | gamma4
+ATOM O31  O      -0.60 !                   |              P3X---L33---H3Y
+ATOM C3F  CTL2   -0.07 !
+ATOM H3F  HAL2    0.06 !
+ATOM H3G  HAL2    0.06 !
+GROUP                  !
+ATOM C4Q  CEL3   -0.15 !
+ATOM H4Q  HEL1    0.15 !
+GROUP                  !
+ATOM C5Q  CEL3   -0.15 !
+ATOM H5Q  HEL1    0.15 !
+
+
 
 !SPHINGOSINE CHAIN
-
-BOND  C21  H1R   C21  O21
-BOND  O21   HO1
-BOND  C21  C2  C2  HS
-BOND  C2  C1  C1  HA   C1  HB
-BOND  C1  O1   O1   HT
-
+BOND C21  H1R   C21  O21
+BOND  O21  HO1
+BOND  C21  C2   C2   HS
+BOND  C2   C1   C1   HA    C1   HB
+BOND  C1   O1  O1 HT
 !FATTY ACID CHAIN
-BOND  C2  N31   N31   HN1   N31   C31
+BOND  C2   N31  N31  HNF   N31  C31
 
 DOUBLE C31  O31
-IMPR  N31 C31 C2 HN1
+BOND C31 C3F C3F H3F C3F H3G
+BOND C21 C4Q C4Q H4Q C4Q C5Q C5Q H5Q
 
-LBOND C21 L22
-LBOND C31 L32
 
-LIMPR C21  L22  C2  O21
-LIMPR C31  L32  N31 O31
+IMPR   C31 C3F N31 O31  N31 C31 C3S HNF
 
-IC HT    O1    C1    C2     1.5725  121.69  103.66  111.21   1.5586
-IC C2    O1    *C1   HA     1.5586  111.21  118.79  108.35   1.1121
-IC C2    O1    *C1   HB     1.5586  111.21 -123.25  112.85   1.1152
-IC O1    C1    C2    C21    1.4327  111.21  175.67  114.25   1.5343
+LBOND  C5Q  L22
+
+LBOND  C3F  L32
+
+
+
+IC C2    O11   *C1   HA     1.5586  111.21  118.79  108.35   1.1121
+IC C2    O11   *C1   HB     1.5586  111.21 -123.25  112.85   1.1152
+IC C2    C21   O21   HO1    1.5343  109.80   46.50  104.54   0.9610
+IC C1    C2    N31   C31    1.5586  111.52  -70.50  124.85   1.3364
 IC C21   C1    *C2   N31    1.5343  114.25  120.00  111.52   1.4406
 IC C21   C1    *C2   HS     1.5343  114.25 -120.00  105.03   1.1194
-IC C1    C2    N31   C31    1.5586  111.52  160.94  124.85   1.3364
-IC C31   C2    *N31  HN1    1.3364  124.85 -157.81  113.39   1.0062
 
-LIC L23    L22    C21    C2         1.5001  117.98  -107.23  99.06   1.4971
-LIC L23    L22    C21    O21        1.5001  117.98  131.42  113.41   1.4191
-LIC L22    C21    C2     C1         1.4798  99.06  177.79  115.44   1.5250
-LIC C1     C2     C21    L22        1.5250  115.44  177.79  99.06   1.4798
-LIC L22    C2     *C21   O21        2.2646  40.19  120.82  114.13   1.4191
-LIC L22    C2     *C21   H1R        2.2646  40.19  -118.10  117.53   1.1105
-LIC C2     C21    O21    HO1        1.4971  114.13  16.99  104.02   0.9589
-LIC C2     C21    L22    L23        1.4971  99.06  -107.23  117.98   1.5001
-LIC C21    L22    L23    L24        1.4798  117.98  -177.92  125.93   1.5071
-LIC C2     N31    C31    L32        1.4059  125.03  -162.35  114.69   1.4964
-LIC L32    N31    *C31   O31        2.4159  34.25  148.24  123.02   1.2573
-LIC N31    C31    L32    L33        1.3720  114.69  -70.71  111.99   1.5438
-LIC C31    L32    L33    L34        1.4964  111.99  -53.55  112.85   1.5287
+IC O11   C1    C2    C21    1.4327  111.21  175.67  114.25   1.5343 ! assume ok
+IC C31   C2    *N31  HNF    1.3364  124.85 -157.81  113.39   1.0062 ! assume ok
+
+
+
+IC C2     C21    C4Q    C5Q        1.5343  110.14  -84.24  124.28   1.3444
+
+IC C4Q    C2     *C21   O21        1.5009  110.14  118.36  109.80   1.4235 ! OH chirality (ch
+IC C4Q    C2     *C21   H1R        1.5009  110.14 -121.14  110.10   1.1140 ! OH chirality (ch
+ 
+
+IC C1     C2     C21    C4Q        1.5586  114.25  -70.50  110.14   1.5009 ! assume redundent
+IC C4Q    C21    C2     C1         1.5009  110.14  160.94  114.25   1.5586
+
+LIC C21    C4Q    C5Q    L22       1.5009  124.28  179.01  124.77   1.5077
+LIC C4Q    C5Q    L22    L23       1.5009  124.28  179.01  124.77   1.5077
+LIC C5Q    L22    L23    L24       1.5009  124.28  179.01  124.77   1.5077
+
+
+
+IC C2     N31    C31    C3F        1.4406  124.85 -156.83  114.97   1.4964
+
+IC C3F    N31    *C31   O31        1.4964  114.97  162.54  122.11   1.2268
+
+LIC N31    C31    C3F    L32       1.3364  114.97    4.30  111.92   1.5432
+
+LIC C31    C3F    L32    L33       1.4964  111.92  180.54  112.84   1.5310
+
+
+LIC C3F    L32    L33    L34       1.4964  111.92  180.54  112.84   1.5310
 

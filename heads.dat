@@ -5,7 +5,7 @@ PG:2:Phosphatidylglycerol:Glycerophospholipid
 PS:2:Phosphatidylserine:Glycerophospholipid 
 CD:4:Cardiolipin Deprotonated:Glycerophospholipid 
 CP:4:Cardiolipin protonated:Glycerophospholipid
-SM:2:Sphingomyelin:Sphingolipid
+SC:2:Sphingomyelin:Sphingolipid
 SE:2:Phosphatidylethanolamine:Sphingolipid
 SA:2:Phosphatidic Acid:Sphingolipid
 SG:2:Phosphatidylglycerol:Sphingolipid
@@ -23,8 +23,8 @@ I9:2:PI-3-4-5'H'-triP:Phosphatidylinositol
 PA:1:Phosphatidic Acid:Lysoglycerophospholipid 
 PC:1:Phosphatidylcholine:Lysoglycerophospholipid 
 PE:1:Phosphatidylethanolamine:Lysoglycerophospholipid 
-PG:1:Phosphatidylglycerol:Lyso Glycerophospholipid 
+PG:1:Phosphatidylglycerol:Lysoglycerophospholipid 
 PS:1:Phosphatidylethanolamine:Lysoglycerophospholipid 
 CH:1:5-ene sterol:Sterol
 EG:1:5,7-diene sterol:Sterol
-SS:1:Sulfate:Miscellaneous
+SO:1:Sulfate:Miscellaneous

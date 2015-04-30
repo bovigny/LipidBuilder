@@ -3,6 +3,6 @@ LipidBuilder
 
 LipidBuilder
 
-git add *
+git add --all 
 git commit -a 
 git push origin master
