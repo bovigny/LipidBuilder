@@ -1,8 +1,9 @@
 LipidBuilder
 ============
 
-LipidBuilder
+Installation
 
-git add --all 
-git commit -a 
-git push origin master
+Edit $HOME/.vmdrc:
+
+    > lappend auto_path "your_path"/LipidBuilder
+    > vmd_install_extension lipidbuilder lipidbuilder_tk "Modeling/LipidBuildLipidBuilder
